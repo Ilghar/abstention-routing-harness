@@ -1,0 +1,25 @@
+{
+ "utc_time": "2026-10-23T08:49:29+00:00",
+ "python": "3.13.5",
+ "environment": "fresh copy of working tree in /tmp/fresh (no installed packages, stdlib only)",
+ "base_commit": "9c8a8c2d0002af084abf46b156ea880f1d870f3f",
+ "fixture_sha256": {
+  "fixtures/synthetic_cases_m03.json": "49c6e7eaffa73eb9b796c32c78800fe5864e8fbb9f817de855805cc935f6afa3"
+ },
+ "runs": [
+  {
+   "name": "unittest",
+   "command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
+   "exit_code": 0,
+   "stdout": "",
+   "stderr": "test_fixture_report_counts (test_policy.CLI.test_fixture_report_counts) ... ok\ntest_admits_only_clean_agreement (test_policy.Gates.test_admits_only_clean_agreement) ... ok\ntest_budget_edge_cases_route_human_without_raising (test_policy.Gates.test_budget_edge_cases_route_human_without_raising) ... ok\ntest_identity_changes_with_revision_and_rubric (test_policy.Gates.test_identity_changes_with_revision_and_rubric) ... ok\ntest_proposal_failures (test_policy.Gates.test_proposal_failures) ... ok\ntest_scope_permission_text (test_policy.Gates.test_scope_permission_text) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.039s\n\nOK\n"
+  },
+  {
+   "name": "cli",
+   "command": "PYTHONPATH=src python3 -m abstention_routing_harness run fixtures/synthetic_cases_m03.json --out out/m03",
+   "exit_code": 0,
+   "stdout": "{\"coverage\": {\"admitted\": 6, \"denominator\": 16, \"value\": 0.375}, \"false_acceptance\": {\"count\": 1, \"denominator\": 4, \"value\": 0.25}, \"selective_accuracy\": {\"correct\": 4, \"denominator\": 6, \"value\": 0.666667}}\n",
+   "stderr": ""
+  }
+ ]
+}

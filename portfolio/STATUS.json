@@ -1,1 +1,41 @@
-{"updated":"2026-10-23","projects":{"01":{"repo":"Ilghar/abstention-routing-harness","accepted":["M01","M02"],"fraction":0.2},"02":{"repo":"Ilghar/cultural-typographic-ai-evaluation","accepted":["M01","M02"],"fraction":0.2},"03":{"repo":"Ilghar/persian-pronunciation-tts-evaluation","accepted":["M01","M02"],"fraction":0.2}},"commit_shas":"recorded in next status update after push (a commit cannot contain its own SHA)","drive_mirror":"pending"}
+{
+ "updated": "2026-10-23 M03",
+ "projects": {
+  "01": {
+   "repo": "Ilghar/abstention-routing-harness",
+   "accepted": [
+    "M01",
+    "M02",
+    "M03"
+   ],
+   "fraction": 0.3
+  },
+  "02": {
+   "repo": "Ilghar/cultural-typographic-ai-evaluation",
+   "accepted": [
+    "M01",
+    "M02",
+    "M03"
+   ],
+   "fraction": 0.3
+  },
+  "03": {
+   "repo": "Ilghar/persian-pronunciation-tts-evaluation",
+   "accepted": [
+    "M01",
+    "M02",
+    "M03"
+   ],
+   "fraction": 0.3
+  }
+ },
+ "commit_shas": {
+  "M02": {
+   "abstention-routing-harness": "9c8a8c2d0002af084abf46b156ea880f1d870f3f",
+   "cultural-typographic-ai-evaluation": "da629e97ea7d6bf9957ec1bd45054bb0f1eba5d4",
+   "persian-pronunciation-tts-evaluation": "b2551fa4e66c07341054dc8a6b82f7449f8a2cad"
+  },
+  "M03": "see Drive outputs/current/MANIFEST_M03.json"
+ },
+ "drive_mirror": "M02 MANIFEST.json verified by size; M03 manifest pending at commit time"
+}

@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "project_id": "01",
-  "stage": "bot_m02_accepted",
+  "stage": "bot_m03_accepted",
   "owner": "Grok Bot (coordinator)",
   "repository": {
     "url": "https://github.com/Ilghar/abstention-routing-harness",
     "branch": "main",
-    "commit": "see git log; recorded in portfolio/STATUS.json after push",
+    "commit": "M02 base 9c8a8c2d0002af084abf46b156ea880f1d870f3f; M03 SHA recorded in Drive outputs/current/MANIFEST_M03.json",
     "visibility": "private"
   },
   "drive_folder_url": "https://drive.google.com/drive/folders/1WHIwl7Jixw0ZqEDu1XO2Y64qCNqTG3Va",
@@ -35,8 +35,19 @@
     },
     {
       "id": "M03",
-      "status": "not_started",
-      "evidence": []
+      "status": "accepted",
+      "evidence": [
+        "src/abstention_routing_harness/__init__.py",
+        "src/abstention_routing_harness/__main__.py",
+        "src/abstention_routing_harness/cli.py",
+        "src/abstention_routing_harness/metrics.py",
+        "src/abstention_routing_harness/policy.py",
+        "tests/test_policy.py",
+        "fixtures/synthetic_cases_m03.json",
+        "tests/receipts/m03_run.json",
+        "tests/receipts/m03_report.json",
+        "README.md"
+      ]
     },
     {
       "id": "M04",
@@ -76,9 +87,9 @@
   ],
   "tests": [
     {
-      "command": "python3 tools/check_m02.py",
-      "scope": "bookkeeping: schemas parse, docs exist",
-      "behavioural": false
+      "command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
+      "scope": "behavioural, synthetic/mock fixtures",
+      "receipt": "tests/receipts/m03_run.json"
     },
     {
       "command": "python3 common/validate_state.py handoff/STATE.json --root .",
@@ -86,17 +97,17 @@
     }
   ],
   "next_actions": [
-    "M03: stdlib package + CLI per docs/ARCHITECTURE.md",
-    "M03: honest synthetic fixture incl. failure cases",
-    "M03: >=2 meaningful unittest tests with saved receipts"
+    "M04 per common/MILESTONES.json (week-2 budget)",
+    "Independent review of M01-M03",
+    "Native/expert review of fixtures before any gold labels"
   ],
   "budget": {
     "observed_remaining": "week1 ~99/100 pts at 10:42 Berlin (user reading)",
     "pool_relationship": "unknown",
     "paid_spend_allowed": false
   },
-  "completion_fraction": 0.2,
-  "notes": "M01/M02 accepted by Bot self-review only; no executable code yet; independent review pending.",
+  "completion_fraction": 0.3,
+  "notes": "M01-M03 accepted by Bot self-review; all results are on synthetic/mock data; no model, audio or real-rater results exist.",
   "lease": {
     "status": "active",
     "released_at": null,

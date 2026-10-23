@@ -1,0 +1,43 @@
+{
+ "confusion": {
+  "conversation->conversation": 2,
+  "conversation->human": 1,
+  "conversation->spreadsheet": 1,
+  "human->human": 3,
+  "human->spreadsheet": 1,
+  "spreadsheet->human": 6,
+  "spreadsheet->spreadsheet": 2
+ },
+ "coverage": {
+  "admitted": 6,
+  "denominator": 16,
+  "value": 0.375
+ },
+ "disagreements": 1,
+ "false_acceptance": {
+  "count": 1,
+  "denominator": 4,
+  "value": 0.25
+ },
+ "fixture_sha256": "49c6e7eaffa73eb9b796c32c78800fe5864e8fbb9f817de855805cc935f6afa3",
+ "n_items": 16,
+ "reason_counts": {
+  "ADMITTED_ADVISORY": 6,
+  "BUDGET_EXCEEDED": 1,
+  "BUDGET_INVALID": 2,
+  "INPUT_NOT_PERMITTED": 1,
+  "NO_PROPOSAL": 1,
+  "PROPOSALS_CONFLICT": 1,
+  "PROPOSAL_ABSTAINED": 1,
+  "PROPOSAL_MALFORMED": 1,
+  "SCOPE_UNVERIFIED": 1,
+  "TEXT_INVALID": 1
+ },
+ "rubric_id": "rubric-v1",
+ "run_kind": "mock",
+ "selective_accuracy": {
+  "correct": 4,
+  "denominator": 6,
+  "value": 0.666667
+ }
+}

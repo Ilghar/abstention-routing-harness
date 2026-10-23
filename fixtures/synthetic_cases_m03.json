@@ -1,0 +1,278 @@
+{
+ "fixture_kind": "synthetic",
+ "run_kind": "mock",
+ "note": "Synthetic cases written for M03; proposals are hand-written mocks, not model outputs. NaN is intentional (JSON NaN extension).",
+ "cases": [
+  {
+   "id": "A01",
+   "text": "Please fix the totals column in the Q3 budget sheet",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "in_scope",
+   "expected_route": "spreadsheet",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-proposer",
+     "revision": "none",
+     "route": "spreadsheet"
+    }
+   ]
+  },
+  {
+   "id": "A02",
+   "text": "Bitte die Formel in Spalte C der Tabelle korrigieren",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "in_scope",
+   "expected_route": "spreadsheet",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-proposer",
+     "revision": "none",
+     "route": "spreadsheet"
+    }
+   ]
+  },
+  {
+   "id": "A03",
+   "text": "Can you reply to Maria's chat about the meeting?",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "in_scope",
+   "expected_route": "conversation",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-proposer",
+     "revision": "none",
+     "route": "conversation"
+    }
+   ]
+  },
+  {
+   "id": "A04",
+   "text": "Antworte bitte auf die Nachricht im Gespräch",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "in_scope",
+   "expected_route": "conversation",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-proposer",
+     "revision": "none",
+     "route": "conversation"
+    }
+   ]
+  },
+  {
+   "id": "A05",
+   "text": "Summarise this chat thread",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "in_scope",
+   "expected_route": "conversation",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-proposer",
+     "revision": "none",
+     "route": "spreadsheet"
+    }
+   ]
+  },
+  {
+   "id": "B01",
+   "text": "Put the chat transcript into the spreadsheet and reply to everyone",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "mixed",
+   "expected_route": "human",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-proposer",
+     "revision": "none",
+     "route": "spreadsheet"
+    }
+   ]
+  },
+  {
+   "id": "B02",
+   "text": "What will the weather be tomorrow?",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "out_of_domain",
+   "expected_route": "human",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-proposer",
+     "revision": "none",
+     "route": "unknown"
+    }
+   ]
+  },
+  {
+   "id": "B03",
+   "text": "Delete all files in the shared drive",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "malformed",
+   "expected_route": "human",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-proposer",
+     "revision": "none",
+     "route": "delete"
+    }
+   ]
+  },
+  {
+   "id": "B04",
+   "text": "Sort rows by date",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "conflict",
+   "expected_route": "spreadsheet",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-proposer",
+     "revision": "none",
+     "route": "spreadsheet"
+    },
+    {
+     "source": "mock",
+     "model_id": "mock-proposer",
+     "revision": "none",
+     "route": "conversation"
+    }
+   ]
+  },
+  {
+   "id": "B05",
+   "text": "Rename sheet 2",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "budget",
+   "expected_route": "spreadsheet",
+   "requests_used": "1",
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-proposer",
+     "revision": "none",
+     "route": "spreadsheet"
+    }
+   ]
+  },
+  {
+   "id": "B06",
+   "text": "Rename sheet 3",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "budget",
+   "expected_route": "spreadsheet",
+   "requests_used": NaN,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-proposer",
+     "revision": "none",
+     "route": "spreadsheet"
+    }
+   ]
+  },
+  {
+   "id": "B07",
+   "text": "Rename sheet 4",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "budget",
+   "expected_route": "spreadsheet",
+   "requests_used": 2,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-proposer",
+     "revision": "none",
+     "route": "spreadsheet"
+    }
+   ]
+  },
+  {
+   "id": "B08",
+   "text": "Format the header row",
+   "scope_verified": false,
+   "fixture_kind": "synthetic",
+   "case_class": "in_scope",
+   "expected_route": "spreadsheet",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-proposer",
+     "revision": "none",
+     "route": "spreadsheet"
+    }
+   ]
+  },
+  {
+   "id": "B09",
+   "text": "Archive this conversation",
+   "scope_verified": true,
+   "fixture_kind": "unapproved",
+   "case_class": "in_scope",
+   "expected_route": "conversation",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-proposer",
+     "revision": "none",
+     "route": "conversation"
+    }
+   ]
+  },
+  {
+   "id": "B10",
+   "text": "",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "malformed",
+   "expected_route": "human",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-proposer",
+     "revision": "none",
+     "route": "spreadsheet"
+    }
+   ]
+  },
+  {
+   "id": "B11",
+   "text": "Merge cells A1:B1",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "malformed",
+   "expected_route": "spreadsheet",
+   "requests_used": 0,
+   "proposals": []
+  }
+ ]
+}
