@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "project_id": "01",
-  "stage": "bot_m04_accepted",
+  "stage": "bot_m06_accepted",
   "owner": "Grok Bot (coordinator)",
   "repository": {
     "url": "https://github.com/Ilghar/abstention-routing-harness",
     "branch": "main",
-    "commit": "M02 9c8a8c2d0002af084abf46b156ea880f1d870f3f; M03 243f18b8ba59dedece282e3f3a05700e94f039f9; M04 in Drive MANIFEST_M04.json",
+    "commit": "M02 9c8a8c2d0002af084abf46b156ea880f1d870f3f; M03 243f18b8ba59dedece282e3f3a05700e94f039f9; M04 c1bdb38d0332263015158841c5b7aecc354b967e; latest in Drive MANIFEST_M05_M06.json",
     "visibility": "private"
   },
   "drive_folder_url": "https://drive.google.com/drive/folders/1WHIwl7Jixw0ZqEDu1XO2Y64qCNqTG3Va",
@@ -65,13 +65,25 @@
     },
     {
       "id": "M05",
-      "status": "not_started",
-      "evidence": []
+      "status": "accepted",
+      "evidence": [
+        "src/abstention_routing_harness/schema.py",
+        "data/collection_v1/DATASHEET.md",
+        "tests/receipts/m05_manifest.json",
+        "tests/receipts/m05_m06_run.json",
+        "src/abstention_routing_harness/collection.py",
+        "data/collection_v1/heldout_probes.json",
+        "tests/test_m05_m06.py"
+      ]
     },
     {
       "id": "M06",
-      "status": "not_started",
-      "evidence": []
+      "status": "accepted",
+      "evidence": [
+        "docs/RESULTS.md",
+        "tests/receipts/m06_baselines.json",
+        "tests/test_m05_m06.py"
+      ]
     },
     {
       "id": "M07",
@@ -98,7 +110,7 @@
     {
       "command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
       "scope": "behavioural, synthetic/mock fixtures",
-      "receipt": "tests/receipts/m04_run.json"
+      "receipt": "tests/receipts/m05_m06_run.json"
     },
     {
       "command": "python3 common/validate_state.py handoff/STATE.json --root .",
@@ -106,17 +118,17 @@
     }
   ],
   "next_actions": [
-    "Human/independent review of M01-M04",
-    "M05 per common/MILESTONES.json",
-    "Address review gaps in docs/REVIEW_M01_M03.md"
+    "M07 failure analysis/adversarial cases",
+    "Blind case set by Ilghar/Expert",
+    "Independent review M01-M06"
   ],
   "budget": {
-    "observed_remaining": "week1 2% used at 10:51 Berlin (user reading)",
+    "observed_remaining": "week1 3% used at 11:09 Berlin (user reading)",
     "pool_relationship": "unknown",
     "paid_spend_allowed": false
   },
-  "completion_fraction": 0.4,
-  "notes": "M01-M04 accepted by Bot (second-pass review, not independent human). M04 slice: Cleared queue fixture (20 EN/DE) + 7 OOD/mixed probes -> local keyword proposer -> abstention policy -> decisions + report. Result 21/27 admitted, 20/21 correct, false acceptance 1/7 (P07). Rule tuned on same fixture: not held-out.",
+  "completion_fraction": 0.6,
+  "notes": "M01-M06 accepted by Bot review only (not independent). Representation draft (site/index.html, CASE_PAGE.md, architecture.svg) exists but M09 not claimed. No image generated.",
   "lease": {
     "status": "active",
     "released_at": null,

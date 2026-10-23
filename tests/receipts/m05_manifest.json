@@ -1,0 +1,58 @@
+{
+ "collection": "abstention-routing-cases",
+ "empirical_items": 0,
+ "errors": [],
+ "files": {
+  "dev_probes.json": {
+   "classes": {
+    "mixed": 2,
+    "out_of_domain": 5
+   },
+   "expected_routes": {
+    "human": 7
+   },
+   "format": "cases",
+   "n": 7,
+   "provenance": "synthetic, Bot-written M04",
+   "sha256": "8fd392e8e17f3397899be8fc6b83b811049bb37795b5a73e052e9bd34b84d915",
+   "split": "dev"
+  },
+  "dev_queue.json": {
+   "classes": {
+    "in_scope": 20
+   },
+   "expected_routes": {
+    "conversation": 10,
+    "spreadsheet": 10
+   },
+   "format": "pairs",
+   "n": 20,
+   "provenance": "synthetic (Drive input S05, cleared)",
+   "sha256": "31b84c6583c3055ba7af1e036a3866a4b0be8e0ecef0b5dec5be7fc6684afcd2",
+   "split": "dev"
+  },
+  "heldout_probes.json": {
+   "classes": {
+    "in_scope": 12,
+    "mixed": 4,
+    "out_of_domain": 8
+   },
+   "expected_routes": {
+    "conversation": 6,
+    "human": 12,
+    "spreadsheet": 6
+   },
+   "format": "cases",
+   "n": 24,
+   "provenance": "synthetic, Bot-written after rule (not blind)",
+   "sha256": "600c1da54c84644827633173c41ce761920cd7bacbc6a2a846ea4ddbf1398825",
+   "split": "test"
+  }
+ },
+ "historical_not_rerun": {
+  "inputs/expanded_fixture_historical.json": "b6215a1354e2c1c390e6c09faa8c19c5052f452fb2e63f8dff1fc4ae766524ab",
+  "inputs/narrow_fixture_historical.json": "f5a896d0a638a2c2e83a67d4c16da1bd9e1d8a8618e61e62f6d3f22860cee3cd"
+ },
+ "note": "All items synthetic. Historical fixture summaries are listed separately as historical_not_rerun and are not part of any split.",
+ "version": "1.0.0"
+}

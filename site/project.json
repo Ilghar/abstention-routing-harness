@@ -1,0 +1,65 @@
+{
+ "id": "abstention-routing-harness",
+ "title": "Abstention and routing evaluation harness",
+ "summary": "How can a routing system abstain reliably on mixed, malformed, conflicting or out-of-domain requests without mistaking model confidence for authority?",
+ "status": "in_progress",
+ "evidence_level": "Measured rule baselines on synthetic cases; no model results",
+ "contribution": "Ilghar Dadgostari: problem framing, requirements and evaluation direction. Implementation AI-assisted (Grok Bot), reviewed only by Grok Bot so far.",
+ "architecture": [
+  "Input record + independent scope label",
+  "Pure validation and advisory policy",
+  "Recorded or mocked model proposal adapter",
+  "Abstention + disagreement decision",
+  "Per-class confusion/coverage/error report",
+  "Human review queue"
+ ],
+ "results": [
+  {
+   "metric": "keyword rule false acceptance (test)",
+   "value": "5/12 = 0.417 (Wilson 95% 0.193–0.681)",
+   "denominator": 12,
+   "kind": "measured, synthetic",
+   "caveat": "test probes written by rule author; not blind"
+  },
+  {
+   "metric": "keyword rule selective accuracy (test)",
+   "value": "6/11 = 0.545",
+   "denominator": 11,
+   "kind": "measured, synthetic",
+   "caveat": "small n"
+  },
+  {
+   "metric": "keyword rule coverage (test)",
+   "value": "11/24 = 0.458",
+   "denominator": 24,
+   "kind": "measured, synthetic",
+   "caveat": ""
+  },
+  {
+   "metric": "keyword rule false acceptance (dev)",
+   "value": "1/7 = 0.143",
+   "denominator": 7,
+   "kind": "measured, synthetic",
+   "caveat": "rule developed on dev"
+  },
+  {
+   "metric": "majority-class false acceptance (test)",
+   "value": "12/12 = 1.0",
+   "denominator": 12,
+   "kind": "measured baseline",
+   "caveat": ""
+  }
+ ],
+ "assets": [],
+ "links": [
+  {
+   "url": "https://huggingface.co/convaiinnovations/laya-multilingual",
+   "relation": "reference_not_ownership"
+  }
+ ],
+ "limitations": [
+  "All items synthetic; no model was run.",
+  "Test probes written by the same author after the rule existed (not blind).",
+  "Historical laya-multilingual fixtures are summaries, not rerun, and measure different tasks."
+ ]
+}

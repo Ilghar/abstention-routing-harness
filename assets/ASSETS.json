@@ -1,16 +1,19 @@
 {
-  "generated_assets": [],
-  "status": "No image generated during package preparation; use Grok included capability later",
-  "provenance_fields": [
-    "path",
-    "sha256",
-    "prompt_path",
-    "tool",
-    "model_if_exposed",
-    "generated_at",
-    "alt",
-    "width",
-    "height",
-    "rights_notes"
-  ]
+ "generated_assets": [],
+ "status": "prompt_saved_no_image_generated",
+ "provenance_fields": [
+  "path",
+  "sha256",
+  "prompt_path",
+  "tool",
+  "model_if_exposed",
+  "generated_at",
+  "alt",
+  "width",
+  "height",
+  "rights_notes"
+ ],
+ "reason": "Image generation awaits explicit user decision (original brief excluded image generation; later plan allotted <=5 pts in week 2).",
+ "prompt_file": "assets/IMAGE_PROMPT.md",
+ "assets": []
 }

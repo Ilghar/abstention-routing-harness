@@ -1,0 +1,82 @@
+[
+  [
+    "Check spreadsheet formulas and receipt hyperlinks.",
+    "spreadsheet"
+  ],
+  [
+    "Read the conversation message and its reply branch.",
+    "conversation"
+  ],
+  [
+    "Prüfe Formeln und Beleglinks in der Excel-Datei.",
+    "spreadsheet"
+  ],
+  [
+    "Lies die Chatnachricht und ihren Antwortzweig.",
+    "conversation"
+  ],
+  [
+    "Inspect workbook sheet names and relative links.",
+    "spreadsheet"
+  ],
+  [
+    "Locate the message ID in a chat export.",
+    "conversation"
+  ],
+  [
+    "Prüfe Tabellenblätter und relative Verweise.",
+    "spreadsheet"
+  ],
+  [
+    "Finde die Nachrichten-ID im Chat-Export.",
+    "conversation"
+  ],
+  [
+    "This workbook contains a broken hyperlink.",
+    "spreadsheet"
+  ],
+  [
+    "This conversation contains a user correction.",
+    "conversation"
+  ],
+  [
+    "Die Arbeitsmappe enthält einen defekten Hyperlink.",
+    "spreadsheet"
+  ],
+  [
+    "Dieser Chat enthält eine Korrektur des Nutzers.",
+    "conversation"
+  ],
+  [
+    "Verify cell references without changing the spreadsheet.",
+    "spreadsheet"
+  ],
+  [
+    "Identify an attachment reference in the conversation.",
+    "conversation"
+  ],
+  [
+    "Prüfe Zellbezüge, ohne die Tabelle zu ändern.",
+    "spreadsheet"
+  ],
+  [
+    "Finde einen Anhangverweis im Gespräch.",
+    "conversation"
+  ],
+  [
+    "Review the XLSX layout and formula dependencies.",
+    "spreadsheet"
+  ],
+  [
+    "Review the transcript branches and message timestamps.",
+    "conversation"
+  ],
+  [
+    "Prüfe Excel-Layout und Formelabhängigkeiten.",
+    "spreadsheet"
+  ],
+  [
+    "Prüfe Gesprächszweige und Nachrichtenzeitpunkte.",
+    "conversation"
+  ]
+]

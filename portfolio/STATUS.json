@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23 M04",
+ "updated": "2026-10-23 M05/M06",
  "projects": {
   "01": {
    "repo": "Ilghar/abstention-routing-harness",
@@ -7,9 +7,11 @@
     "M01",
     "M02",
     "M03",
-    "M04"
+    "M04",
+    "M05",
+    "M06"
    ],
-   "fraction": 0.4
+   "fraction": 0.6
   },
   "02": {
    "repo": "Ilghar/cultural-typographic-ai-evaluation",
@@ -17,9 +19,11 @@
     "M01",
     "M02",
     "M03",
-    "M04"
+    "M04",
+    "M05",
+    "M06"
    ],
-   "fraction": 0.4
+   "fraction": 0.6
   },
   "03": {
    "repo": "Ilghar/persian-pronunciation-tts-evaluation",
@@ -27,9 +31,13 @@
     "M01",
     "M02",
     "M03",
-    "M04"
+    "M04",
+    "M05"
    ],
-   "fraction": 0.4
+   "fraction": 0.5,
+   "blocked": [
+    "M06: needs user decision on real TTS baseline"
+   ]
   }
  },
  "commit_shas": {
@@ -43,7 +51,12 @@
    "cultural-typographic-ai-evaluation": "7370f06ba950dc746a4f9106655f20a1108fea73",
    "persian-pronunciation-tts-evaluation": "a4b0db7b88f390e0ba7c66630d6a9f715fb422f2"
   },
-  "M04": "see Drive outputs/current/MANIFEST_M04.json"
+  "M04": {
+   "abstention-routing-harness": "c1bdb38d0332263015158841c5b7aecc354b967e",
+   "cultural-typographic-ai-evaluation": "4e8f8e4ace136600ddedf491e5815d97aa369ec2",
+   "persian-pronunciation-tts-evaluation": "f04d4fd0796e264b645760d4bc7f79616019a7b8"
+  },
+  "M05_M06": "see Drive MANIFEST_M05_M06.json"
  },
- "drive_mirror": "M02 MANIFEST.json, M03 MANIFEST_M03.json verified by size; M04 pending at commit time"
+ "drive_mirror": "MANIFEST, _M03, _M04 verified by size"
 }

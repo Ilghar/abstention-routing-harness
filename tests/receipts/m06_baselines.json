@@ -1,0 +1,255 @@
+{
+ "collection_version": "1.0.0",
+ "file_sha256": {
+  "dev_probes.json": "8fd392e8e17f3397899be8fc6b83b811049bb37795b5a73e052e9bd34b84d915",
+  "dev_queue.json": "31b84c6583c3055ba7af1e036a3866a4b0be8e0ecef0b5dec5be7fc6684afcd2",
+  "heldout_probes.json": "600c1da54c84644827633173c41ce761920cd7bacbc6a2a846ea4ddbf1398825"
+ },
+ "limitations": [
+  "all items synthetic; n is small (dev 27, test 24) so intervals are wide",
+  "keyword rule was developed on dev; test probes were written by the same author after the rule existed (not blind)",
+  "labels are author-assigned and unreviewed",
+  "no model was run; these are rule baselines only"
+ ],
+ "splits": {
+  "dev": {
+   "always_abstain": {
+    "confusion": {
+     "conversation->human": 10,
+     "human->human": 7,
+     "spreadsheet->human": 10
+    },
+    "coverage": {
+     "admitted": 0,
+     "denominator": 27,
+     "value": 0.0,
+     "wilson95": [
+      0.0,
+      0.1246
+     ]
+    },
+    "disagreements": 0,
+    "false_acceptance": {
+     "count": 0,
+     "denominator": 7,
+     "value": 0.0,
+     "wilson95": [
+      0.0,
+      0.3543
+     ]
+    },
+    "n_items": 27,
+    "reason_counts": {
+     "PROPOSAL_ABSTAINED": 27
+    },
+    "selective_accuracy": {
+     "correct": 0,
+     "denominator": 0,
+     "value": null,
+     "wilson95": null
+    }
+   },
+   "keyword_rule": {
+    "confusion": {
+     "conversation->conversation": 10,
+     "human->human": 6,
+     "human->spreadsheet": 1,
+     "spreadsheet->spreadsheet": 10
+    },
+    "coverage": {
+     "admitted": 21,
+     "denominator": 27,
+     "value": 0.777778,
+     "wilson95": [
+      0.5924,
+      0.8939
+     ]
+    },
+    "disagreements": 0,
+    "false_acceptance": {
+     "count": 1,
+     "denominator": 7,
+     "value": 0.142857,
+     "wilson95": [
+      0.0257,
+      0.5131
+     ]
+    },
+    "n_items": 27,
+    "reason_counts": {
+     "ADMITTED_ADVISORY": 21,
+     "PROPOSAL_ABSTAINED": 6
+    },
+    "selective_accuracy": {
+     "correct": 20,
+     "denominator": 21,
+     "value": 0.952381,
+     "wilson95": [
+      0.7733,
+      0.9915
+     ]
+    }
+   },
+   "majority_spreadsheet": {
+    "confusion": {
+     "conversation->spreadsheet": 10,
+     "human->spreadsheet": 7,
+     "spreadsheet->spreadsheet": 10
+    },
+    "coverage": {
+     "admitted": 27,
+     "denominator": 27,
+     "value": 1.0,
+     "wilson95": [
+      0.8754,
+      1.0
+     ]
+    },
+    "disagreements": 0,
+    "false_acceptance": {
+     "count": 7,
+     "denominator": 7,
+     "value": 1.0,
+     "wilson95": [
+      0.6457,
+      1.0
+     ]
+    },
+    "n_items": 27,
+    "reason_counts": {
+     "ADMITTED_ADVISORY": 27
+    },
+    "selective_accuracy": {
+     "correct": 10,
+     "denominator": 27,
+     "value": 0.37037,
+     "wilson95": [
+      0.2153,
+      0.5577
+     ]
+    }
+   }
+  },
+  "test": {
+   "always_abstain": {
+    "confusion": {
+     "conversation->human": 6,
+     "human->human": 12,
+     "spreadsheet->human": 6
+    },
+    "coverage": {
+     "admitted": 0,
+     "denominator": 24,
+     "value": 0.0,
+     "wilson95": [
+      0.0,
+      0.138
+     ]
+    },
+    "disagreements": 0,
+    "false_acceptance": {
+     "count": 0,
+     "denominator": 12,
+     "value": 0.0,
+     "wilson95": [
+      0.0,
+      0.2425
+     ]
+    },
+    "n_items": 24,
+    "reason_counts": {
+     "PROPOSAL_ABSTAINED": 24
+    },
+    "selective_accuracy": {
+     "correct": 0,
+     "denominator": 0,
+     "value": null,
+     "wilson95": null
+    }
+   },
+   "keyword_rule": {
+    "confusion": {
+     "conversation->conversation": 5,
+     "conversation->human": 1,
+     "human->conversation": 2,
+     "human->human": 7,
+     "human->spreadsheet": 3,
+     "spreadsheet->human": 5,
+     "spreadsheet->spreadsheet": 1
+    },
+    "coverage": {
+     "admitted": 11,
+     "denominator": 24,
+     "value": 0.458333,
+     "wilson95": [
+      0.2789,
+      0.6493
+     ]
+    },
+    "disagreements": 0,
+    "false_acceptance": {
+     "count": 5,
+     "denominator": 12,
+     "value": 0.416667,
+     "wilson95": [
+      0.1933,
+      0.6805
+     ]
+    },
+    "n_items": 24,
+    "reason_counts": {
+     "ADMITTED_ADVISORY": 11,
+     "PROPOSAL_ABSTAINED": 13
+    },
+    "selective_accuracy": {
+     "correct": 6,
+     "denominator": 11,
+     "value": 0.545455,
+     "wilson95": [
+      0.2801,
+      0.7873
+     ]
+    }
+   },
+   "majority_spreadsheet": {
+    "confusion": {
+     "conversation->spreadsheet": 6,
+     "human->spreadsheet": 12,
+     "spreadsheet->spreadsheet": 6
+    },
+    "coverage": {
+     "admitted": 24,
+     "denominator": 24,
+     "value": 1.0,
+     "wilson95": [
+      0.862,
+      1.0
+     ]
+    },
+    "disagreements": 0,
+    "false_acceptance": {
+     "count": 12,
+     "denominator": 12,
+     "value": 1.0,
+     "wilson95": [
+      0.7575,
+      1.0
+     ]
+    },
+    "n_items": 24,
+    "reason_counts": {
+     "ADMITTED_ADVISORY": 24
+    },
+    "selective_accuracy": {
+     "correct": 6,
+     "denominator": 24,
+     "value": 0.25,
+     "wilson95": [
+      0.12,
+      0.449
+     ]
+    }
+   }
+  }
+ }
+}

@@ -1,6 +1,6 @@
 # Abstention and routing evaluation harness
 
-**Status: work in progress (private). 4/10 milestones; stdlib vertical slice on cleared synthetic inputs — no measured model results.**
+**Status: work in progress (private). 6/10 milestones (Bot-reviewed); synthetic data only.**
 
 - Product contract: `docs/PRODUCT_CONTRACT.md`
 - Sources/evidence vs plans: `docs/SOURCES.md`
@@ -24,3 +24,9 @@ PYTHONPATH=src python3 -m abstention_routing_harness slice inputs/synthetic_queu
 ```
 Cleared queue fixture (20 EN/DE) + 7 OOD/mixed probes -> local keyword proposer -> abstention policy -> decisions + report. Result 21/27 admitted, 20/21 correct, false acceptance 1/7 (P07). Rule tuned on same fixture: not held-out.
 Review: `docs/REVIEW_M01_M03.md`.
+
+## Collection and results
+- Datasheet: `data/collection_v1/DATASHEET.md`
+- Results: `docs/RESULTS.md`
+- Case page: `docs/CASE_PAGE.md`; static page: `site/index.html` (`python3 tools/export_site.py`); diagram `docs/architecture.mmd` + `docs/architecture.svg`
+- Schema validation in code: `src/abstention_routing_harness/schema.py` (stdlib subset)
