@@ -9,7 +9,7 @@ class Gates(unittest.TestCase):
         d = decide(mk()); self.assertEqual((d["route"], d["reason_code"]), ("spreadsheet", "ADMITTED_ADVISORY"))
         self.assertFalse(d["can_move_documents"]); self.assertTrue(d["advisory_only"])
     def test_budget_edge_cases_route_human_without_raising(self):
-        for u, code in [("1", "BUDGET_INVALID"), (math.nan, "BUDGET_INVALID"), (True, "BUDGET_INVALID"), (-1, "BUDGET_INVALID"), (math.inf, "BUDGET_INVALID"), (2, "BUDGET_EXCEEDED")]:
+        for u, code in [("1", "BUDGET_INVALID"), (math.nan, "BUDGET_INVALID"), (True, "BUDGET_INVALID"), (-1, "BUDGET_INVALID"), (math.inf, "BUDGET_INVALID"), (1.0, "BUDGET_INVALID"), (2, "BUDGET_EXCEEDED")]:
             with self.subTest(u=u): self.assertEqual(decide(mk(requests_used=u))["reason_code"], code)
     def test_proposal_failures(self):
         P = lambda *r: [{"model_id": "m", "revision": "r", "route": x} for x in r]

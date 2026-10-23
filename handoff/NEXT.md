@@ -1,5 +1,5 @@
 # Next actions
 
-1. Independent review of M01-M03 (currently Bot self-review only).
-2. M04 per common/MILESTONES.json, in week 2 budget window (after 2026-10-25 14:17 Berlin).
-3. Expert/native review of fixtures before any gold labels or claims.
+1. Independent (human or Expert) review of M01-M04; see docs/REVIEW_M01_M03.md gaps.
+2. M05 per common/MILESTONES.json.
+3. Native/expert review of fixtures before gold labels.

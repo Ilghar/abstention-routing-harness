@@ -23,7 +23,7 @@ def decide(case, rubric="rubric-v1"):
     if case.get("scope_verified") is not True: return h("SCOPE_UNVERIFIED")
     if case.get("fixture_kind") not in PERMITTED: return h("INPUT_NOT_PERMITTED")
     u = case.get("requests_used")
-    if isinstance(u, bool) or not isinstance(u, (int, float)) or (isinstance(u, float) and (math.isnan(u) or math.isinf(u) or u != int(u))) or u < 0:
+    if isinstance(u, bool) or not isinstance(u, int) or u < 0:  # floats (incl. 1.0, NaN, inf) rejected: schema requires integer
         return h("BUDGET_INVALID")
     if u > 1: return h("BUDGET_EXCEEDED")
     props = case.get("proposals")

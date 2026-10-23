@@ -1,0 +1,69 @@
+{
+ "note": "Synthetic out-of-scope / mixed probes written for M04; expected_route human.",
+ "cases": [
+  {
+   "id": "P01",
+   "text": "What will the weather be tomorrow in Berlin?",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "out_of_domain",
+   "expected_route": "human",
+   "requests_used": 0
+  },
+  {
+   "id": "P02",
+   "text": "Copy the chat messages into the spreadsheet",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "mixed",
+   "expected_route": "human",
+   "requests_used": 0
+  },
+  {
+   "id": "P03",
+   "text": "Book me a train ticket to Hamburg",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "out_of_domain",
+   "expected_route": "human",
+   "requests_used": 0
+  },
+  {
+   "id": "P04",
+   "text": "Wie wird das Wetter morgen?",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "out_of_domain",
+   "expected_route": "human",
+   "requests_used": 0
+  },
+  {
+   "id": "P05",
+   "text": "Delete the sheet and the thread permanently",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "mixed",
+   "expected_route": "human",
+   "requests_used": 0
+  },
+  {
+   "id": "P06",
+   "text": "Summarise the quarterly numbers",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "out_of_domain",
+   "expected_route": "human",
+   "requests_used": 0
+  },
+  {
+   "id": "P07",
+   "text": "Print the sheet music for the choir",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "out_of_domain",
+   "expected_route": "human",
+   "requests_used": 0,
+   "known_limitation": "keyword 'sheet' -> false acceptance; kept to expose rule weakness"
+  }
+ ]
+}

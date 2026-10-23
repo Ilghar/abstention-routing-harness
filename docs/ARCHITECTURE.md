@@ -40,3 +40,7 @@ New code is original (not copied from S01). Fixtures: synthetic only. Repo licen
 
 ## Review
 Self-review by Grok Bot on 2026-10-23 against MILESTONES M02 and TEST_PLAN; independent (Expert/Codex) review pending.
+
+## Implementation status (after M04)
+Built: `policy.py`, `metrics.py`, `pipeline.py` (M04 slice, includes local keyword proposer), `cli.py`. Planned not built: `schema.py` (enforcement), `adapters.py` for recorded model outputs.
+Schemas are documentation + test references; they are not machine-enforced (stdlib, no jsonschema).

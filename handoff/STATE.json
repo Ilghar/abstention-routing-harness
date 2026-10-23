@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "project_id": "01",
-  "stage": "bot_m03_accepted",
+  "stage": "bot_m04_accepted",
   "owner": "Grok Bot (coordinator)",
   "repository": {
     "url": "https://github.com/Ilghar/abstention-routing-harness",
     "branch": "main",
-    "commit": "M02 base 9c8a8c2d0002af084abf46b156ea880f1d870f3f; M03 SHA recorded in Drive outputs/current/MANIFEST_M03.json",
+    "commit": "M02 9c8a8c2d0002af084abf46b156ea880f1d870f3f; M03 243f18b8ba59dedece282e3f3a05700e94f039f9; M04 in Drive MANIFEST_M04.json",
     "visibility": "private"
   },
   "drive_folder_url": "https://drive.google.com/drive/folders/1WHIwl7Jixw0ZqEDu1XO2Y64qCNqTG3Va",
@@ -25,12 +25,13 @@
       "status": "accepted",
       "evidence": [
         "docs/ARCHITECTURE.md",
+        "docs/REVIEW_M01_M03.md",
         "docs/adr/0001-scope-and-boundaries.md",
         "docs/architecture.mmd",
-        "tools/check_m02.py",
         "schemas/case.schema.json",
         "schemas/decision.schema.json",
-        "schemas/report.schema.json"
+        "schemas/report.schema.json",
+        "tools/check_m02.py"
       ]
     },
     {
@@ -51,8 +52,16 @@
     },
     {
       "id": "M04",
-      "status": "not_started",
-      "evidence": []
+      "status": "accepted",
+      "evidence": [
+        "src/abstention_routing_harness/pipeline.py",
+        "tests/test_slice.py",
+        "inputs/synthetic_queue_fixture.json",
+        "fixtures/ood_probes_m04.json",
+        "tests/receipts/m04_run.json",
+        "tests/receipts/m04_report.json",
+        "docs/REVIEW_M01_M03.md"
+      ]
     },
     {
       "id": "M05",
@@ -89,7 +98,7 @@
     {
       "command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
       "scope": "behavioural, synthetic/mock fixtures",
-      "receipt": "tests/receipts/m03_run.json"
+      "receipt": "tests/receipts/m04_run.json"
     },
     {
       "command": "python3 common/validate_state.py handoff/STATE.json --root .",
@@ -97,17 +106,17 @@
     }
   ],
   "next_actions": [
-    "M04 per common/MILESTONES.json (week-2 budget)",
-    "Independent review of M01-M03",
-    "Native/expert review of fixtures before any gold labels"
+    "Human/independent review of M01-M04",
+    "M05 per common/MILESTONES.json",
+    "Address review gaps in docs/REVIEW_M01_M03.md"
   ],
   "budget": {
-    "observed_remaining": "week1 ~99/100 pts at 10:42 Berlin (user reading)",
+    "observed_remaining": "week1 2% used at 10:51 Berlin (user reading)",
     "pool_relationship": "unknown",
     "paid_spend_allowed": false
   },
-  "completion_fraction": 0.3,
-  "notes": "M01-M03 accepted by Bot self-review; all results are on synthetic/mock data; no model, audio or real-rater results exist.",
+  "completion_fraction": 0.4,
+  "notes": "M01-M04 accepted by Bot (second-pass review, not independent human). M04 slice: Cleared queue fixture (20 EN/DE) + 7 OOD/mixed probes -> local keyword proposer -> abstention policy -> decisions + report. Result 21/27 admitted, 20/21 correct, false acceptance 1/7 (P07). Rule tuned on same fixture: not held-out.",
   "lease": {
     "status": "active",
     "released_at": null,

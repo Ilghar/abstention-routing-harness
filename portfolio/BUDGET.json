@@ -1,6 +1,53 @@
-{"unit":"Bot weekly usage points (100 = one full weekly allowance)","total_pts":200,
- "week1":{"pts":100,"window_end":"2026-10-25T14:17:00+02:00","allocation":{"round0_plus_M01_M03_all_three":{"target_max_pts":85},"reserve_tests_saves_handoff":15},"thresholds":{"warn_at_pct_of_allocation":80,"stop_at_pct_of_allocation":85}},
- "week2":{"pts":100,"window_start":"2026-10-25T14:17:00+02:00","allocation":["M04 all three","site/ export","images (<=5 pts)","final reports"]},
- "observations":[{"time":"2026-10-23T10:36+02:00","source":"user reading","used_pct":0,"on_demand":"off"},{"time":"2026-10-23T10:42+02:00","source":"user reading","used_pts_approx":1}],
- "pool_shared_with_expert":"unknown","paid_spend_allowed":false,"api_spend_allowed":false,
- "note":"Bot cannot read the usage meter; figures are user-provided. This dispatch: Round 0 + M01 + M02 only."}
+{
+ "unit": "Bot weekly usage points (100 = one full weekly allowance)",
+ "total_pts": 200,
+ "week1": {
+  "pts": 100,
+  "window_end": "2026-10-25T14:17:00+02:00",
+  "allocation": {
+   "round0_M01_M04_all_three": {
+    "target_max_pts": 85
+   },
+   "reserve_tests_saves_handoff": 15
+  },
+  "thresholds": {
+   "warn_at_pct_of_allocation": 80,
+   "stop_at_pct_of_allocation": 85
+  }
+ },
+ "week2": {
+  "pts": 100,
+  "window_start": "2026-10-25T14:17:00+02:00",
+  "allocation": [
+   "M05+ per MILESTONES",
+   "site/ export",
+   "images (<=5 pts)",
+   "final reports"
+  ]
+ },
+ "observations": [
+  {
+   "time": "2026-10-23T10:36+02:00",
+   "source": "user reading",
+   "used_pct": 0,
+   "on_demand": "off"
+  },
+  {
+   "time": "2026-10-23T10:42+02:00",
+   "source": "user reading",
+   "used_pts_approx": 1
+  },
+  {
+   "time": "2026-10-23T10:51+02:00",
+   "source": "user reading",
+   "used_pct_week1": 2
+  }
+ ],
+ "pool_shared_with_expert": "unknown",
+ "paid_spend_allowed": false,
+ "api_spend_allowed": false,
+ "note": "Bot cannot read the meter; figures are user-provided.",
+ "changes": [
+  "2026-10-23 10:51: M04 pulled into week 1 per user (week-1 ample room)"
+ ]
+}

@@ -1,0 +1,34 @@
+{
+ "caveat": "keyword rule tuned on this same fixture; not held-out, not a model result",
+ "confusion": {
+  "conversation->conversation": 10,
+  "human->human": 6,
+  "human->spreadsheet": 1,
+  "spreadsheet->spreadsheet": 10
+ },
+ "coverage": {
+  "admitted": 21,
+  "denominator": 27,
+  "value": 0.777778
+ },
+ "disagreements": 0,
+ "false_acceptance": {
+  "count": 1,
+  "denominator": 7,
+  "value": 0.142857
+ },
+ "fixture_sha256": "31b84c6583c3055ba7af1e036a3866a4b0be8e0ecef0b5dec5be7fc6684afcd2",
+ "n_items": 27,
+ "proposer": "keyword-rule@7c8351c45a5f",
+ "reason_counts": {
+  "ADMITTED_ADVISORY": 21,
+  "PROPOSAL_ABSTAINED": 6
+ },
+ "rubric_id": "rubric-v1",
+ "run_kind": "rule",
+ "selective_accuracy": {
+  "correct": 20,
+  "denominator": 21,
+  "value": 0.952381
+ }
+}

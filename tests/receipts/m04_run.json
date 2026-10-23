@@ -1,0 +1,32 @@
+{
+ "utc_time": "2026-10-23T08:55:15+00:00",
+ "python": "3.13.5",
+ "environment": "fresh copy, stdlib only, no network",
+ "base_commit": "243f18b8ba59dedece282e3f3a05700e94f039f9",
+ "fixture_sha256": {
+  "inputs/synthetic_queue_fixture.json": "31b84c6583c3055ba7af1e036a3866a4b0be8e0ecef0b5dec5be7fc6684afcd2",
+  "fixtures/ood_probes_m04.json": "8fd392e8e17f3397899be8fc6b83b811049bb37795b5a73e052e9bd34b84d915"
+ },
+ "runs": [
+  {
+   "name": "unittest",
+   "command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
+   "exit_code": 0,
+   "stdout": "",
+   "stderr": "test_fixture_report_counts (test_policy.CLI.test_fixture_report_counts) ... ok\ntest_admits_only_clean_agreement (test_policy.Gates.test_admits_only_clean_agreement) ... ok\ntest_budget_edge_cases_route_human_without_raising (test_policy.Gates.test_budget_edge_cases_route_human_without_raising) ... ok\ntest_identity_changes_with_revision_and_rubric (test_policy.Gates.test_identity_changes_with_revision_and_rubric) ... ok\ntest_proposal_failures (test_policy.Gates.test_proposal_failures) ... ok\ntest_scope_permission_text (test_policy.Gates.test_scope_permission_text) ... ok\ntest_end_to_end_regression_on_cleared_fixture (test_slice.Slice.test_end_to_end_regression_on_cleared_fixture) ... ok\ntest_ingest_malformed_rows_go_human (test_slice.Slice.test_ingest_malformed_rows_go_human) ... ok\ntest_rule_abstains_on_none_or_both_domains (test_slice.Slice.test_rule_abstains_on_none_or_both_domains) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.062s\n\nOK\n"
+  },
+  {
+   "name": "slice",
+   "command": "PYTHONPATH=src python3 -m abstention_routing_harness slice inputs/synthetic_queue_fixture.json --probes fixtures/ood_probes_m04.json --out out/m04",
+   "exit_code": 0,
+   "stdout": "{\"coverage\": {\"admitted\": 21, \"denominator\": 27, \"value\": 0.777778}, \"false_acceptance\": {\"count\": 1, \"denominator\": 7, \"value\": 0.142857}, \"selective_accuracy\": {\"correct\": 20, \"denominator\": 21, \"value\": 0.952381}}\n",
+   "stderr": ""
+  },
+  {
+   "name": "validate_state",
+   "command": "python3 common/validate_state.py handoff/STATE.json --root .",
+   "note": "run in working tree after STATE update (fresh copy excluded receipts, so its earlier pre-run failed on missing evidence paths)",
+   "output": "{\"valid\": true, \"errors\": [], \"scope\": \"bookkeeping only, not semantic or production readiness\"}\nexit=0"
+  }
+ ]
+}
