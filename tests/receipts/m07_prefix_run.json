@@ -1,0 +1,245 @@
+{
+ "n": 34,
+ "passed": 24,
+ "rows": [
+  {
+   "name": "clean_control",
+   "must_abstain": false,
+   "reason_code": "ADMITTED_ADVISORY",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "zwsp_only_text",
+   "must_abstain": true,
+   "reason_code": "ADMITTED_ADVISORY",
+   "exception": null,
+   "pass": false
+  },
+  {
+   "name": "bidi_override_only",
+   "must_abstain": true,
+   "reason_code": "ADMITTED_ADVISORY",
+   "exception": null,
+   "pass": false
+  },
+  {
+   "name": "nbsp_only",
+   "must_abstain": true,
+   "reason_code": "TEXT_INVALID",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "control_only",
+   "must_abstain": true,
+   "reason_code": "ADMITTED_ADVISORY",
+   "exception": null,
+   "pass": false
+  },
+  {
+   "name": "lone_surrogate",
+   "must_abstain": true,
+   "reason_code": null,
+   "exception": "UnicodeEncodeError: 'utf-8' codec can't encode character '\\ud800' in position 2: surrogates not allowed",
+   "pass": false
+  },
+  {
+   "name": "text_2000_ok",
+   "must_abstain": false,
+   "reason_code": "ADMITTED_ADVISORY",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "text_2001",
+   "must_abstain": true,
+   "reason_code": "TEXT_INVALID",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "text_bytes",
+   "must_abstain": true,
+   "reason_code": "TEXT_INVALID",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "id_dict",
+   "must_abstain": true,
+   "reason_code": "ADMITTED_ADVISORY",
+   "exception": null,
+   "pass": false
+  },
+  {
+   "name": "id_lowercase",
+   "must_abstain": true,
+   "reason_code": "ADMITTED_ADVISORY",
+   "exception": null,
+   "pass": false
+  },
+  {
+   "name": "id_33",
+   "must_abstain": true,
+   "reason_code": "ADMITTED_ADVISORY",
+   "exception": null,
+   "pass": false
+  },
+  {
+   "name": "id_missing",
+   "must_abstain": true,
+   "reason_code": "ADMITTED_ADVISORY",
+   "exception": null,
+   "pass": false
+  },
+  {
+   "name": "scope_string_true",
+   "must_abstain": true,
+   "reason_code": "SCOPE_UNVERIFIED",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "scope_int_1",
+   "must_abstain": true,
+   "reason_code": "SCOPE_UNVERIFIED",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "fixture_unapproved",
+   "must_abstain": true,
+   "reason_code": "INPUT_NOT_PERMITTED",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "used_bool",
+   "must_abstain": true,
+   "reason_code": "BUDGET_INVALID",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "used_float",
+   "must_abstain": true,
+   "reason_code": "BUDGET_INVALID",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "used_nan",
+   "must_abstain": true,
+   "reason_code": "BUDGET_INVALID",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "used_neg",
+   "must_abstain": true,
+   "reason_code": "BUDGET_INVALID",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "used_2",
+   "must_abstain": true,
+   "reason_code": "BUDGET_EXCEEDED",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "used_huge",
+   "must_abstain": true,
+   "reason_code": "BUDGET_EXCEEDED",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "props_tuple",
+   "must_abstain": true,
+   "reason_code": "NO_PROPOSAL",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "props_none_item",
+   "must_abstain": true,
+   "reason_code": "PROPOSAL_MALFORMED",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "props_dict",
+   "must_abstain": true,
+   "reason_code": "NO_PROPOSAL",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "props_9_agree",
+   "must_abstain": true,
+   "reason_code": "ADMITTED_ADVISORY",
+   "exception": null,
+   "pass": false
+  },
+  {
+   "name": "props_8_agree",
+   "must_abstain": false,
+   "reason_code": "ADMITTED_ADVISORY",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "route_case",
+   "must_abstain": true,
+   "reason_code": "PROPOSAL_MALFORMED",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "route_space",
+   "must_abstain": true,
+   "reason_code": "PROPOSAL_MALFORMED",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "route_human_direct",
+   "must_abstain": true,
+   "reason_code": "PROPOSAL_MALFORMED",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "model_id_obj",
+   "must_abstain": true,
+   "reason_code": "ADMITTED_ADVISORY",
+   "exception": null,
+   "pass": false
+  },
+  {
+   "name": "conflict_2",
+   "must_abstain": true,
+   "reason_code": "PROPOSALS_CONFLICT",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "unknown_among_agree",
+   "must_abstain": true,
+   "reason_code": "PROPOSAL_ABSTAINED",
+   "exception": null,
+   "pass": true
+  },
+  {
+   "name": "not_a_dict",
+   "must_abstain": true,
+   "reason_code": "TEXT_INVALID",
+   "exception": null,
+   "pass": true
+  }
+ ],
+ "note": "M06 policy (commit 4d6c36e) run against the M07 adversarial suite before fixes"
+}

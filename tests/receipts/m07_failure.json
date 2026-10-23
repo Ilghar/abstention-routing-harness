@@ -1,0 +1,387 @@
+{
+ "adversarial": {
+  "n": 34,
+  "passed": 34,
+  "rows": [
+   {
+    "exception": null,
+    "must_abstain": false,
+    "name": "clean_control",
+    "pass": true,
+    "reason_code": "ADMITTED_ADVISORY"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "zwsp_only_text",
+    "pass": true,
+    "reason_code": "TEXT_INVALID"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "bidi_override_only",
+    "pass": true,
+    "reason_code": "TEXT_INVALID"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "nbsp_only",
+    "pass": true,
+    "reason_code": "TEXT_INVALID"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "control_only",
+    "pass": true,
+    "reason_code": "TEXT_INVALID"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "lone_surrogate",
+    "pass": true,
+    "reason_code": "TEXT_INVALID"
+   },
+   {
+    "exception": null,
+    "must_abstain": false,
+    "name": "text_2000_ok",
+    "pass": true,
+    "reason_code": "ADMITTED_ADVISORY"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "text_2001",
+    "pass": true,
+    "reason_code": "TEXT_INVALID"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "text_bytes",
+    "pass": true,
+    "reason_code": "TEXT_INVALID"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "id_dict",
+    "pass": true,
+    "reason_code": "CASE_INVALID"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "id_lowercase",
+    "pass": true,
+    "reason_code": "CASE_INVALID"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "id_33",
+    "pass": true,
+    "reason_code": "CASE_INVALID"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "id_missing",
+    "pass": true,
+    "reason_code": "CASE_INVALID"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "scope_string_true",
+    "pass": true,
+    "reason_code": "SCOPE_UNVERIFIED"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "scope_int_1",
+    "pass": true,
+    "reason_code": "SCOPE_UNVERIFIED"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "fixture_unapproved",
+    "pass": true,
+    "reason_code": "INPUT_NOT_PERMITTED"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "used_bool",
+    "pass": true,
+    "reason_code": "BUDGET_INVALID"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "used_float",
+    "pass": true,
+    "reason_code": "BUDGET_INVALID"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "used_nan",
+    "pass": true,
+    "reason_code": "BUDGET_INVALID"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "used_neg",
+    "pass": true,
+    "reason_code": "BUDGET_INVALID"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "used_2",
+    "pass": true,
+    "reason_code": "BUDGET_EXCEEDED"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "used_huge",
+    "pass": true,
+    "reason_code": "BUDGET_EXCEEDED"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "props_tuple",
+    "pass": true,
+    "reason_code": "NO_PROPOSAL"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "props_none_item",
+    "pass": true,
+    "reason_code": "PROPOSAL_MALFORMED"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "props_dict",
+    "pass": true,
+    "reason_code": "NO_PROPOSAL"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "props_9_agree",
+    "pass": true,
+    "reason_code": "PROPOSAL_MALFORMED"
+   },
+   {
+    "exception": null,
+    "must_abstain": false,
+    "name": "props_8_agree",
+    "pass": true,
+    "reason_code": "ADMITTED_ADVISORY"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "route_case",
+    "pass": true,
+    "reason_code": "PROPOSAL_MALFORMED"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "route_space",
+    "pass": true,
+    "reason_code": "PROPOSAL_MALFORMED"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "route_human_direct",
+    "pass": true,
+    "reason_code": "PROPOSAL_MALFORMED"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "model_id_obj",
+    "pass": true,
+    "reason_code": "PROPOSAL_MALFORMED"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "conflict_2",
+    "pass": true,
+    "reason_code": "PROPOSALS_CONFLICT"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "unknown_among_agree",
+    "pass": true,
+    "reason_code": "PROPOSAL_ABSTAINED"
+   },
+   {
+    "exception": null,
+    "must_abstain": true,
+    "name": "not_a_dict",
+    "pass": true,
+    "reason_code": "TEXT_INVALID"
+   }
+  ]
+ },
+ "dev_error_analysis": {
+  "by_kind": {
+   "false_acceptance": 1
+  },
+  "diagnosis": "Over-abstentions are vocabulary shift (no lexicon keyword; safe failure). False acceptances share one pattern: a domain keyword appears in a request whose intent is out of scope (keyword presence != intent). Fixing this inside the keyword rule would tune on held-out data, so it is NOT done; the fix is architectural (require an independent second proposer to agree).",
+  "errors": [
+   {
+    "case_class": "out_of_domain",
+    "expected": "human",
+    "got": "spreadsheet",
+    "id": "P07",
+    "keyword_hits": {
+     "spreadsheet": [
+      "sheet"
+     ]
+    },
+    "kind": "false_acceptance"
+   }
+  ],
+  "n_cases": 27,
+  "n_errors": 1
+ },
+ "heldout_error_analysis": {
+  "by_kind": {
+   "false_acceptance": 5,
+   "over_abstention": 6
+  },
+  "diagnosis": "Over-abstentions are vocabulary shift (no lexicon keyword; safe failure). False acceptances share one pattern: a domain keyword appears in a request whose intent is out of scope (keyword presence != intent). Fixing this inside the keyword rule would tune on held-out data, so it is NOT done; the fix is architectural (require an independent second proposer to agree).",
+  "errors": [
+   {
+    "case_class": "in_scope",
+    "expected": "spreadsheet",
+    "got": "human",
+    "id": "H01",
+    "keyword_hits": {},
+    "kind": "over_abstention"
+   },
+   {
+    "case_class": "in_scope",
+    "expected": "spreadsheet",
+    "got": "human",
+    "id": "H02",
+    "keyword_hits": {},
+    "kind": "over_abstention"
+   },
+   {
+    "case_class": "in_scope",
+    "expected": "spreadsheet",
+    "got": "human",
+    "id": "H03",
+    "keyword_hits": {},
+    "kind": "over_abstention"
+   },
+   {
+    "case_class": "in_scope",
+    "expected": "spreadsheet",
+    "got": "human",
+    "id": "H04",
+    "keyword_hits": {},
+    "kind": "over_abstention"
+   },
+   {
+    "case_class": "in_scope",
+    "expected": "spreadsheet",
+    "got": "human",
+    "id": "H05",
+    "keyword_hits": {},
+    "kind": "over_abstention"
+   },
+   {
+    "case_class": "in_scope",
+    "expected": "conversation",
+    "got": "human",
+    "id": "H10",
+    "keyword_hits": {},
+    "kind": "over_abstention"
+   },
+   {
+    "case_class": "out_of_domain",
+    "expected": "human",
+    "got": "spreadsheet",
+    "id": "H17",
+    "keyword_hits": {
+     "spreadsheet": [
+      "cell"
+     ]
+    },
+    "kind": "false_acceptance"
+   },
+   {
+    "case_class": "out_of_domain",
+    "expected": "human",
+    "got": "spreadsheet",
+    "id": "H18",
+    "keyword_hits": {
+     "spreadsheet": [
+      "sheet"
+     ]
+    },
+    "kind": "false_acceptance"
+   },
+   {
+    "case_class": "out_of_domain",
+    "expected": "human",
+    "got": "conversation",
+    "id": "H19",
+    "keyword_hits": {
+     "conversation": [
+      "chat"
+     ]
+    },
+    "kind": "false_acceptance"
+   },
+   {
+    "case_class": "out_of_domain",
+    "expected": "human",
+    "got": "spreadsheet",
+    "id": "H23",
+    "keyword_hits": {
+     "spreadsheet": [
+      "tabelle"
+     ]
+    },
+    "kind": "false_acceptance"
+   },
+   {
+    "case_class": "out_of_domain",
+    "expected": "human",
+    "got": "conversation",
+    "id": "H24",
+    "keyword_hits": {
+     "conversation": [
+      "message"
+     ]
+    },
+    "kind": "false_acceptance"
+   }
+  ],
+  "n_cases": 24,
+  "n_errors": 11
+ }
+}

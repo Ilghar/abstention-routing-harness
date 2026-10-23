@@ -48,6 +48,13 @@
    "denominator": 12,
    "kind": "measured baseline",
    "caveat": ""
+  },
+  {
+   "metric": "adversarial policy suite",
+   "value": "34/34 after M07 fixes (24/34 before)",
+   "denominator": 34,
+   "kind": "measured robustness",
+   "caveat": "suite written by policy author"
   }
  ],
  "assets": [],
@@ -60,6 +67,7 @@
  "limitations": [
   "All items synthetic; no model was run.",
   "Test probes written by the same author after the rule existed (not blind).",
-  "Historical laya-multilingual fixtures are summaries, not rerun, and measure different tasks."
+  "Historical laya-multilingual fixtures are summaries, not rerun, and measure different tasks.",
+  "Illustration (assets/ASSETS.json) is AI-generated, illustration only, stored on Drive not git; the native diagram is authoritative."
  ]
 }

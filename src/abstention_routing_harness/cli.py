@@ -3,8 +3,15 @@ from .policy import decide
 from .metrics import evaluate
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="abstention_routing_harness")
-    ap.add_argument("cmd", choices=["run","slice","collection","baselines"]); ap.add_argument("fixture", nargs="?", default="."); ap.add_argument("--out", required=True)
+    ap.add_argument("cmd", choices=["run","slice","collection","baselines","failure"]); ap.add_argument("fixture", nargs="?", default="."); ap.add_argument("--out", required=True)
     ap.add_argument("--rubric", default="rubric-v1"); ap.add_argument("--probes"); a = ap.parse_args(argv)
+    if a.cmd == "failure":
+        from .failure import run_adversarial, analyze
+        from .collection import split_cases
+        out = pathlib.Path(a.out); out.mkdir(parents=True, exist_ok=True)
+        rep = {"adversarial": run_adversarial(), "heldout_error_analysis": analyze(split_cases(a.fixture, "test")), "dev_error_analysis": analyze(split_cases(a.fixture, "dev"))}
+        (out / "failure.json").write_text(json.dumps(rep, indent=1, sort_keys=True, ensure_ascii=False) + "\n")
+        print(json.dumps({"adversarial_passed": f'{rep["adversarial"]["passed"]}/{rep["adversarial"]["n"]}', "test_errors": rep["heldout_error_analysis"]["by_kind"]})); return 0 if rep["adversarial"]["passed"] == rep["adversarial"]["n"] else 1
     if a.cmd in ("collection", "baselines"):
         from .collection import build, split_cases
         from .baselines import run_baselines

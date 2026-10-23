@@ -1,6 +1,6 @@
 # Abstention and routing evaluation harness
 
-**Status: work in progress (private). 6/10 milestones (Bot-reviewed); synthetic data only.**
+**Status: work in progress (private). 7/10 milestones (Bot-reviewed); synthetic inputs.**
 
 - Product contract: `docs/PRODUCT_CONTRACT.md`
 - Sources/evidence vs plans: `docs/SOURCES.md`
@@ -30,3 +30,5 @@ Review: `docs/REVIEW_M01_M03.md`.
 - Results: `docs/RESULTS.md`
 - Case page: `docs/CASE_PAGE.md`; static page: `site/index.html` (`python3 tools/export_site.py`); diagram `docs/architecture.mmd` + `docs/architecture.svg`
 - Schema validation in code: `src/abstention_routing_harness/schema.py` (stdlib subset)
+- Failure analysis (M07): `docs/FAILURE_ANALYSIS.md`
+- Illustration provenance: `assets/ASSETS.json` (image on Drive, not in git)

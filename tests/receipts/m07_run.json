@@ -1,0 +1,29 @@
+{
+ "utc_time": "2026-10-23T09:36:31+00:00",
+ "python": "3.13.5",
+ "environment": "fresh copy, stdlib only, no network",
+ "base_commit": "4d6c36e59565ab5504fcb4ab0c598b65b5202ed3",
+ "runs": [
+  {
+   "name": "unittest",
+   "command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
+   "exit_code": 0,
+   "stdout": "",
+   "stderr": "test_measured_baselines_regression (test_m05_m06.Baselines.test_measured_baselines_regression) ... ok\ntest_wilson (test_m05_m06.Baselines.test_wilson) ... ok\ntest_manifest_clean_and_synthetic_only (test_m05_m06.Collection.test_manifest_clean_and_synthetic_only) ... ok\ntest_decisions_and_reports_conform (test_m05_m06.Schema.test_decisions_and_reports_conform) ... ok\ntest_schema_catches_intended_malformed_fixture_items (test_m05_m06.Schema.test_schema_catches_intended_malformed_fixture_items) ... ok\ntest_adversarial_suite_all_pass_and_schema_valid (test_m07.M07.test_adversarial_suite_all_pass_and_schema_valid) ... ok\ntest_disagreement_always_abstains (test_m07.M07.test_disagreement_always_abstains) ... ok\ntest_heldout_error_analysis_counts_match_m06 (test_m07.M07.test_heldout_error_analysis_counts_match_m06) ... ok\ntest_regressions_fixed_in_m07 (test_m07.M07.test_regressions_fixed_in_m07) ... ok\ntest_fixture_report_counts (test_policy.CLI.test_fixture_report_counts) ... ok\ntest_admits_only_clean_agreement (test_policy.Gates.test_admits_only_clean_agreement) ... ok\ntest_budget_edge_cases_route_human_without_raising (test_policy.Gates.test_budget_edge_cases_route_human_without_raising) ... ok\ntest_identity_changes_with_revision_and_rubric (test_policy.Gates.test_identity_changes_with_revision_and_rubric) ... ok\ntest_proposal_failures (test_policy.Gates.test_proposal_failures) ... ok\ntest_scope_permission_text (test_policy.Gates.test_scope_permission_text) ... ok\ntest_project_json_valid_and_html_escapes (test_site.Site.test_project_json_valid_and_html_escapes) ... ok\ntest_svg_diagram_matches_project_architecture (test_site.Site.test_svg_diagram_matches_project_architecture) ... ok\ntest_end_to_end_regression_on_cleared_fixture (test_slice.Slice.test_end_to_end_regression_on_cleared_fixture) ... ok\ntest_ingest_malformed_rows_go_human (test_slice.Slice.test_ingest_malformed_rows_go_human) ... ok\ntest_rule_abstains_on_none_or_both_domains (test_slice.Slice.test_rule_abstains_on_none_or_both_domains) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 0.098s\n\nOK\n"
+  },
+  {
+   "name": "export_site",
+   "command": "PYTHONPATH=src python3 tools/export_site.py",
+   "exit_code": 0,
+   "stdout": "{\"valid\": true, \"wrote\": \"site/index.html\"}\n",
+   "stderr": ""
+  },
+  {
+   "name": "failure",
+   "command": "PYTHONPATH=src python3 -m abstention_routing_harness failure . --out out/m07",
+   "exit_code": 0,
+   "stdout": "{\"adversarial_passed\": \"34/34\", \"test_errors\": {\"over_abstention\": 6, \"false_acceptance\": 5}}\n",
+   "stderr": ""
+  }
+ ]
+}
