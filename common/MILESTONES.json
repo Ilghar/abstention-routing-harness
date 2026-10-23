@@ -1,0 +1,55 @@
+{
+  "measurement": "accepted_milestones/10; coarse planning coverage, not production readiness",
+  "milestones": [
+    {
+      "id": "M01",
+      "title": "Source and product contract",
+      "acceptance": "A source/access register separates existing evidence from plans; brief has bounded user/problem/non-goals, acceptance criteria and data-rights/gaps."
+    },
+    {
+      "id": "M02",
+      "title": "Architecture and experiment plan",
+      "acceptance": "Reviewed module/data schemas, failure cases, deterministic test strategy, dependencies, license/consent plan and one ADR; no implementation credit for empty headings."
+    },
+    {
+      "id": "M03",
+      "title": "Executable offline scaffold",
+      "acceptance": "Fresh environment instructions, smallest working CLI/scorer/validator, honest synthetic fixture and at least two meaningful tests with saved output; no network required."
+    },
+    {
+      "id": "M04",
+      "title": "One real end-to-end vertical slice",
+      "acceptance": "One project-specific core workflow executes against cleared inputs with outputs and regression tests; mock audio is labeled and cannot count as a real TTS model baseline."
+    },
+    {
+      "id": "M05",
+      "title": "Dataset/fixture expansion",
+      "acceptance": "Reviewed versioned case collection, sources/rights, splits and edge cases; synthetic and empirical data remain distinguishable."
+    },
+    {
+      "id": "M06",
+      "title": "Baseline evaluation",
+      "acceptance": "Reproducible metrics with denominators, limitations and measured actual baselines; no invented gains."
+    },
+    {
+      "id": "M07",
+      "title": "Robustness and error analysis",
+      "acceptance": "Targeted failure analysis, adversarial/malformed cases, disagreement handling and relevant fixes verified."
+    },
+    {
+      "id": "M08",
+      "title": "Packaging and CI",
+      "acceptance": "Installable minimal package or static demo, locked/documented dependencies, focused CI and reproducible examples."
+    },
+    {
+      "id": "M09",
+      "title": "Representation and website export",
+      "acceptance": "Accurate native diagram, readable editorial project page, optional generated image with provenance, accessible portable site payload."
+    },
+    {
+      "id": "M10",
+      "title": "Release and independent review",
+      "acceptance": "Privacy/licensing/security checks, independent review, contribution statement, honest README, known issues and reviewed release decision."
+    }
+  ]
+}

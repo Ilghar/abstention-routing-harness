@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "project_id": "01",
+  "stage": "bot_m02_accepted",
+  "owner": "Grok Bot (coordinator)",
+  "repository": {
+    "url": "https://github.com/Ilghar/abstention-routing-harness",
+    "branch": "main",
+    "commit": "see git log; recorded in portfolio/STATUS.json after push",
+    "visibility": "private"
+  },
+  "drive_folder_url": "https://drive.google.com/drive/folders/1WHIwl7Jixw0ZqEDu1XO2Y64qCNqTG3Va",
+  "milestones": [
+    {
+      "id": "M01",
+      "status": "accepted",
+      "evidence": [
+        "docs/SOURCES.md",
+        "docs/PRODUCT_CONTRACT.md",
+        "inputs/source_register.jsonl"
+      ]
+    },
+    {
+      "id": "M02",
+      "status": "accepted",
+      "evidence": [
+        "docs/ARCHITECTURE.md",
+        "docs/adr/0001-scope-and-boundaries.md",
+        "docs/architecture.mmd",
+        "tools/check_m02.py",
+        "schemas/case.schema.json",
+        "schemas/decision.schema.json",
+        "schemas/report.schema.json"
+      ]
+    },
+    {
+      "id": "M03",
+      "status": "not_started",
+      "evidence": []
+    },
+    {
+      "id": "M04",
+      "status": "not_started",
+      "evidence": []
+    },
+    {
+      "id": "M05",
+      "status": "not_started",
+      "evidence": []
+    },
+    {
+      "id": "M06",
+      "status": "not_started",
+      "evidence": []
+    },
+    {
+      "id": "M07",
+      "status": "not_started",
+      "evidence": []
+    },
+    {
+      "id": "M08",
+      "status": "not_started",
+      "evidence": []
+    },
+    {
+      "id": "M09",
+      "status": "not_started",
+      "evidence": []
+    },
+    {
+      "id": "M10",
+      "status": "not_started",
+      "evidence": []
+    }
+  ],
+  "tests": [
+    {
+      "command": "python3 tools/check_m02.py",
+      "scope": "bookkeeping: schemas parse, docs exist",
+      "behavioural": false
+    },
+    {
+      "command": "python3 common/validate_state.py handoff/STATE.json --root .",
+      "scope": "bookkeeping only"
+    }
+  ],
+  "next_actions": [
+    "M03: stdlib package + CLI per docs/ARCHITECTURE.md",
+    "M03: honest synthetic fixture incl. failure cases",
+    "M03: >=2 meaningful unittest tests with saved receipts"
+  ],
+  "budget": {
+    "observed_remaining": "week1 ~99/100 pts at 10:42 Berlin (user reading)",
+    "pool_relationship": "unknown",
+    "paid_spend_allowed": false
+  },
+  "completion_fraction": 0.2,
+  "notes": "M01/M02 accepted by Bot self-review only; no executable code yet; independent review pending.",
+  "lease": {
+    "status": "active",
+    "released_at": null,
+    "holder": "Grok Bot",
+    "note": "Bot owns main until release report"
+  },
+  "portfolio_control_locator": {
+    "coordinator_project": "01",
+    "repo_path": "portfolio/ (in abstention-routing-harness)",
+    "drive_path": "project01 outputs/current/portfolio/"
+  }
+}

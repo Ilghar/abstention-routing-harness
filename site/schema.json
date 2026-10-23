@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "summary",
+    "status",
+    "evidence_level",
+    "contribution",
+    "architecture",
+    "results",
+    "assets",
+    "links"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "seed",
+        "in_progress",
+        "evaluated",
+        "released"
+      ]
+    },
+    "evidence_level": {
+      "type": "string"
+    },
+    "contribution": {
+      "type": "string"
+    },
+    "architecture": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "results": {
+      "type": "array"
+    },
+    "assets": {
+      "type": "array"
+    },
+    "links": {
+      "type": "array"
+    }
+  }
+}

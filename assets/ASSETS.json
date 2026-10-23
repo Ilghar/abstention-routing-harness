@@ -1,0 +1,16 @@
+{
+  "generated_assets": [],
+  "status": "No image generated during package preparation; use Grok included capability later",
+  "provenance_fields": [
+    "path",
+    "sha256",
+    "prompt_path",
+    "tool",
+    "model_if_exposed",
+    "generated_at",
+    "alt",
+    "width",
+    "height",
+    "rights_notes"
+  ]
+}

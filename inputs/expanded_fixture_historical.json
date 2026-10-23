@@ -1,0 +1,14 @@
+{
+  "model": "convaiinnovations/laya-multilingual",
+  "revision": "1720e3e3357cfe1e281542e223f8273b0890ca34",
+  "fixture_count": 20,
+  "correct": 12,
+  "passed": false,
+  "gate": "At least19/20 and zero winners on10unknown cases.",
+  "false_winners_on_unknown": 1,
+  "peak_rss_gib": 2.1394920349121094,
+  "production_routing_changed": false,
+  "final_version_authority": false,
+  "evidence_kind": "historical recorded run; not rerun in this package",
+  "task": "broader version-ranking fixture"
+}

@@ -1,0 +1,18 @@
+{
+  "model": "convaiinnovations/laya-multilingual",
+  "revision": "1720e3e3357cfe1e281542e223f8273b0890ca34",
+  "fixture_count": 20,
+  "correct": 19,
+  "passed": true,
+  "gate": {
+    "minimum_correct": 18,
+    "maximum_peak_rss_gib": 4,
+    "maximum_p95_seconds": 5
+  },
+  "integration": "eligible for this synthetic routing task only",
+  "median_seconds": 0.16352789449956617,
+  "p95_seconds": 0.30786573699879227,
+  "peak_rss_gib": 2.1921730041503906,
+  "evidence_kind": "historical recorded run; not rerun in this package",
+  "task": "narrow two-queue routing fixture"
+}

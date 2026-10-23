@@ -1,0 +1,8 @@
+flowchart LR
+  A["Case record + independent scope label"] --> B["Validation gates (text, scope, permission, budget)"]
+  B -->|fail| H["Human review queue"]
+  B --> C["Recorded / mock proposals (JSON only)"]
+  C --> D["Abstention + disagreement decision"]
+  D -->|abstain| H
+  D --> E["Advisory route (no document moves)"]
+  D --> F["Metrics: coverage, selective accuracy, false acceptance, confusion"]
