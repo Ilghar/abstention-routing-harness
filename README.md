@@ -136,7 +136,7 @@ Writes `reports/mock/index.html`, `confusion.json` and `calibration.json`. The c
 | Next | Status | Where it comes from |
 |---|---|---|
 | Two-reader reconciliation with a real local reader plus a second, independent reader | planned; the policy already abstains on any conflict | original design paired a local multilingual reader with a second reader and only accepted agreement |
-| Re-run the historical 20-item fixture with the local multilingual reader, offline | planned | the 12/20 failure and the false winner that motivated the project |
+| Re-run the historical 20-item fixture with the local multilingual reader, offline | planned | the 12/20 failure (by my notes from that study, not re-run here) and the false winner that motivated the project |
 | Blind held-out probes written by someone other than the rule author | open | current test probes are not blind |
 | Calibration study before any confidence threshold is used | mechanism implemented, in-sample, mock data only; validated study still open | original metric list: calibration only after a separate validated study |
 | Prioritised human review queue | implemented (review_queue) | original architecture ended in a human review queue |
