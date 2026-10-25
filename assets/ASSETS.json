@@ -1,38 +1,27 @@
 {
- "assets": [
+ "credit": "ilghar.studio",
+ "status": "round 5 boards approved by owner 2026-10-25",
+ "boards": [
   {
-   "path": "assets/hero.svg",
-   "format": "SVG wrapper around an embedded JPEG (1280x720), so the file can be committed as text",
-   "sha256_svg": "b194f1e79f70aa9d6c0a781dc94098b6fd099e9dc7627ebcd87df79fe4c4806e",
-   "sha256_jpeg": "a42649d5e19fa40ac55c01c680f3f64870bd83d871b934e0cfb1d087df2964b4",
-   "jpeg_bytes": 70364,
-   "generated_at": "2026-10-25 Europe/Berlin",
-   "prompt": "assets/IMAGE_PROMPT.md#hero",
-   "alt": "Cream index cards sorted into a wooden rack; a torn card waits apart in a rose felt tray.",
-   "caption": "Items the harness will not route on its own wait for a person. Editorial illustration; the native diagram is authoritative.",
-   "review": "Reviewed by eye: palette matches studio tokens; no text, numbers, logos or faces; concept matches the page.",
-   "role": "editorial illustration only; docs/architecture.mmd is authoritative",
-   "rights_notes": "Generated illustration for this private repository; no third-party input images.",
-   "committed_to_git": true
+   "path": "assets/board-light.svg",
+   "theme": "light",
+   "source_png_sha256": "b0220bdb6814ea756dbffe6f2669af9d57cae72843d68a48026df0ebcf12da7d",
+   "width": 2400,
+   "height": 1500,
+   "embedded": "JPEG q85 in SVG wrapper"
   },
   {
-   "path": "assets/disagreement.svg",
-   "format": "SVG wrapper around an embedded JPEG (1280x720), so the file can be committed as text",
-   "sha256_svg": "79b172df3dca71dfb4bb8c85562a56262892bb077604b73188cdccff30841972",
-   "sha256_jpeg": "e8ac54c6942ff4a0c40a7549de3645c3cff0b71e964cb8f2428c1dffdb1b95a6",
-   "jpeg_bytes": 36303,
-   "generated_at": "2026-10-25 Europe/Berlin",
-   "prompt": "assets/IMAGE_PROMPT.md#disagreement",
-   "alt": "One card held still on a rose pad while two threads pull it toward different slots.",
-   "caption": "When readers disagree, the item stays put. Disagreement is treated as evidence, not averaged away.",
-   "review": "Reviewed by eye: palette matches studio tokens; no text, numbers, logos or faces; concept matches the page.",
-   "role": "editorial illustration only; docs/architecture.mmd is authoritative",
-   "rights_notes": "Generated illustration for this private repository; no third-party input images.",
-   "committed_to_git": true
+   "path": "assets/board-dark.svg",
+   "theme": "dark",
+   "source_png_sha256": "ff2096ed0bec55eb10dff19f074e510a204b68b0a8ada054456f0c440ac6c6c7",
+   "width": 2400,
+   "height": 1500,
+   "embedded": "JPEG q85 in SVG wrapper"
   }
  ],
- "retired": [
-  "illustration_v1 / v2 images from 2026-10-23 (replaced; never committed to git)"
- ],
- "style": "site/DESIGN_TOKENS.json image_direction"
+ "usage": "<picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/board-dark.svg\"><img src=\"assets/board-light.svg\"></picture>",
+ "format_note": "Raster boards are embedded inside SVG wrappers so they can be committed as text.",
+ "construction": "code-rendered construction drawing",
+ "photos": "Model/study photograph generated for this board.",
+ "superseded": "earlier illustration_v* and rejected hero options (not committed)"
 }
