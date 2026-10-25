@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25 M08 (blocked on CI)",
+ "updated": "2026-10-25 13:52 Berlin: P03 paused by user; CI skipped for now",
  "projects": {
   "01": {
    "repo": "Ilghar/abstention-routing-harness",
@@ -41,7 +41,8 @@
     "M07"
    ],
    "fraction": 0.7,
-   "M08": "blocked: package+examples done, CI unverifiable billing"
+   "M08": "blocked: package+examples done, CI unverifiable billing",
+   "paused": "by user 2026-10-25; no changes until resumed"
   }
  },
  "commit_shas": {
@@ -92,6 +93,8 @@
   "enabled": false,
   "reason": "Actions payment method/budget not observable via available read-only tools; owner rule requires verified no-overage",
   "proposed_file": "docs/ci-proposed/ci.yml (each repo)",
-  "billing_changed": false
- }
+  "billing_changed": false,
+  "skipped_by_user": "2026-10-25: CI work skipped for now; proposal file stays inactive"
+ },
+ "credit": "Creator credit is now 'ilghar.studio'. README, case page and site/ credit rewrite belongs to another worker."
 }
