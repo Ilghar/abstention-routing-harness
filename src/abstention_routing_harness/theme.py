@@ -49,17 +49,17 @@ def css(scope=".ilg-case"):
             f"{s}[data-theme=dark]{{{_vars('dark')}}}"
             f"{s}{{background:var(--canvas);color:var(--ink);min-height:100vh}}"
             f"{s} .ilg-theme-toggle{{position:fixed;top:1rem;inset-inline-end:1rem;z-index:10;font:inherit;font-size:.8rem;letter-spacing:.08em;"
-            "text-transform:lowercase;color:var(--ink);background:var(--surface);border:1px solid var(--accent);border-radius:2rem;"
+            "color:var(--ink);background:var(--surface);border:1px solid var(--accent);border-radius:2rem;"
             "padding:.35rem .9rem;cursor:pointer;box-shadow:var(--shadow-plate)}"
             f"{s} .ilg-theme-toggle:focus-visible{{outline:2px solid var(--ring);outline-offset:2px}}"
             f"{s} .ilg-theme-toggle[hidden]{{display:none}}")
 
-TOGGLE = '<button type="button" class="ilg-theme-toggle" aria-pressed="false" hidden>dark mode</button>'
+TOGGLE = '<button type="button" class="ilg-theme-toggle" aria-pressed="false" hidden>Dark mode</button>'
 # Inline, no network. Runs at end of body; without JS the button stays hidden and the system setting applies.
 SCRIPT = ("<script>(function(){var r=document.querySelector('.ilg-case'),b=r&&r.querySelector('.ilg-theme-toggle');if(!b)return;"
           "var k='ilg-theme',m=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)'),s=null;try{s=localStorage.getItem(k)}catch(e){}"
           "function dark(){var t=r.getAttribute('data-theme');return t?t==='dark':!!(m&&m.matches)}"
-          "function sync(){b.setAttribute('aria-pressed',String(dark()))}"
+          "function sync(){var d=dark();b.setAttribute('aria-pressed',String(d));b.textContent=d?'Light mode':'Dark mode';b.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode')}"
           "if(s==='dark'||s==='light')r.setAttribute('data-theme',s);"
           "b.hidden=false;sync();if(m&&m.addEventListener)m.addEventListener('change',sync);"
           "b.addEventListener('click',function(){var n=dark()?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}sync()})})();</script>")

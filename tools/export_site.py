@@ -16,7 +16,7 @@ body{margin:0}.ilg-case *{box-sizing:border-box}
 .ilg-case main{max-width:72rem;margin:0 auto;padding:clamp(1.5rem,4vw,4rem) clamp(1rem,4vw,3rem);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem}
 .ilg-case main>*{grid-column:1/-1}.ilg-case .col{grid-column:1/-1}@media (min-width:60rem){.ilg-case .col{grid-column:3/11}}
 .ilg-case h1,.ilg-case h2,.ilg-case h3{font-family:"Nunito Sans","Jost","Avenir Next",sans-serif;font-weight:700;text-wrap:balance;letter-spacing:-.01em;margin:0}
-.ilg-case h1{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.05;margin:.5rem 0 1rem}
+.ilg-case h1{font-family:"Jost","Avenir Next",sans-serif;font-weight:400;text-transform:lowercase;letter-spacing:-.015em;font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.02;margin:.5rem 0 1rem}
 .ilg-case h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--ink);margin:4rem 0 1rem}.ilg-case h2::before{content:"";display:block;width:2.5rem;height:2px;background:var(--accent);margin-bottom:.7rem}
 .ilg-case h3{font-size:1.15rem;margin:0 0 .35rem}.ilg-case p{text-wrap:pretty;margin:.5rem 0}
 .ilg-case .kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
@@ -24,7 +24,8 @@ body{margin:0}.ilg-case *{box-sizing:border-box}
 .ilg-case .meta{color:var(--ink);font-size:.95rem}
 .ilg-case .badge{display:inline-block;border:1px solid var(--accent);color:var(--ink);padding:.05rem .65rem;border-radius:1rem;font-size:.8rem;margin:0 .35rem .35rem 0}
 .ilg-case figure{margin:2rem 0}.ilg-case figure img{width:100%;height:auto;display:block;border-radius:14px;box-shadow:var(--shadow-frame);background:var(--figure-bg)}
-.ilg-case figcaption{font-size:.85rem;color:var(--ink);margin-top:.75rem}
+.ilg-case figcaption{font-size:max(12px,.875rem);font-weight:400;line-height:1.55;color:var(--ink);margin-top:.75rem}
+.ilg-case .caveat{color:var(--ink);font-size:1rem;font-weight:400;line-height:1.6;max-width:40rem;margin:.75rem 0 0;padding-inline-start:.85rem;border-inline-start:2px solid var(--accent)}
 .ilg-case .cards{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
 .ilg-case .card{background:var(--surface);border-radius:14px;padding:1.25rem 1.35rem;box-shadow:var(--shadow-plate)}
 .ilg-case .steps{grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}@media(min-width:60rem){.ilg-case .steps{grid-template-columns:repeat(3,minmax(0,1fr))}}
@@ -36,10 +37,12 @@ body{margin:0}.ilg-case *{box-sizing:border-box}
 .ilg-case ul{padding-inline-start:1.2rem}.ilg-case li{margin:.3rem 0}.ilg-case footer{margin-top:5rem;color:var(--ink);font-size:.9rem;border-top:1px solid var(--line);padding-top:1.5rem}
 .ilg-case ::selection{background:color-mix(in oklab,var(--accent) 38%,transparent)}
 @media (prefers-reduced-motion:reduce){.ilg-case *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-.ilg-case .board{margin:2rem 0}.ilg-case .board img{width:100%;height:auto;display:block;border-radius:6px;box-shadow:var(--shadow-frame)}
+.ilg-case .board{margin:2rem 0}.ilg-case .board picture,.ilg-case .board>img{display:block;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:clamp(.5rem,1.2vw,1rem)}.ilg-case .board img{width:100%;height:auto;display:block;border-radius:4px}.ilg-case .board .b-light,.ilg-case .board .b-dark{border-radius:8px}
 .ilg-case .board .b-light,.ilg-case .board .b-dark{display:none}
 .ilg-case[data-theme=light] .board .b-auto,.ilg-case[data-theme=dark] .board .b-auto{display:none}
 .ilg-case[data-theme=light] .board .b-light,.ilg-case[data-theme=dark] .board .b-dark{display:block}"""
+
+STATUS = {"in_progress": "In progress", "planned": "Planned", "done": "Done"}
 
 def render(p):
     e = lambda s: html.escape(str(s), quote=True)
@@ -65,7 +68,7 @@ def render(p):
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(p['title'])} · ilghar.studio</title><style>{CSS}</style></head><body><div class="ilg-case">{THEME.TOGGLE}<main>
 <header class="col"><p class="kicker">ilghar.studio · case study</p><h1>{e(p['title'])}</h1><p class="pitch">{e(p.get('pitch', p['summary']))}</p>
-<p><span class="badge">{e(p['status'])}</span><span class="badge">{e(p['evidence_level'])}</span></p></header>
+<p><span class="badge">{e(STATUS.get(p['status'], p['status'].replace("_", " ").capitalize()))}</span></p><p class="caveat">{e(p['evidence_level'])}</p></header>
 {board(p["board"]) if p.get("board") else fig(hero)}
 <section class="col"><h2>The question</h2><p class="pitch">{e(p['summary'])}</p>{paras(p.get('problem', []))}</section>
 {('<section><h2>Who it is for</h2><div class="cards">' + who + '</div></section>') if who else ''}
@@ -95,7 +98,7 @@ def render_md(p):
     return (f"# {p['title']}\n\n**{p.get('pitch', p['summary'])}**\n\n{img(hero)}"
             f"## The question\n> {p['summary']}\n\n" + "\n\n".join(p.get("problem", [])) + "\n\n"
             + (f"## Who it is for\n{who}\n\n" if who else "")
-            + f"## How it works\n{how}\n\nStages (see `architecture.mmd`, authoritative, and `architecture.svg`): {' → '.join(p['architecture'])}\n\n"
+            + f"## How it works\n{how}\n\nStages (see `docs/architecture.mmd`, authoritative, and `docs/architecture.svg`): {' → '.join(p['architecture'])}\n\n"
             + img(figs.get("second"))
             + (f"## Commands, with real output\n{cmds}\n\n" if cmds else "")
             + f"## Measured results\n| Metric | Value | Kind | Caveat |\n|---|---|---|---|\n{res}\n\n**Status:** {p['evidence_level']}. Private work in progress.\n\n"
