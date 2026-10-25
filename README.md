@@ -9,6 +9,13 @@
 
 Contribution: Ilghar — problem framing, requirements, evaluation direction. Implementation AI-assisted (Grok Bot). License: not yet chosen.
 
+## Install (M08)
+```sh
+python3 -m pip install --no-index .   # offline, no dependencies; console script: abstention-routing-harness
+sh examples/run.sh                     # install into a temp venv and check outputs against examples/expected.sha256
+```
+See `docs/DEPENDENCIES.md`.
+
 ## Quickstart (fresh environment)
 Requires Python >= 3.11, no dependencies, no network.
 ```

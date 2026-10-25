@@ -54,4 +54,7 @@ def validate(inst, schema, root=None, path="$"):
     if "not" in schema and not validate(inst, schema["not"], root, path): e.append(f"{path}: matches forbidden 'not' schema")
     if "anyOf" in schema and all(validate(inst, s, root, path) for s in schema["anyOf"]): e.append(f"{path}: matches none of anyOf")
     return e
-def load_schema(root, name): return json.loads((pathlib.Path(root) / "schemas" / name).read_text(encoding="utf-8"))
+def load_schema(root, name):
+    p = pathlib.Path(root) / "schemas" / name
+    if not p.exists(): p = pathlib.Path(__file__).resolve().parent / "schemas" / name  # installed wheel ships schemas as package data
+    return json.loads(p.read_text(encoding="utf-8"))

@@ -1,0 +1,15 @@
+# Stdlib only: no runtime dependencies and no build dependencies (in-tree backend, works offline).
+[build-system]
+requires = []
+build-backend = "backend"
+backend-path = ["_build"]
+
+[project]
+name = "abstention-routing-harness"
+version = "0.8.0"
+description = "Deterministic abstention/routing evaluation harness (synthetic fixtures, stdlib only)"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+abstention-routing-harness = "abstention_routing_harness.cli:main"

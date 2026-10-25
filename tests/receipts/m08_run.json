@@ -1,0 +1,57 @@
+{
+ "utc_time": "2026-10-25T12:51:22+00:00",
+ "python": "3.13.5 and 3.11.17",
+ "environment": "fresh copy, stdlib only, no network",
+ "base_commit": "7bd958f0b64d64202e54481f2c22a85c042a843d",
+ "runs": [
+  {
+   "name": "unittest py3.13 -W error seed0",
+   "command": "python3 -W error -m unittest discover -s tests -v",
+   "exit_code": 0,
+   "stdout": "",
+   "stderr": "test_measured_baselines_regression (test_m05_m06.Baselines.test_measured_baselines_regression) ... ok\ntest_wilson (test_m05_m06.Baselines.test_wilson) ... ok\ntest_manifest_clean_and_synthetic_only (test_m05_m06.Collection.test_manifest_clean_and_synthetic_only) ... ok\ntest_decisions_and_reports_conform (test_m05_m06.Schema.test_decisions_and_reports_conform) ... ok\ntest_schema_catches_intended_malformed_fixture_items (test_m05_m06.Schema.test_schema_catches_intended_malformed_fixture_items) ... ok\ntest_adversarial_suite_all_pass_and_schema_valid (test_m07.M07.test_adversarial_suite_all_pass_and_schema_valid) ... ok\ntest_disagreement_always_abstains (test_m07.M07.test_disagreement_always_abstains) ... ok\ntest_heldout_error_analysis_counts_match_m06 (test_m07.M07.test_heldout_error_analysis_counts_match_m06) ... ok\ntest_regressions_fixed_in_m07 (test_m07.M07.test_regressions_fixed_in_m07) ... ok\ntest_no_dependencies_declared (test_package.Package.test_no_dependencies_declared) ... ok\ntest_sdist_builds (test_package.Package.test_sdist_builds) ... ok\ntest_wheel_contents_and_determinism (test_package.Package.test_wheel_contents_and_determinism) ... ok\ntest_fixture_report_counts (test_policy.CLI.test_fixture_report_counts) ... ok\ntest_admits_only_clean_agreement (test_policy.Gates.test_admits_only_clean_agreement) ... ok\ntest_budget_edge_cases_route_human_without_raising (test_policy.Gates.test_budget_edge_cases_route_human_without_raising) ... ok\ntest_identity_changes_with_revision_and_rubric (test_policy.Gates.test_identity_changes_with_revision_and_rubric) ... ok\ntest_proposal_failures (test_policy.Gates.test_proposal_failures) ... ok\ntest_scope_permission_text (test_policy.Gates.test_scope_permission_text) ... ok\ntest_probe_files_are_cases_once_proposals_attached (test_review.Review.test_probe_files_are_cases_once_proposals_attached) ... ok\ntest_generated_pages_in_sync_with_project_json (test_site.Site.test_generated_pages_in_sync_with_project_json) ... ok\ntest_project_json_valid_and_html_escapes (test_site.Site.test_project_json_valid_and_html_escapes) ... ok\ntest_svg_diagram_matches_project_architecture (test_site.Site.test_svg_diagram_matches_project_architecture) ... ok\ntest_end_to_end_regression_on_cleared_fixture (test_slice.Slice.test_end_to_end_regression_on_cleared_fixture) ... ok\ntest_ingest_malformed_rows_go_human (test_slice.Slice.test_ingest_malformed_rows_go_human) ... ok\ntest_rule_abstains_on_none_or_both_domains (test_slice.Slice.test_rule_abstains_on_none_or_both_domains) ... ok\n\n----------------------------------------------------------------------\nRan 25 tests in 0.101s\n\nOK\n"
+  },
+  {
+   "name": "unittest py3.13 seed12345",
+   "command": "python3 -m unittest discover -s tests",
+   "exit_code": 0,
+   "stdout": "",
+   "stderr": ".........................\n----------------------------------------------------------------------\nRan 25 tests in 0.108s\n\nOK\n"
+  },
+  {
+   "name": "unittest cpython 3.11.17 (uv)",
+   "command": "~/.local/bin/python3.11 -W error -m unittest discover -s tests",
+   "exit_code": 0,
+   "stdout": "",
+   "stderr": ".........................\n----------------------------------------------------------------------\nRan 25 tests in 0.110s\n\nOK\n"
+  },
+  {
+   "name": "validate_state",
+   "command": "python3 common/validate_state.py handoff/STATE.json --root .",
+   "exit_code": 0,
+   "stdout": "{\"valid\": true, \"errors\": [], \"scope\": \"bookkeeping only, not semantic or production readiness\"}\n",
+   "stderr": ""
+  },
+  {
+   "name": "examples py3.13",
+   "command": "sh examples/run.sh",
+   "exit_code": 0,
+   "stdout": "{\"coverage\": {\"admitted\": 6, \"denominator\": 16, \"value\": 0.375}, \"false_acceptance\": {\"count\": 1, \"denominator\": 4, \"value\": 0.25}, \"selective_accuracy\": {\"correct\": 4, \"denominator\": 6, \"value\": 0.666667}}\n{\"coverage\": {\"admitted\": 21, \"denominator\": 27, \"value\": 0.777778}, \"false_acceptance\": {\"count\": 1, \"denominator\": 7, \"value\": 0.142857}, \"selective_accuracy\": {\"correct\": 20, \"denominator\": 21, \"value\": 0.952381}}\nexamples: outputs match examples/expected.sha256\n",
+   "stderr": ""
+  },
+  {
+   "name": "examples cpython 3.11.17",
+   "command": "PYTHON=$HOME/.local/bin/python3.11 sh examples/run.sh",
+   "exit_code": 0,
+   "stdout": "{\"coverage\": {\"admitted\": 6, \"denominator\": 16, \"value\": 0.375}, \"false_acceptance\": {\"count\": 1, \"denominator\": 4, \"value\": 0.25}, \"selective_accuracy\": {\"correct\": 4, \"denominator\": 6, \"value\": 0.666667}}\n{\"coverage\": {\"admitted\": 21, \"denominator\": 27, \"value\": 0.777778}, \"false_acceptance\": {\"count\": 1, \"denominator\": 7, \"value\": 0.142857}, \"selective_accuracy\": {\"correct\": 20, \"denominator\": 21, \"value\": 0.952381}}\nexamples: outputs match examples/expected.sha256\n",
+   "stderr": ""
+  },
+  {
+   "name": "wheel sha256 x2",
+   "command": "for i in 1 2; do d=$(mktemp -d); python3 -c \"import sys;sys.path.insert(0,'_build');import backend;print(backend.build_wheel('$d'))\" >/dev/null; sha256sum $d/*.whl | cut -c1-64; done",
+   "exit_code": 0,
+   "stdout": "ea214da339375071b8d88e0aafd26463fa58ab86075f3fd31c8f10d3aca1ea2c\nea214da339375071b8d88e0aafd26463fa58ab86075f3fd31c8f10d3aca1ea2c\n",
+   "stderr": ""
+  }
+ ]
+}

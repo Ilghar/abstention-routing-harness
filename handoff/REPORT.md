@@ -16,3 +16,8 @@ Pending review/publication: license choice, public visibility (not requested)
 
 ## Review pass (2026-10-25)
 AI self-review by a separate pass, not a human review. See `docs/REVIEW_M01_M07.md` for findings and fixes. Tests: `tests/receipts/review_run.json`. Milestone count unchanged (7/10).
+
+## M08 (2026-10-25): blocked on CI
+- Done and tested locally: a `pyproject.toml` with an in-tree stdlib build backend (no runtime or build dependencies), an offline `pip install --no-index .`, a byte-reproducible wheel, `docs/DEPENDENCIES.md`, and `examples/run.sh`, which checks outputs against `examples/expected.sha256` on CPython 3.11.17 and 3.13.5. Receipt: `tests/receipts/m08_run.json`.
+- Blocked: focused CI. Actions billing (payment method, budget) could not be verified read-only, so the workflow is committed inactive under `docs/ci-proposed/`. No billing settings were touched.
+- Milestones accepted: 7/10 (M08 `blocked`).

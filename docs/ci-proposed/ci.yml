@@ -1,0 +1,29 @@
+# PROPOSED, NOT ACTIVE. This file is deliberately outside .github/workflows/, so GitHub does not run it.
+# Status: blocked. Included Actions minutes, payment method and budgets for this private repo's owner
+# could not be verified read-only (see docs/ci-proposed/README.md). To activate after verifying billing yourself:
+# copy it to .github/workflows/ci.yml. It runs manually only (workflow_dispatch), on a single Linux job
+# capped at 5 minutes, with no third-party actions, no secrets and no artifacts.
+name: ci
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: checkout (git only, no marketplace action)
+        run: git clone --depth 1 --branch "${GITHUB_REF_NAME}" "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git" repo
+      - name: unit tests (stdlib only)
+        working-directory: repo
+        run: PYTHONPATH=src python3 -W error -m unittest discover -s tests -v
+      - name: state bookkeeping
+        working-directory: repo
+        run: python3 common/validate_state.py handoff/STATE.json --root .
+      - name: offline install + reproducible examples
+        working-directory: repo
+        run: sh examples/run.sh
