@@ -1,4 +1,4 @@
-# M07 failure analysis (Bot-authored, not independently reviewed)
+# M07 failure analysis (internal, not independently reviewed)
 
 Reproduce: `PYTHONPATH=src python3 -m abstention_routing_harness failure . --out out/m07` (receipt `tests/receipts/m07_failure.json`).
 

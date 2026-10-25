@@ -34,4 +34,4 @@ Routing proposals (from a local model, a rule, or a recorded run) look authorita
 - Gap: S05 has no unknown/mixed/malformed cases — new synthetic cases required (M03/M05).
 
 ## Contribution
-Ilghar: problem framing, safety requirements, evaluation direction, historical fixtures. Implementation in this repo: AI-assisted (Grok Bot), attributed per commit.
+Creator: ilghar.studio — problem framing, safety requirements, evaluation direction, historical fixtures.

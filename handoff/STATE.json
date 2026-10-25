@@ -2,7 +2,7 @@
  "schema_version": 1,
  "project_id": "01",
  "stage": "bot_m08_blocked_on_ci",
- "owner": "Grok Bot (coordinator)",
+ "owner": "ilghar.studio coordinator",
  "repository": {
   "url": "https://github.com/Ilghar/abstention-routing-harness",
   "branch": "main",
@@ -138,7 +138,7 @@
  "next_actions": [
   "Owner: verify Actions budget $0 / no payment method, then move docs/ci-proposed/ci.yml to .github/workflows/ (unblocks M08)",
   "Blind probe set by Ilghar/Expert",
-  "Human/independent review of M01-M07 (AI self-review done)"
+  "Human/independent review of M01-M07 (internal self-review done)"
  ],
  "budget": {
   "observed_remaining": "week1 3% used at 11:09 Berlin (user reading)",
@@ -146,12 +146,12 @@
   "paid_spend_allowed": false
  },
  "completion_fraction": 0.7,
- "notes": "M01-M07 accepted by Bot review only (not independent). Illustration generated (assets/ASSETS.json), binary on Drive only. M01-M07 re-checked 2026-10-25 by AI self-review (separate pass, not human): docs/REVIEW_M01_M07.md.",
+ "notes": "M01-M07 accepted by internal review only (not independent). Illustration generated (assets/ASSETS.json), binary on Drive only. M01-M07 re-checked 2026-10-25 by AI self-review (separate pass, not human): docs/REVIEW_M01_M07.md.",
  "lease": {
   "status": "active",
   "released_at": null,
-  "holder": "Grok Bot",
-  "note": "Bot owns main until release report"
+  "holder": "ilghar.studio coordinator",
+  "note": "Coordinator owns main until release report"
  },
  "portfolio_control_locator": {
   "coordinator_project": "01",

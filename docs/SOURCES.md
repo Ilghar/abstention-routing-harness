@@ -17,7 +17,7 @@ Machine-readable register: `inputs/source_register.jsonl`. This page separates *
 ## Access actually used (2026-10-23, Europe/Berlin)
 - Google Drive handoff folder (project 01) read via connector: all listed files downloaded except `.DS_Store`.
 - GitHub account `Ilghar` verified via connector; this repo created private.
-- Grok Library / Projects / native chat search: **not available** on the executing surface (S08).
+- Library / Projects / native chat search: **not available** on the executing surface (S08).
 - No network inference, no model download, no Jev transport.
 
 ## Plans (not evidence)

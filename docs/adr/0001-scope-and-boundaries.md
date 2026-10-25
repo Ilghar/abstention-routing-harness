@@ -1,5 +1,5 @@
 # ADR 0001 — Scope and boundaries
-Status: accepted (Bot self-review, 2026-10-23); independent review pending.
+Status: accepted (internal self-review, 2026-10-23); independent review pending.
 
 ## Context
 Historical reference policy works but has known edge-case bugs (S06) and couples to a specific model/transport. Two historical fixtures measure different tasks.

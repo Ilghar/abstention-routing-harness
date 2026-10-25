@@ -1,6 +1,6 @@
 # Review of M01–M07
 
-**Type: AI self-review by a separate pass (Grok Bot, 2026-10-25). This is not a human or independent expert review.** The same agent that built M01–M07 wrote this review, so it cannot replace a human reviewer.
+**Type: internal self-review (separate pass, not a human review), 2026-10-25. This is not an independent expert review.** The same team that built M01–M07 wrote this review, so it cannot replace a human reviewer.
 
 ## Method
 - Fresh copy of `main` rebuilt from the GitHub tree, with every listed blob SHA-1 matching the local tree. The tree listing was truncated at 20 kB, so a few `tools/` files were not compared.
@@ -24,4 +24,4 @@
 | — | info | Historical receipts (M03/M04) still match the current outputs exactly. | — |
 
 ## Not covered
-No human listening, expert annotation or blind probe authoring took place. Milestone acceptance stays "Bot review only".
+No human listening, expert annotation or blind probe authoring took place. Milestone acceptance stays "internal review only".

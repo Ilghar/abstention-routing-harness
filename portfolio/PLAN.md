@@ -1,4 +1,4 @@
-# Portfolio plan (coordinator: Grok Bot)
+# Portfolio plan (coordinator: ilghar.studio)
 | Phase | Scope | Budget window |
 |---|---|---|
 | Round 0 | Drive inventory, private repos, control files, ADRs | week 1 |

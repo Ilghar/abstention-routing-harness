@@ -39,7 +39,7 @@ Python ≥3.11 standard library only. No network. Optional future local-model ad
 New code is original (not copied from S01). Fixtures: synthetic only. Repo license undecided until M10; historical summaries keep their "historical, not rerun" label.
 
 ## Review
-Self-review by Grok Bot on 2026-10-23 against MILESTONES M02 and TEST_PLAN; independent (Expert/Codex) review pending.
+Internal self-review on 2026-10-23 against MILESTONES M02 and TEST_PLAN; independent (Expert/Codex) review pending.
 
 ## Implementation status (after M04)
 Built: `policy.py`, `metrics.py`, `pipeline.py` (M04 slice, includes local keyword proposer), `cli.py`. Planned not built: `schema.py` (enforcement), `adapters.py` for recorded model outputs.

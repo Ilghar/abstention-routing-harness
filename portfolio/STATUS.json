@@ -70,7 +70,7 @@
  },
  "drive_mirror": "MANIFEST, _M03, _M04, _M05_M06 verified by size; illustrations uploaded",
  "review": {
-  "type": "AI self-review by separate pass, not human",
+  "type": "internal self-review (separate pass, not a human review)",
   "doc": "docs/REVIEW_M01_M07.md in each repo",
   "findings_fixed": {
    "01": [

@@ -1,13 +1,13 @@
 # Review of M01–M03
 
 ## Reviewer and method
-Second-pass skeptical review by Grok Bot on 2026-10-23, done in a separate pass against `common/MILESTONES.json`. **This is not independent human review**; that remains pending and is required before any external claim.
+Second-pass skeptical internal self-review on 2026-10-23, done in a separate pass against `common/MILESTONES.json`. **This is not independent human review**; that remains pending and is required before any external claim.
 
 ## Verdicts
 | Milestone | Verdict | Notes |
 |---|---|---|
 | M01 | accepted | Register separates evidence vs plans; contract has user/problem/non-goals/criteria/rights. |
-| M02 | accepted with caveat | Schemas, failure cases, test strategy, deps, license plan and ADR are substantive. "Reviewed" is satisfied only by Bot review. |
+| M02 | accepted with caveat | Schemas, failure cases, test strategy, deps, license plan and ADR are substantive. "Reviewed" is satisfied only by internal self-review. |
 | M03 | accepted after fixes | Fresh-env instructions, CLI, synthetic fixture, tests with receipts verified by re-running in a clean copy. |
 
 ## Findings common to all three

@@ -1,5 +1,5 @@
 {
- "unit": "Bot weekly usage points (100 = one full weekly allowance)",
+ "unit": "Weekly usage points (100 = one full weekly allowance)",
  "total_pts": 200,
  "week1": {
   "pts": 100,
@@ -51,7 +51,7 @@
  "pool_shared_with_expert": "unknown",
  "paid_spend_allowed": false,
  "api_spend_allowed": false,
- "note": "Bot cannot read the meter; figures are user-provided.",
+ "note": "The coordinator cannot read the meter; figures are user-provided.",
  "changes": [
   "2026-10-23 10:51: M04 pulled into week 1 per user (week-1 ample room)"
  ]
