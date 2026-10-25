@@ -1,0 +1,381 @@
+{
+ "base_policy": {
+  "accuracy": 0.6087,
+  "labels": [
+   "spreadsheet",
+   "conversation",
+   "human"
+  ],
+  "matrix": {
+   "conversation": {
+    "conversation": 2,
+    "human": 1,
+    "spreadsheet": 1
+   },
+   "human": {
+    "conversation": 0,
+    "human": 10,
+    "spreadsheet": 1
+   },
+   "spreadsheet": {
+    "conversation": 0,
+    "human": 6,
+    "spreadsheet": 2
+   }
+  },
+  "missed_abstentions": 1,
+  "n_labelled": 23,
+  "over_abstentions": 7,
+  "per_label": {
+   "conversation": {
+    "precision": 1.0,
+    "recall": 0.5,
+    "support": 4
+   },
+   "human": {
+    "precision": 0.5882,
+    "recall": 0.9091,
+    "support": 11
+   },
+   "spreadsheet": {
+    "precision": 0.5,
+    "recall": 0.25,
+    "support": 8
+   }
+  },
+  "rows": [
+   {
+    "case_id": "A01",
+    "decided": "spreadsheet",
+    "expected": "spreadsheet",
+    "reason_code": "ADMITTED_ADVISORY"
+   },
+   {
+    "case_id": "A02",
+    "decided": "spreadsheet",
+    "expected": "spreadsheet",
+    "reason_code": "ADMITTED_ADVISORY"
+   },
+   {
+    "case_id": "A03",
+    "decided": "conversation",
+    "expected": "conversation",
+    "reason_code": "ADMITTED_ADVISORY"
+   },
+   {
+    "case_id": "A04",
+    "decided": "conversation",
+    "expected": "conversation",
+    "reason_code": "ADMITTED_ADVISORY"
+   },
+   {
+    "case_id": "A05",
+    "decided": "spreadsheet",
+    "expected": "conversation",
+    "reason_code": "ADMITTED_ADVISORY"
+   },
+   {
+    "case_id": "B01",
+    "decided": "spreadsheet",
+    "expected": "human",
+    "reason_code": "ADMITTED_ADVISORY"
+   },
+   {
+    "case_id": "B02",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "PROPOSAL_ABSTAINED"
+   },
+   {
+    "case_id": "B03",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "PROPOSAL_MALFORMED"
+   },
+   {
+    "case_id": "B04",
+    "decided": "human",
+    "expected": "spreadsheet",
+    "reason_code": "PROPOSALS_CONFLICT"
+   },
+   {
+    "case_id": "B05",
+    "decided": "human",
+    "expected": "spreadsheet",
+    "reason_code": "BUDGET_INVALID"
+   },
+   {
+    "case_id": "B06",
+    "decided": "human",
+    "expected": "spreadsheet",
+    "reason_code": "BUDGET_INVALID"
+   },
+   {
+    "case_id": "B07",
+    "decided": "human",
+    "expected": "spreadsheet",
+    "reason_code": "BUDGET_EXCEEDED"
+   },
+   {
+    "case_id": "B08",
+    "decided": "human",
+    "expected": "spreadsheet",
+    "reason_code": "SCOPE_UNVERIFIED"
+   },
+   {
+    "case_id": "B09",
+    "decided": "human",
+    "expected": "conversation",
+    "reason_code": "INPUT_NOT_PERMITTED"
+   },
+   {
+    "case_id": "B10",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "TEXT_INVALID"
+   },
+   {
+    "case_id": "B11",
+    "decided": "human",
+    "expected": "spreadsheet",
+    "reason_code": "NO_PROPOSAL"
+   },
+   {
+    "case_id": "P01",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "NO_PROPOSAL"
+   },
+   {
+    "case_id": "P02",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "NO_PROPOSAL"
+   },
+   {
+    "case_id": "P03",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "NO_PROPOSAL"
+   },
+   {
+    "case_id": "P04",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "NO_PROPOSAL"
+   },
+   {
+    "case_id": "P05",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "NO_PROPOSAL"
+   },
+   {
+    "case_id": "P06",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "NO_PROPOSAL"
+   },
+   {
+    "case_id": "P07",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "NO_PROPOSAL"
+   }
+  ],
+  "unlabelled": 0,
+  "wrong_answers": 2
+ },
+ "cost_policy": {
+  "accuracy": 0.6087,
+  "labels": [
+   "spreadsheet",
+   "conversation",
+   "human"
+  ],
+  "matrix": {
+   "conversation": {
+    "conversation": 2,
+    "human": 1,
+    "spreadsheet": 1
+   },
+   "human": {
+    "conversation": 0,
+    "human": 10,
+    "spreadsheet": 1
+   },
+   "spreadsheet": {
+    "conversation": 0,
+    "human": 6,
+    "spreadsheet": 2
+   }
+  },
+  "missed_abstentions": 1,
+  "n_labelled": 23,
+  "over_abstentions": 7,
+  "per_label": {
+   "conversation": {
+    "precision": 1.0,
+    "recall": 0.5,
+    "support": 4
+   },
+   "human": {
+    "precision": 0.5882,
+    "recall": 0.9091,
+    "support": 11
+   },
+   "spreadsheet": {
+    "precision": 0.5,
+    "recall": 0.25,
+    "support": 8
+   }
+  },
+  "rows": [
+   {
+    "case_id": "A01",
+    "decided": "spreadsheet",
+    "expected": "spreadsheet",
+    "reason_code": "ADMITTED_COST"
+   },
+   {
+    "case_id": "A02",
+    "decided": "spreadsheet",
+    "expected": "spreadsheet",
+    "reason_code": "ADMITTED_COST"
+   },
+   {
+    "case_id": "A03",
+    "decided": "conversation",
+    "expected": "conversation",
+    "reason_code": "ADMITTED_COST"
+   },
+   {
+    "case_id": "A04",
+    "decided": "conversation",
+    "expected": "conversation",
+    "reason_code": "ADMITTED_COST"
+   },
+   {
+    "case_id": "A05",
+    "decided": "spreadsheet",
+    "expected": "conversation",
+    "reason_code": "ADMITTED_COST"
+   },
+   {
+    "case_id": "B01",
+    "decided": "spreadsheet",
+    "expected": "human",
+    "reason_code": "ADMITTED_COST"
+   },
+   {
+    "case_id": "B02",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "PROPOSAL_ABSTAINED"
+   },
+   {
+    "case_id": "B03",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "PROPOSAL_MALFORMED"
+   },
+   {
+    "case_id": "B04",
+    "decided": "human",
+    "expected": "spreadsheet",
+    "reason_code": "SUPPORT_BELOW_THRESHOLD"
+   },
+   {
+    "case_id": "B05",
+    "decided": "human",
+    "expected": "spreadsheet",
+    "reason_code": "BUDGET_INVALID"
+   },
+   {
+    "case_id": "B06",
+    "decided": "human",
+    "expected": "spreadsheet",
+    "reason_code": "BUDGET_INVALID"
+   },
+   {
+    "case_id": "B07",
+    "decided": "human",
+    "expected": "spreadsheet",
+    "reason_code": "BUDGET_EXCEEDED"
+   },
+   {
+    "case_id": "B08",
+    "decided": "human",
+    "expected": "spreadsheet",
+    "reason_code": "SCOPE_UNVERIFIED"
+   },
+   {
+    "case_id": "B09",
+    "decided": "human",
+    "expected": "conversation",
+    "reason_code": "INPUT_NOT_PERMITTED"
+   },
+   {
+    "case_id": "B10",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "TEXT_INVALID"
+   },
+   {
+    "case_id": "B11",
+    "decided": "human",
+    "expected": "spreadsheet",
+    "reason_code": "NO_PROPOSAL"
+   },
+   {
+    "case_id": "P01",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "NO_PROPOSAL"
+   },
+   {
+    "case_id": "P02",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "NO_PROPOSAL"
+   },
+   {
+    "case_id": "P03",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "NO_PROPOSAL"
+   },
+   {
+    "case_id": "P04",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "NO_PROPOSAL"
+   },
+   {
+    "case_id": "P05",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "NO_PROPOSAL"
+   },
+   {
+    "case_id": "P06",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "NO_PROPOSAL"
+   },
+   {
+    "case_id": "P07",
+    "decided": "human",
+    "expected": "human",
+    "reason_code": "NO_PROPOSAL"
+   }
+  ],
+  "unlabelled": 0,
+  "wrong_answers": 2
+ },
+ "cost_policy_min_support": 1.0,
+ "sources": [
+  "synthetic_cases_m03.json",
+  "ood_probes_m04.json"
+ ]
+}

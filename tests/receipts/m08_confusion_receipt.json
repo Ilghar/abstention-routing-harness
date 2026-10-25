@@ -1,0 +1,46 @@
+{
+ "base_accuracy": 0.6087,
+ "base_matrix": {
+  "conversation": {
+   "conversation": 2,
+   "human": 1,
+   "spreadsheet": 1
+  },
+  "human": {
+   "conversation": 0,
+   "human": 10,
+   "spreadsheet": 1
+  },
+  "spreadsheet": {
+   "conversation": 0,
+   "human": 6,
+   "spreadsheet": 2
+  }
+ },
+ "best_min_support": 1.0,
+ "command": "PYTHONPATH=src python3 -m abstention_routing_harness.report --out reports fixtures/synthetic_cases_m03.json fixtures/ood_probes_m04.json",
+ "cost_accuracy": 0.6087,
+ "cost_matrix": {
+  "conversation": {
+   "conversation": 2,
+   "human": 1,
+   "spreadsheet": 1
+  },
+  "human": {
+   "conversation": 0,
+   "human": 10,
+   "spreadsheet": 1
+  },
+  "spreadsheet": {
+   "conversation": 0,
+   "human": 6,
+   "spreadsheet": 2
+  }
+ },
+ "in_sample": true,
+ "note": "Synthetic fixtures with mock proposals; no gold human labels. Computed, not estimated.",
+ "sources": [
+  "synthetic_cases_m03.json",
+  "ood_probes_m04.json"
+ ]
+}
