@@ -30,12 +30,12 @@ def confusion(cases, decide_fn):
 from .theme import css as _theme_css, TOGGLE, SCRIPT
 CSS = _theme_css(".ilg-case") + (
        "body{margin:0}.ilg-case{font-family:Jost,system-ui,sans-serif}.ilg-case main{margin:0 auto;padding:3rem 1.25rem;max-width:60rem}"
-       ".ilg-case h1{font-weight:500;letter-spacing:-.01em}.ilg-case h2{color:var(--accent-text)}.ilg-case table{border-collapse:collapse;margin:1rem 0}"
+       ".ilg-case h1{font-weight:500;letter-spacing:-.01em}.ilg-case h2{color:var(--ink);border-bottom:2px solid var(--accent);display:inline-block}.ilg-case table{border-collapse:collapse;margin:1rem 0}"
        ".ilg-case td,.ilg-case th{border:1px solid var(--line);padding:.4rem .7rem;text-align:right}.ilg-case th{background:var(--surface)}"
-       ".ilg-case td.hit{background:var(--hit)}.ilg-case td.miss{background:var(--miss)}.ilg-case .note{color:var(--muted-text);font-size:.9rem}"
-       ".ilg-case .mock-banner{background:var(--warn-bg);color:var(--warn-ink);border:2px solid var(--warn-ink);border-radius:10px;padding:.8rem 1rem;"
+       ".ilg-case td.hit{font-weight:700;box-shadow:inset 0 -3px 0 var(--accent)}.ilg-case td.miss{font-weight:700;outline:2px dashed var(--accent);outline-offset:-4px}.ilg-case .note{font-size:.9rem}"
+       ".ilg-case .mock-banner{background:var(--surface);color:var(--ink);border:3px solid var(--accent);border-radius:10px;padding:.8rem 1rem;"
        "font-weight:600;letter-spacing:.04em;text-transform:uppercase}"
-       ".ilg-case footer{margin-top:3rem;font-size:.85rem;color:var(--muted-text)}")
+       ".ilg-case footer{margin-top:3rem;font-size:.85rem}")
 
 MOCK_BANNER = "MOCK DATA - demonstrates the mechanism, not a result"
 
@@ -46,11 +46,12 @@ def to_html(title, sections, mock=False):
            "<body><div class=ilg-case>%s<main>%s<h1>%s</h1>" % (e(title), CSS, TOGGLE,
            ('<p class=mock-banner role=note>%s</p>' % e(MOCK_BANNER)) if mock else "", e(title)),
            "<p class=note>Rows = expected route, columns = decided route. human = abstain / hand to a person. "
-           "Computed from the deterministic policy on the listed fixtures; synthetic data, no gold human labels.</p>"]
+           "Computed from the deterministic policy on the listed fixtures; synthetic data, no gold human labels. "
+           "Marks: ✓ = decided as expected (diagonal), ✗ = a non-zero mismatch.</p>"]
     for head, c in sections:
         out.append("<h2>%s</h2><table><tr><th>expected \\ decided</th>%s</tr>" % (e(head), "".join("<th>%s</th>" % l for l in c["labels"])))
         for ex in c["labels"]:
-            out.append("<tr><th>%s</th>%s</tr>" % (ex, "".join('<td class="%s">%d</td>' % ("hit" if ex == d else ("miss" if c["matrix"][ex][d] else ""), c["matrix"][ex][d]) for d in c["labels"])))
+            out.append("<tr><th>%s</th>%s</tr>" % (ex, "".join('<td class="%s">%d%s</td>' % (("hit", c["matrix"][ex][d], " ✓") if ex == d and c["matrix"][ex][d] else ("", c["matrix"][ex][d], "") if ex == d else (("miss", c["matrix"][ex][d], " ✗") if c["matrix"][ex][d] else ("", 0, ""))) for d in c["labels"])))
         out.append("</table><p>labelled %d · accuracy %s · wrong answers %d · missed abstentions %d · over-abstentions %d · unlabelled %d</p>"
                    % (c["n_labelled"], c["accuracy"], c["wrong_answers"], c["missed_abstentions"], c["over_abstentions"], c["unlabelled"]))
         out.append("<details><summary>per-case decisions</summary><table><tr><th>case</th><th>expected</th><th>decided</th><th>reason</th></tr>%s</table></details>"

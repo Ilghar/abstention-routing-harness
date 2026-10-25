@@ -17,23 +17,23 @@ body{margin:0}.ilg-case *{box-sizing:border-box}
 .ilg-case main>*{grid-column:1/-1}.ilg-case .col{grid-column:1/-1}@media (min-width:60rem){.ilg-case .col{grid-column:3/11}}
 .ilg-case h1,.ilg-case h2,.ilg-case h3{font-family:"Nunito Sans","Jost","Avenir Next",sans-serif;font-weight:700;text-wrap:balance;letter-spacing:-.01em;margin:0}
 .ilg-case h1{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.05;margin:.5rem 0 1rem}
-.ilg-case h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent-text);margin:4rem 0 1rem}
+.ilg-case h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--ink);margin:4rem 0 1rem}.ilg-case h2::before{content:"";display:block;width:2.5rem;height:2px;background:var(--accent);margin-bottom:.7rem}
 .ilg-case h3{font-size:1.15rem;margin:0 0 .35rem}.ilg-case p{text-wrap:pretty;margin:.5rem 0}
-.ilg-case .kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-text)}
+.ilg-case .kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
 .ilg-case .pitch{font-size:clamp(1.2rem,2.2vw,1.5rem);font-weight:300;color:var(--ink);max-width:40rem}
-.ilg-case .meta{color:var(--muted-text);font-size:.95rem}
+.ilg-case .meta{color:var(--ink);font-size:.95rem}
 .ilg-case .badge{display:inline-block;border:1px solid var(--accent);color:var(--ink);padding:.05rem .65rem;border-radius:1rem;font-size:.8rem;margin:0 .35rem .35rem 0}
 .ilg-case figure{margin:2rem 0}.ilg-case figure img{width:100%;height:auto;display:block;border-radius:14px;box-shadow:var(--shadow-frame);background:var(--figure-bg)}
-.ilg-case figcaption{font-size:.85rem;color:var(--muted-text);margin-top:.75rem}
+.ilg-case figcaption{font-size:.85rem;color:var(--ink);margin-top:.75rem}
 .ilg-case .cards{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
 .ilg-case .card{background:var(--surface);border-radius:14px;padding:1.25rem 1.35rem;box-shadow:var(--shadow-plate)}
 .ilg-case .steps{grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}@media(min-width:60rem){.ilg-case .steps{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.ilg-case .step{counter-increment:s}.ilg-case .steps{counter-reset:s}.ilg-case .step h3::before{content:counter(s,decimal-leading-zero) "  ";color:var(--accent-text)}
+.ilg-case .step{counter-increment:s}.ilg-case .steps{counter-reset:s}.ilg-case .step h3::before{content:counter(s,decimal-leading-zero) "  ";color:var(--ink);border-bottom:2px solid var(--accent)}
 .ilg-case pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1rem;overflow:auto;font:.85rem/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;word-break:break-word}
 .ilg-case code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em}
 .ilg-case table{border-collapse:collapse;width:100%;font-size:.95rem}.ilg-case td,.ilg-case th{border-bottom:1px solid var(--line);padding:.55rem .4rem;text-align:start;vertical-align:top}
-.ilg-case th{font-weight:600;color:var(--muted-text);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
-.ilg-case ul{padding-inline-start:1.2rem}.ilg-case li{margin:.3rem 0}.ilg-case footer{margin-top:5rem;color:var(--muted-text);font-size:.9rem;border-top:1px solid var(--line);padding-top:1.5rem}
+.ilg-case th{font-weight:600;color:var(--ink);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
+.ilg-case ul{padding-inline-start:1.2rem}.ilg-case li{margin:.3rem 0}.ilg-case footer{margin-top:5rem;color:var(--ink);font-size:.9rem;border-top:1px solid var(--line);padding-top:1.5rem}
 .ilg-case ::selection{background:color-mix(in oklab,var(--accent) 38%,transparent)}
 @media (prefers-reduced-motion:reduce){.ilg-case *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}"""
 

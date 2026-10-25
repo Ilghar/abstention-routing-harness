@@ -1,33 +1,35 @@
 """ilghar.studio light/dark theme for generated pages (case page, reports).
 
-Base tokens are copied from the studio site (Ilghar/ilghar-studio src/styles.css, `:root` and `.dark`).
-Two text-only tokens are added because the studio's --muted / --accent fall below WCAG AA (4.5:1)
-for small text on --canvas: --muted-text and --accent-text. Decorative uses (borders, rules) keep the
-studio values. tests/test_theme.py recomputes every contrast pair below for both themes.
+Tokens are the studio palette, copied exactly from Ilghar/ilghar-studio src/styles.css (`:root` and `.dark`);
+no new colours are introduced. Rules:
+- Text is always --ink (plum in light, near-white in dark) on --canvas or --surface. TEXT_PAIRS must meet
+  WCAG AA 4.5:1; tests/test_theme.py enforces it for both themes.
+- Rose/mauve (--accent, --muted, --subtle, --line) are decoration only: rules, borders, underlines, chart marks.
+  They are not held to text contrast; see DECORATIVE_EXCEPTIONS (ratios are reported by the test, not enforced).
+- Meaning never relies on colour alone: report cells carry a text marker besides the tint.
 
 Behaviour: no JS -> follows prefers-color-scheme. With JS a toggle button (aria-pressed) appears;
 an explicit choice is stored in localStorage["ilg-theme"] and applied as data-theme on the scope.
 """
 TOKENS = {
     "light": {"canvas": "#f3f1f6", "surface": "#fffcfe", "ink": "#4a3a5c", "muted": "#7a688c", "subtle": "#a394ae",
-              "accent": "#c97a98", "accent-fg": "#fffafc", "line": "#e4dde8", "ring": "#c97a98",
-              "muted-text": "#6a587c", "accent-text": "#9c4a6a", "figure-bg": "#fffcfe",
-              "hit": "#e3efe2", "miss": "#f6e0de", "warn-bg": "#fbe3ea", "warn-ink": "#6e2440"},
+              "accent": "#c97a98", "accent-fg": "#fffafc", "line": "#e4dde8", "ring": "#c97a98"},
     "dark": {"canvas": "#4a434c", "surface": "#5a535c", "ink": "#f4eef3", "muted": "#cbbdce", "subtle": "#9a8a9c",
-             "accent": "#e8a8bc", "accent-fg": "#2c262f", "line": "#4a424c", "ring": "#e8a8bc",
-             "muted-text": "#ddd2df", "accent-text": "#f6cdd9", "figure-bg": "#f3f1f6",
-             "hit": "#35503c", "miss": "#6b3546", "warn-bg": "#6b3546", "warn-ink": "#fff3f7"},
+             "accent": "#e8a8bc", "accent-fg": "#2c262f", "line": "#4a424c", "ring": "#e8a8bc"},
 }
+# Figures sit on a light plate in both themes (studio --surface / light --canvas) so art drawn on paper stays legible.
+FIGURE_BG = {"light": "#fffcfe", "dark": "#f3f1f6"}
 SHADOWS = {
     "light": "--shadow-frame:inset 0 1px 0 rgba(255,255,255,.98),inset 0 -1px 0 rgba(74,58,92,.05),0 2px 3px rgba(74,58,92,.06),0 10px 18px rgba(74,58,92,.1),0 28px 44px -8px rgba(74,58,92,.22);"
              "--shadow-plate:0 1px 0 rgba(255,255,255,.7),0 6px 18px rgba(74,58,92,.1);",
     "dark": "--shadow-frame:inset 0 1px 0 rgba(255,255,255,.1),0 2px 4px rgba(0,0,0,.25),0 16px 32px -8px rgba(0,0,0,.45),0 32px 56px -16px rgba(0,0,0,.4);"
             "--shadow-plate:0 1px 0 rgba(255,255,255,.08),0 8px 20px rgba(0,0,0,.28);",
 }
-# (foreground, background, minimum ratio) checked in both themes
-PAIRS = [("ink", "canvas", 4.5), ("ink", "surface", 4.5), ("muted-text", "canvas", 4.5), ("muted-text", "surface", 4.5),
-         ("accent-text", "canvas", 4.5), ("accent-text", "surface", 4.5), ("ink", "hit", 4.5), ("ink", "miss", 4.5),
-         ("warn-ink", "warn-bg", 4.5)]
+TEXT_PAIRS = [("ink", "canvas"), ("ink", "surface")]  # enforced >= 4.5:1 in both themes
+DECORATIVE_EXCEPTIONS = {  # never used for text in generated pages
+    "accent": "heading rules, badge/toggle borders, focus ring, report cell marks",
+    "muted": "unused for text", "subtle": "unused for text", "line": "table and section rules",
+}
 
 def _lum(h):
     h = h.lstrip("#"); c = [int(h[i:i + 2], 16) / 255 for i in (0, 2, 4)]
@@ -38,7 +40,7 @@ def contrast(a, b):
     la, lb = _lum(a), _lum(b); return (max(la, lb) + .05) / (min(la, lb) + .05)
 
 def _vars(mode):
-    return "".join(f"--{k}:{v};" for k, v in TOKENS[mode].items()) + SHADOWS[mode] + f"color-scheme:{mode};"
+    return "".join(f"--{k}:{v};" for k, v in TOKENS[mode].items()) + f"--figure-bg:{FIGURE_BG[mode]};" + SHADOWS[mode] + f"color-scheme:{mode};"
 
 def css(scope=".ilg-case"):
     s = scope
@@ -47,7 +49,7 @@ def css(scope=".ilg-case"):
             f"{s}[data-theme=dark]{{{_vars('dark')}}}"
             f"{s}{{background:var(--canvas);color:var(--ink);min-height:100vh}}"
             f"{s} .ilg-theme-toggle{{position:fixed;top:1rem;inset-inline-end:1rem;z-index:10;font:inherit;font-size:.8rem;letter-spacing:.08em;"
-            "text-transform:lowercase;color:var(--ink);background:var(--surface);border:1px solid var(--accent-text);border-radius:2rem;"
+            "text-transform:lowercase;color:var(--ink);background:var(--surface);border:1px solid var(--accent);border-radius:2rem;"
             "padding:.35rem .9rem;cursor:pointer;box-shadow:var(--shadow-plate)}"
             f"{s} .ilg-theme-toggle:focus-visible{{outline:2px solid var(--ring);outline-offset:2px}}"
             f"{s} .ilg-theme-toggle[hidden]{{display:none}}")
