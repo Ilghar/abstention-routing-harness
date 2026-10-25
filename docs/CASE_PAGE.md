@@ -82,6 +82,13 @@ New. Turn decisions into a prioritised human worklist (Markdown + JSON) with a p
 | 1 | B09 | `INPUT_NOT_PERMITTED` | The text asks to change permissions, authority or actions; that is never routed automatically. | Archive this conversation |
 ```
 
+### `python -m abstention_routing_harness.report --out reports/mock fixtures/mock_confidence_proposals_m08.json`
+New. Score cases with the cost/risk policy (expected cost of each route vs the cost of handing to a person), sweep the support threshold, and write a confusion report (expected vs decided: spreadsheet / conversation / person) as JSON and reports/…/index.html. MOCK: the confidences in this fixture are hand-written to demonstrate the mechanism; the numbers are not a result, and the calibration is in-sample.
+
+```
+{"base_accuracy": 0.5833, "cost_accuracy": 0.3333, "best_min_support": 1.0, "n": 12}
+```
+
 ## Measured results
 | Metric | Value | Kind | Caveat |
 |---|---|---|---|
@@ -107,7 +114,7 @@ New. Turn decisions into a prioritised human worklist (Markdown + JSON) with a p
 | Two-reader reconciliation with a real local reader plus a second, independent reader | planned; the policy already abstains on any conflict | original design paired a local multilingual reader with a second reader and only accepted agreement |
 | Re-run the historical 20-item fixture with the local multilingual reader, offline | planned | the 12/20 failure and the false winner that motivated the project |
 | Blind held-out probes written by someone other than the rule author | open | current test probes are not blind |
-| Calibration study before any confidence threshold is used | open | original metric list: calibration only after a separate validated study |
+| Calibration study before any confidence threshold is used | mechanism implemented (costpolicy.calibrate, in-sample, mock data only); validated study still open | original metric list: calibration only after a separate validated study |
 | Prioritised human review queue | implemented (review_queue) | original architecture ended in a human review queue |
 
 ## Credit
