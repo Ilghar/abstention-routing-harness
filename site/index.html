@@ -21,6 +21,7 @@ body{margin:0;background:#f3f1f6}.ilg-case *{box-sizing:border-box}
 .ilg-case figcaption{font-size:.85rem;color:var(--muted);margin-top:.75rem}
 .ilg-case .cards{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
 .ilg-case .card{background:var(--surface);border-radius:14px;padding:1.25rem 1.35rem;box-shadow:var(--shadow-plate)}
+.ilg-case .steps{grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}@media(min-width:60rem){.ilg-case .steps{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .ilg-case .step{counter-increment:s}.ilg-case .steps{counter-reset:s}.ilg-case .step h3::before{content:counter(s,decimal-leading-zero) "  ";color:var(--accent)}
 .ilg-case pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1rem;overflow:auto;font:.85rem/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;word-break:break-word}
 .ilg-case code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em}

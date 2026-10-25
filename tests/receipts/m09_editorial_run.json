@@ -1,0 +1,17 @@
+{
+ "receipt": "m09_editorial_run",
+ "date": "2026-10-25",
+ "timezone": "Europe/Berlin",
+ "command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
+ "tests_run": 29,
+ "result": "OK",
+ "export": "python3 tools/export_site.py",
+ "sha256": {
+  "README.md": "c1a072a0e2deef957f8fae22d4fe6424b1ea2b799d76f7da34cd10e90bd98c86",
+  "site/index.html": "13364b7805b07ed2c7a1440e24f4479193d1eea36ca232b9f23708056093e99c",
+  "docs/CASE_PAGE.md": "4f0f9899d57f6d752e2cce0455a6634704083adaa2a842c87effc855ad5fd76c",
+  "site/project.json": "331b39f5f9a75a14acefe3b772ed47fb0d87b907b072c0e8b57c8cfff4494113",
+  "tools/export_site.py": "79a6449aa4097978231d353c469efae231b7c7dfbdf470c7d9ddcbadb15e8c00"
+ },
+ "notes": "Editorial rewrite: case page, README, studio tokens, original vision. Illustrations in assets/*.svg are placeholders pending a new image round."
+}
