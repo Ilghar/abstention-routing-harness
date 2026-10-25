@@ -14,4 +14,8 @@ class Site(unittest.TestCase):
         p = json.loads((ROOT / "site/project.json").read_text(encoding="utf-8"))
         self.assertEqual((ROOT / "site/index.html").read_text(encoding="utf-8"), export_site.render(p))
         self.assertEqual((ROOT / "docs/CASE_PAGE.md").read_text(encoding="utf-8"), export_site.render_md(p))
+    def test_review_v2_status_caveat_toggle(self):
+        p = json.loads((ROOT / "site/project.json").read_text(encoding="utf-8")); h = export_site.render(p)
+        self.assertIn('<span class="badge">In progress</span>', h); self.assertNotIn(">in_progress<", h)
+        self.assertIn('<p class="caveat">', h); self.assertIn(">Dark mode</button>", h); self.assertIn("'Light mode'", h)
 if __name__ == "__main__": unittest.main()

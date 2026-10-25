@@ -9,9 +9,9 @@
 ## The question
 > How can a routing system abstain reliably on mixed, malformed, conflicting or out-of-domain requests without mistaking model confidence for authority?
 
-Picture an archive of mixed material: spreadsheets, chat threads, notes in English and German. Every item has to reach the right review desk. A language model can suggest a desk in a fraction of a second, and it sounds just as sure when it is wrong.
+Picture an archive of mixed material: spreadsheets, chat threads, notes in English and German. Every item has to reach the right review desk. A language model can suggest a desk instantly, and it sounds just as sure when it is wrong.
 
-The original study behind this project made that concrete. A local multilingual reader proposed queues on a twenty-item historical fixture and failed 12 of 20, including one “false winner”: it confidently picked a desk for an item that belonged to neither. Confidence was being mistaken for authority.
+The original study behind this project made that concrete. A local multilingual reader proposed queues on a twenty-item historical fixture and failed 12 of 20 (by my notes from that study, not re-run here), including one “false winner”: it confidently picked a desk for an item that belonged to neither. Confidence was being mistaken for authority.
 
 This harness turns the lesson into rules you can test. A suggestion is only accepted when the item’s type was confirmed independently, the text is readable and harmless, the budget is valid, and every reader agrees. Everything else goes to a person, with a reason written in plain language. The harness never moves a document; it only advises.
 
@@ -26,9 +26,9 @@ This harness turns the lesson into rules you can test. A suggestion is only acce
 3. **Recorded proposals.** Proposals from one or more readers arrive as JSON (recorded, mocked or from the local keyword rule). No network call and no model loading happen inside the harness.
 4. **Abstain or advise.** Malformed, missing, self-abstaining or conflicting proposals are held back. Only clean agreement becomes an advisory route; documents are never moved.
 5. **Metrics with denominators.** Coverage, selective accuracy, false acceptance and per-class confusion, always as counts over a stated n with Wilson intervals, never a bare percentage.
-6. **Human review queue.** Every held-back item becomes a row in a prioritised worklist with the reason in plain words (new: review_queue).
+6. **Human review queue.** Every held-back item becomes a row in a prioritised worklist with the reason in plain words.
 
-Stages (see `architecture.mmd`, authoritative, and `architecture.svg`): Input record + independent scope label → Pure validation and advisory policy → Recorded or mocked model proposal adapter → Abstention + disagreement decision → Per-class confusion/coverage/error report → Human review queue
+Stages (see `docs/architecture.mmd`, authoritative, and `docs/architecture.svg`): Input record + independent scope label → Pure validation and advisory policy → Recorded or mocked model proposal adapter → Abstention + disagreement decision → Per-class confusion/coverage/error report → Human review queue
 
 ![One card held still on a rose pad while two threads pull it toward different slots.](../assets/disagreement.svg)
 
@@ -71,7 +71,7 @@ Run the 34-case adversarial suite (invisible text, surrogates, NaN budgets, over
 ```
 
 ### `python -m abstention_routing_harness.review_queue out/decisions.json --cases fixtures/synthetic_cases_m03.json --out out/queue.md`
-New. Turn decisions into a prioritised human worklist (Markdown + JSON) with a plain-language reason for every held-back item.
+Turn decisions into a prioritised human worklist (Markdown + JSON) with a plain-language reason for every held-back item.
 
 ```
 {"queued": 10, "of": 16, "by_reason": {"BUDGET_EXCEEDED": 1, "BUDGET_INVALID": 2, "INPUT_NOT_PERMITTED": 1, "NO_PROPOSAL": 1, "PROPOSALS_CONFLICT": 1, "PROPOSAL_ABSTAINED": 1, "PROPOSAL_MALFORMED": 1, "SCOPE_UNVERIFIED": 1, "TEXT_INVALID": 1}}
@@ -83,7 +83,7 @@ New. Turn decisions into a prioritised human worklist (Markdown + JSON) with a p
 ```
 
 ### `python -m abstention_routing_harness.report --out reports/mock fixtures/mock_confidence_proposals_m08.json`
-New. Score cases with the cost/risk policy (expected cost of each route vs the cost of handing to a person), sweep the support threshold, and write a confusion report (expected vs decided: spreadsheet / conversation / person) as JSON and reports/…/index.html. MOCK: the confidences in this fixture are hand-written to demonstrate the mechanism; the numbers are not a result, and the calibration is in-sample.
+Score cases with the cost/risk policy (expected cost of each route vs the cost of handing to a person), sweep the support threshold, and write a confusion report (expected vs decided: spreadsheet / conversation / person) as JSON and reports/…/index.html. MOCK: the confidences in this fixture are hand-written to demonstrate the mechanism; the numbers are not a result, and the calibration is in-sample.
 
 ```
 {"base_accuracy": 0.5833, "cost_accuracy": 0.3333, "best_min_support": 1.0, "n": 12}
@@ -97,7 +97,7 @@ New. Score cases with the cost/risk policy (expected cost of each route vs the c
 | keyword rule coverage (test) | 11/24 = 0.458 | measured, synthetic |  |
 | keyword rule false acceptance (dev) | 1/7 = 0.143 | measured, synthetic | rule developed on dev |
 | majority-class false acceptance (test) | 12/12 = 1.0 | measured baseline |  |
-| adversarial policy suite | 34/34 after M07 fixes (24/34 before) | measured robustness | suite written by policy author |
+| adversarial policy suite | 34/34 (24/34 before the hardening pass) | measured robustness | suite written by policy author |
 
 **Status:** Measured rule baselines and adversarial robustness on synthetic cases; no model results. Private work in progress.
 
@@ -114,7 +114,7 @@ New. Score cases with the cost/risk policy (expected cost of each route vs the c
 | Two-reader reconciliation with a real local reader plus a second, independent reader | planned; the policy already abstains on any conflict | original design paired a local multilingual reader with a second reader and only accepted agreement |
 | Re-run the historical 20-item fixture with the local multilingual reader, offline | planned | the 12/20 failure and the false winner that motivated the project |
 | Blind held-out probes written by someone other than the rule author | open | current test probes are not blind |
-| Calibration study before any confidence threshold is used | mechanism implemented (costpolicy.calibrate, in-sample, mock data only); validated study still open | original metric list: calibration only after a separate validated study |
+| Calibration study before any confidence threshold is used | mechanism implemented, in-sample, mock data only; validated study still open | original metric list: calibration only after a separate validated study |
 | Prioritised human review queue | implemented (review_queue) | original architecture ended in a human review queue |
 
 ## Credit

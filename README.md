@@ -2,16 +2,16 @@
 
 **A small, strict referee that decides which review desk an incoming item belongs to, and knows when to say “I don’t know, a person should look at this.”**
 
-![Cream index cards sorted into a wooden rack; a torn card waits apart in a rose felt tray.](assets/hero.svg)
+![Project board: a muqarnas plan drawn as concentric tiers with one blue cell, a photograph of a folded star model, and a text column on what the harness does.](assets/board-light.svg)
 
-*Items the harness will not route on its own wait for a person. Editorial illustration; the native diagram is authoritative.*
+*Project board, ilghar.studio. A dark version is in `assets/board-dark.svg`.*
 
 ## The question
 > How can a routing system abstain reliably on mixed, malformed, conflicting or out-of-domain requests without mistaking model confidence for authority?
 
-Picture an archive of mixed material: spreadsheets, chat threads, notes in English and German. Every item has to reach the right review desk. A language model can suggest a desk in a fraction of a second, and it sounds just as sure when it is wrong.
+Picture an archive of mixed material: spreadsheets, chat threads, notes in English and German. Every item has to reach the right review desk. A language model can suggest a desk instantly, and it sounds just as sure when it is wrong.
 
-The original study behind this project made that concrete. A local multilingual reader proposed queues on a twenty-item historical fixture and failed 12 of 20, including one “false winner”: it confidently picked a desk for an item that belonged to neither. Confidence was being mistaken for authority.
+The original study behind this project made that concrete. A local multilingual reader proposed queues on a twenty-item historical fixture and failed 12 of 20 (by my notes from that study, not re-run here), including one “false winner”: it confidently picked a desk for an item that belonged to neither. Confidence was being mistaken for authority.
 
 This harness turns the lesson into rules you can test. A suggestion is only accepted when the item’s type was confirmed independently, the text is readable and harmless, the budget is valid, and every reader agrees. Everything else goes to a person, with a reason written in plain language. The harness never moves a document; it only advises.
 
@@ -48,9 +48,9 @@ Static fallback: `docs/architecture.svg`. Deeper notes: `docs/ARCHITECTURE.md`, 
 3. **Recorded proposals.** Proposals from one or more readers arrive as JSON (recorded, mocked or from the local keyword rule). No network call and no model loading happen inside the harness.
 4. **Abstain or advise.** Malformed, missing, self-abstaining or conflicting proposals are held back. Only clean agreement becomes an advisory route; documents are never moved.
 5. **Metrics with denominators.** Coverage, selective accuracy, false acceptance and per-class confusion, always as counts over a stated n with Wilson intervals, never a bare percentage.
-6. **Human review queue.** Every held-back item becomes a row in a prioritised worklist with the reason in plain words (new: review_queue).
+6. **Human review queue.** Every held-back item becomes a row in a prioritised worklist with the reason in plain words.
 
-Stages (see `architecture.mmd`, authoritative, and `architecture.svg`): Input record + independent scope label → Pure validation and advisory policy → Recorded or mocked model proposal adapter → Abstention + disagreement decision → Per-class confusion/coverage/error report → Human review queue
+Stages (see `docs/architecture.mmd`, authoritative, and `docs/architecture.svg`): Input record + independent scope label → Pure validation and advisory policy → Recorded or mocked model proposal adapter → Abstention + disagreement decision → Per-class confusion/coverage/error report → Human review queue
 
 ![One card held still on a rose pad while two threads pull it toward different slots.](assets/disagreement.svg)
 
@@ -104,6 +104,15 @@ New. Turn decisions into a prioritised human worklist (Markdown + JSON) with a p
 | 1 | B09 | `INPUT_NOT_PERMITTED` | The text asks to change permissions, authority or actions; that is never routed automatically. | Archive this conversation |
 ```
 
+## MOCK — hand-written confidences, not a result
+```sh
+PYTHONPATH=src python3 -m abstention_routing_harness.report --out reports/mock fixtures/mock_confidence_proposals_m08.json
+```
+```
+{"base_accuracy": 0.5833, "cost_accuracy": 0.3333, "best_min_support": 1.0, "n": 12}
+```
+Writes `reports/mock/index.html`, `confusion.json` and `calibration.json`. The confidences in the fixture were written by hand to exercise the cost/risk policy; these numbers say nothing about any real model. On this mock fixture the cost policy routes 4 of 12 correctly against 7 of 12 for the existing policy.
+
 ## Measured results
 | Metric | Value | Kind | Caveat |
 |---|---|---|---|
@@ -112,7 +121,7 @@ New. Turn decisions into a prioritised human worklist (Markdown + JSON) with a p
 | keyword rule coverage (test) | 11/24 = 0.458 | measured, synthetic |  |
 | keyword rule false acceptance (dev) | 1/7 = 0.143 | measured, synthetic | rule developed on dev |
 | majority-class false acceptance (test) | 12/12 = 1.0 | measured baseline |  |
-| adversarial policy suite | 34/34 after M07 fixes (24/34 before) | measured robustness | suite written by policy author |
+| adversarial policy suite | 34/34 (24/34 before the hardening pass) | measured robustness | suite written by policy author |
 
 **Status:** Measured rule baselines and adversarial robustness on synthetic cases; no model results. Private work in progress.
 
@@ -129,7 +138,7 @@ New. Turn decisions into a prioritised human worklist (Markdown + JSON) with a p
 | Two-reader reconciliation with a real local reader plus a second, independent reader | planned; the policy already abstains on any conflict | original design paired a local multilingual reader with a second reader and only accepted agreement |
 | Re-run the historical 20-item fixture with the local multilingual reader, offline | planned | the 12/20 failure and the false winner that motivated the project |
 | Blind held-out probes written by someone other than the rule author | open | current test probes are not blind |
-| Calibration study before any confidence threshold is used | open | original metric list: calibration only after a separate validated study |
+| Calibration study before any confidence threshold is used | mechanism implemented, in-sample, mock data only; validated study still open | original metric list: calibration only after a separate validated study |
 | Prioritised human review queue | implemented (review_queue) | original architecture ended in a human review queue |
 
 ## Credit
@@ -137,7 +146,7 @@ Concept, research direction, evaluation design and editorial: ilghar.studio.
 
 
 ## Embedding in ilghar.studio
-`site/index.html` is a static, script-free page whose styles are scoped under `.ilg-case` and use the studio tokens in `site/DESIGN_TOKENS.json`. Content lives in `site/project.json` (schema `site/schema.json`); regenerate with `python3 tools/export_site.py`.
+`site/index.html` is a static page with no dependencies; its only script is the light/dark toggle. Its styles are scoped under `.ilg-case` and use the studio tokens in `site/DESIGN_TOKENS.json`. Content lives in `site/project.json` (schema `site/schema.json`); regenerate with `python3 tools/export_site.py`.
 
 Private work in progress. License: not yet chosen.
 
@@ -148,7 +157,7 @@ Private work in progress. License: not yet chosen.
 - **Recorded proposals.** Proposals from one or more readers arrive as JSON (recorded, mocked or from the local keyword rule). No network call and no model loading happen inside the harness.
 - **Abstain or advise.** Malformed, missing, self-abstaining or conflicting proposals are held back. Only clean agreement becomes an advisory route; documents are never moved.
 - **Metrics with denominators.** Coverage, selective accuracy, false acceptance and per-class confusion, always as counts over a stated n with Wilson intervals, never a bare percentage.
-- **Human review queue.** Every held-back item becomes a row in a prioritised worklist with the reason in plain words (new: review_queue).
+- **Human review queue.** Every held-back item becomes a row in a prioritised worklist with the reason in plain words.
 
 ## Command index
 - `abstention-routing-harness run fixtures/synthetic_cases_m03.json --out out/`: Apply the policy to 16 hand-written cases with mock proposals. Writes decisions.json and report.json. Mock data, not a model result.
@@ -156,8 +165,8 @@ Private work in progress. License: not yet chosen.
 - `abstention-routing-harness collection . --out out/c`: Validate the versioned case collection against schemas/case.schema.json and write a hashed manifest.
 - `abstention-routing-harness baselines . --out out/b`: Compare three baselines on dev and test: always abstain, always pick the majority desk, and the keyword rule. Values are [coverage, selective accuracy, false acceptance].
 - `abstention-routing-harness failure . --out out/f`: Run the 34-case adversarial suite (invisible text, surrogates, NaN budgets, oversized proposals) and classify held-out errors.
-- `python -m abstention_routing_harness.review_queue out/decisions.json --cases fixtures/synthetic_cases_m03.json --out out/queue.md`: New. Turn decisions into a prioritised human worklist (Markdown + JSON) with a plain-language reason for every held-back item.
-- `python -m abstention_routing_harness.report --out reports/mock fixtures/mock_confidence_proposals_m08.json`: New. Score cases with the cost/risk policy (expected cost of each route vs the cost of handing to a person), sweep the support threshold, and write a confusion report (expected vs decided: spreadsheet / conversation / person) as JSON and reports/…/index.html. MOCK: the confidences in this fixture are hand-written to demonstrate the mechanism; the numbers are not a result, and the calibration is in-sample.
+- `python -m abstention_routing_harness.review_queue out/decisions.json --cases fixtures/synthetic_cases_m03.json --out out/queue.md`: Turn decisions into a prioritised human worklist (Markdown + JSON) with a plain-language reason for every held-back item.
+- `python -m abstention_routing_harness.report --out reports/mock fixtures/mock_confidence_proposals_m08.json`: Score cases with the cost/risk policy (expected cost of each route vs the cost of handing to a person), sweep the support threshold, and write a confusion report (expected vs decided: spreadsheet / conversation / person) as JSON and reports/…/index.html. MOCK: the confidences in this fixture are hand-written to demonstrate the mechanism; the numbers are not a result, and the calibration is in-sample.
 
 Full output for every command: `docs/CASE_PAGE.md`.
 <!-- commands:end -->
