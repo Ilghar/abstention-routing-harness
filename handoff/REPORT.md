@@ -13,3 +13,6 @@ Budget: week1 3% used at 11:09 Berlin (user reading); pool vs Expert unknown
 Drive mirror: see portfolio/HANDOFF.md
 Next three actions: handoff/NEXT.md
 Pending review/publication: license choice, public visibility (not requested)
+
+## Review pass (2026-10-25)
+AI self-review by a separate pass, not a human review. See `docs/REVIEW_M01_M07.md` for findings and fixes. Tests: `tests/receipts/review_run.json`. Milestone count unchanged (7/10).

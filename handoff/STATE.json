@@ -1,150 +1,150 @@
 {
-  "schema_version": 1,
-  "project_id": "01",
-  "stage": "bot_m07_accepted",
-  "owner": "Grok Bot (coordinator)",
-  "repository": {
-    "url": "https://github.com/Ilghar/abstention-routing-harness",
-    "branch": "main",
-    "commit": "M02 9c8a8c2d0002af084abf46b156ea880f1d870f3f; M03 243f18b8ba59dedece282e3f3a05700e94f039f9; M04 c1bdb38d0332263015158841c5b7aecc354b967e; M05/M06 4d6c36e59565ab5504fcb4ab0c598b65b5202ed3; latest in Drive MANIFEST_M07.json",
-    "visibility": "private"
+ "schema_version": 1,
+ "project_id": "01",
+ "stage": "bot_m07_accepted",
+ "owner": "Grok Bot (coordinator)",
+ "repository": {
+  "url": "https://github.com/Ilghar/abstention-routing-harness",
+  "branch": "main",
+  "commit": "M02 9c8a8c2d0002af084abf46b156ea880f1d870f3f; M03 243f18b8ba59dedece282e3f3a05700e94f039f9; M04 c1bdb38d0332263015158841c5b7aecc354b967e; M05/M06 4d6c36e59565ab5504fcb4ab0c598b65b5202ed3; latest in Drive MANIFEST_M07.json",
+  "visibility": "private"
+ },
+ "drive_folder_url": "https://drive.google.com/drive/folders/1WHIwl7Jixw0ZqEDu1XO2Y64qCNqTG3Va",
+ "milestones": [
+  {
+   "id": "M01",
+   "status": "accepted",
+   "evidence": [
+    "docs/SOURCES.md",
+    "docs/PRODUCT_CONTRACT.md",
+    "inputs/source_register.jsonl"
+   ]
   },
-  "drive_folder_url": "https://drive.google.com/drive/folders/1WHIwl7Jixw0ZqEDu1XO2Y64qCNqTG3Va",
-  "milestones": [
-    {
-      "id": "M01",
-      "status": "accepted",
-      "evidence": [
-        "docs/SOURCES.md",
-        "docs/PRODUCT_CONTRACT.md",
-        "inputs/source_register.jsonl"
-      ]
-    },
-    {
-      "id": "M02",
-      "status": "accepted",
-      "evidence": [
-        "docs/ARCHITECTURE.md",
-        "docs/REVIEW_M01_M03.md",
-        "docs/adr/0001-scope-and-boundaries.md",
-        "docs/architecture.mmd",
-        "schemas/case.schema.json",
-        "schemas/decision.schema.json",
-        "schemas/report.schema.json",
-        "tools/check_m02.py"
-      ]
-    },
-    {
-      "id": "M03",
-      "status": "accepted",
-      "evidence": [
-        "src/abstention_routing_harness/__init__.py",
-        "src/abstention_routing_harness/__main__.py",
-        "src/abstention_routing_harness/cli.py",
-        "src/abstention_routing_harness/metrics.py",
-        "src/abstention_routing_harness/policy.py",
-        "tests/test_policy.py",
-        "fixtures/synthetic_cases_m03.json",
-        "tests/receipts/m03_run.json",
-        "tests/receipts/m03_report.json",
-        "README.md"
-      ]
-    },
-    {
-      "id": "M04",
-      "status": "accepted",
-      "evidence": [
-        "src/abstention_routing_harness/pipeline.py",
-        "tests/test_slice.py",
-        "inputs/synthetic_queue_fixture.json",
-        "fixtures/ood_probes_m04.json",
-        "tests/receipts/m04_run.json",
-        "tests/receipts/m04_report.json",
-        "docs/REVIEW_M01_M03.md"
-      ]
-    },
-    {
-      "id": "M05",
-      "status": "accepted",
-      "evidence": [
-        "src/abstention_routing_harness/schema.py",
-        "data/collection_v1/DATASHEET.md",
-        "tests/receipts/m05_manifest.json",
-        "tests/receipts/m05_m06_run.json",
-        "src/abstention_routing_harness/collection.py",
-        "data/collection_v1/heldout_probes.json",
-        "tests/test_m05_m06.py"
-      ]
-    },
-    {
-      "id": "M06",
-      "status": "accepted",
-      "evidence": [
-        "docs/RESULTS.md",
-        "tests/receipts/m06_baselines.json",
-        "tests/test_m05_m06.py"
-      ]
-    },
-    {
-      "id": "M07",
-      "status": "accepted",
-      "evidence": [
-        "docs/FAILURE_ANALYSIS.md",
-        "src/abstention_routing_harness/failure.py",
-        "tests/test_m07.py",
-        "tests/receipts/m07_failure.json",
-        "tests/receipts/m07_prefix_run.json",
-        "tests/receipts/m07_run.json"
-      ]
-    },
-    {
-      "id": "M08",
-      "status": "not_started",
-      "evidence": []
-    },
-    {
-      "id": "M09",
-      "status": "not_started",
-      "evidence": []
-    },
-    {
-      "id": "M10",
-      "status": "not_started",
-      "evidence": []
-    }
-  ],
-  "tests": [
-    {
-      "command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
-      "scope": "behavioural, synthetic/mock fixtures",
-      "receipt": "tests/receipts/m07_run.json"
-    },
-    {
-      "command": "python3 common/validate_state.py handoff/STATE.json --root .",
-      "scope": "bookkeeping only"
-    }
-  ],
-  "next_actions": [
-    "Blind probe set by Ilghar/Expert",
-    "Independent review of M01-M07",
-    "M08 packaging/CI (pyproject, GitHub Actions on private repo)"
-  ],
-  "budget": {
-    "observed_remaining": "week1 3% used at 11:09 Berlin (user reading)",
-    "pool_relationship": "unknown",
-    "paid_spend_allowed": false
+  {
+   "id": "M02",
+   "status": "accepted",
+   "evidence": [
+    "docs/ARCHITECTURE.md",
+    "docs/REVIEW_M01_M03.md",
+    "docs/adr/0001-scope-and-boundaries.md",
+    "docs/architecture.mmd",
+    "schemas/case.schema.json",
+    "schemas/decision.schema.json",
+    "schemas/report.schema.json",
+    "tools/check_m02.py"
+   ]
   },
-  "completion_fraction": 0.7,
-  "notes": "M01-M07 accepted by Bot review only (not independent). Illustration generated (assets/ASSETS.json), binary on Drive only.",
-  "lease": {
-    "status": "active",
-    "released_at": null,
-    "holder": "Grok Bot",
-    "note": "Bot owns main until release report"
+  {
+   "id": "M03",
+   "status": "accepted",
+   "evidence": [
+    "src/abstention_routing_harness/__init__.py",
+    "src/abstention_routing_harness/__main__.py",
+    "src/abstention_routing_harness/cli.py",
+    "src/abstention_routing_harness/metrics.py",
+    "src/abstention_routing_harness/policy.py",
+    "tests/test_policy.py",
+    "fixtures/synthetic_cases_m03.json",
+    "tests/receipts/m03_run.json",
+    "tests/receipts/m03_report.json",
+    "README.md"
+   ]
   },
-  "portfolio_control_locator": {
-    "coordinator_project": "01",
-    "repo_path": "portfolio/ (in abstention-routing-harness)",
-    "drive_path": "project01 outputs/current/portfolio/"
+  {
+   "id": "M04",
+   "status": "accepted",
+   "evidence": [
+    "src/abstention_routing_harness/pipeline.py",
+    "tests/test_slice.py",
+    "inputs/synthetic_queue_fixture.json",
+    "fixtures/ood_probes_m04.json",
+    "tests/receipts/m04_run.json",
+    "tests/receipts/m04_report.json",
+    "docs/REVIEW_M01_M03.md"
+   ]
+  },
+  {
+   "id": "M05",
+   "status": "accepted",
+   "evidence": [
+    "src/abstention_routing_harness/schema.py",
+    "data/collection_v1/DATASHEET.md",
+    "tests/receipts/m05_manifest.json",
+    "tests/receipts/m05_m06_run.json",
+    "src/abstention_routing_harness/collection.py",
+    "data/collection_v1/heldout_probes.json",
+    "tests/test_m05_m06.py"
+   ]
+  },
+  {
+   "id": "M06",
+   "status": "accepted",
+   "evidence": [
+    "docs/RESULTS.md",
+    "tests/receipts/m06_baselines.json",
+    "tests/test_m05_m06.py"
+   ]
+  },
+  {
+   "id": "M07",
+   "status": "accepted",
+   "evidence": [
+    "docs/FAILURE_ANALYSIS.md",
+    "src/abstention_routing_harness/failure.py",
+    "tests/test_m07.py",
+    "tests/receipts/m07_failure.json",
+    "tests/receipts/m07_prefix_run.json",
+    "tests/receipts/m07_run.json"
+   ]
+  },
+  {
+   "id": "M08",
+   "status": "not_started",
+   "evidence": []
+  },
+  {
+   "id": "M09",
+   "status": "not_started",
+   "evidence": []
+  },
+  {
+   "id": "M10",
+   "status": "not_started",
+   "evidence": []
   }
+ ],
+ "tests": [
+  {
+   "command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
+   "scope": "behavioural, synthetic/mock fixtures",
+   "receipt": "tests/receipts/review_run.json"
+  },
+  {
+   "command": "python3 common/validate_state.py handoff/STATE.json --root .",
+   "scope": "bookkeeping only"
+  }
+ ],
+ "next_actions": [
+  "Blind probe set by Ilghar/Expert",
+  "M08 packaging/CI (pyproject, GitHub Actions on private repo)",
+  "Human/independent review of M01-M07 (AI self-review done)"
+ ],
+ "budget": {
+  "observed_remaining": "week1 3% used at 11:09 Berlin (user reading)",
+  "pool_relationship": "unknown",
+  "paid_spend_allowed": false
+ },
+ "completion_fraction": 0.7,
+ "notes": "M01-M07 accepted by Bot review only (not independent). Illustration generated (assets/ASSETS.json), binary on Drive only. M01-M07 re-checked 2026-10-25 by AI self-review (separate pass, not human): docs/REVIEW_M01_M07.md.",
+ "lease": {
+  "status": "active",
+  "released_at": null,
+  "holder": "Grok Bot",
+  "note": "Bot owns main until release report"
+ },
+ "portfolio_control_locator": {
+  "coordinator_project": "01",
+  "repo_path": "portfolio/ (in abstention-routing-harness)",
+  "drive_path": "project01 outputs/current/portfolio/"
+ }
 }

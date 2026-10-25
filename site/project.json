@@ -3,7 +3,7 @@
  "title": "Abstention and routing evaluation harness",
  "summary": "How can a routing system abstain reliably on mixed, malformed, conflicting or out-of-domain requests without mistaking model confidence for authority?",
  "status": "in_progress",
- "evidence_level": "Measured rule baselines on synthetic cases; no model results",
+ "evidence_level": "Measured rule baselines and adversarial robustness on synthetic cases; no model results",
  "contribution": "Ilghar Dadgostari: problem framing, requirements and evaluation direction. Implementation AI-assisted (Grok Bot), reviewed only by Grok Bot so far.",
  "architecture": [
   "Input record + independent scope label",

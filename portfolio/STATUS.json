@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23 M07",
+ "updated": "2026-10-25 review pass (AI self-review, not human)",
  "projects": {
   "01": {
    "repo": "Ilghar/abstention-routing-harness",
@@ -64,5 +64,25 @@
   },
   "M07": "see Drive MANIFEST_M07.json"
  },
- "drive_mirror": "MANIFEST, _M03, _M04, _M05_M06 verified by size; illustrations uploaded"
+ "drive_mirror": "MANIFEST, _M03, _M04, _M05_M06 verified by size; illustrations uploaded",
+ "review": {
+  "type": "AI self-review by separate pass, not human",
+  "doc": "docs/REVIEW_M01_M07.md in each repo",
+  "findings_fixed": {
+   "01": [
+    "R-01",
+    "R-04"
+   ],
+   "02": [
+    "R-01",
+    "R-02"
+   ],
+   "03": [
+    "R-01",
+    "R-03",
+    "R-05"
+   ]
+  },
+  "milestones_changed": false
+ }
 }
