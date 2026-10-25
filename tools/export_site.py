@@ -35,11 +35,23 @@ body{margin:0}.ilg-case *{box-sizing:border-box}
 .ilg-case th{font-weight:600;color:var(--ink);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
 .ilg-case ul{padding-inline-start:1.2rem}.ilg-case li{margin:.3rem 0}.ilg-case footer{margin-top:5rem;color:var(--ink);font-size:.9rem;border-top:1px solid var(--line);padding-top:1.5rem}
 .ilg-case ::selection{background:color-mix(in oklab,var(--accent) 38%,transparent)}
-@media (prefers-reduced-motion:reduce){.ilg-case *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}"""
+@media (prefers-reduced-motion:reduce){.ilg-case *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.ilg-case .board{margin:2rem 0}.ilg-case .board img{width:100%;height:auto;display:block;border-radius:6px;box-shadow:var(--shadow-frame)}
+.ilg-case .board .b-light,.ilg-case .board .b-dark{display:none}
+.ilg-case[data-theme=light] .board .b-auto,.ilg-case[data-theme=dark] .board .b-auto{display:none}
+.ilg-case[data-theme=light] .board .b-light,.ilg-case[data-theme=dark] .board .b-dark{display:block}"""
 
 def render(p):
     e = lambda s: html.escape(str(s), quote=True)
     fig = lambda a: f'<figure><img src="{e(a["src"])}" alt="{e(a["alt"])}" width="{e(a.get("width",1280))}" height="{e(a.get("height",720))}" loading="lazy"><figcaption>{e(a.get("caption",""))}</figcaption></figure>' if a else ""
+    def board(b):
+        """Light/dark project board: <picture> follows prefers-color-scheme; the manual theme toggle (data-theme) swaps to a fixed variant via CSS."""
+        if not b: return ""
+        dim = f'width="{e(b.get("width",2400))}" height="{e(b.get("height",1500))}"'
+        return (f'<figure class="board"><picture class="b-auto"><source media="(prefers-color-scheme: dark)" srcset="{e(b["dark"])}">'
+                f'<img src="{e(b["light"])}" alt="{e(b["alt"])}" {dim}></picture>'
+                f'<img class="b-light" src="{e(b["light"])}" alt="" {dim} loading="lazy"><img class="b-dark" src="{e(b["dark"])}" alt="" {dim} loading="lazy">'
+                f'<figcaption>{e(b.get("caption",""))}</figcaption></figure>')
     hero = p.get("hero"); figs = {f["id"]: f for f in p.get("figures", [])}
     paras = lambda xs: "".join(f"<p>{e(x)}</p>" for x in xs)
     rows = "".join(f"<tr><td>{e(r['metric'])}</td><td>{e(r['value'])}</td><td>{e(r['denominator'])}</td><td>{e(r['kind'])}</td><td>{e(r.get('caveat',''))}</td></tr>" for r in p["results"])
@@ -54,7 +66,7 @@ def render(p):
 <title>{e(p['title'])} · ilghar.studio</title><style>{CSS}</style></head><body><div class="ilg-case">{THEME.TOGGLE}<main>
 <header class="col"><p class="kicker">ilghar.studio · case study</p><h1>{e(p['title'])}</h1><p class="pitch">{e(p.get('pitch', p['summary']))}</p>
 <p><span class="badge">{e(p['status'])}</span><span class="badge">{e(p['evidence_level'])}</span></p></header>
-{fig(hero)}
+{board(p["board"]) if p.get("board") else fig(hero)}
 <section class="col"><h2>The question</h2><p class="pitch">{e(p['summary'])}</p>{paras(p.get('problem', []))}</section>
 {('<section><h2>Who it is for</h2><div class="cards">' + who + '</div></section>') if who else ''}
 <section><h2>How it works</h2><div class="cards steps">{steps}</div>
@@ -75,6 +87,7 @@ def render_md(p):
     lim = "\n".join(f"- {s}" for s in p.get("limitations", []))
     hero = p.get("hero"); figs = {f["id"]: f for f in p.get("figures", [])}
     img = lambda a: f"![{a['alt']}]({a['src']})\n\n*{a.get('caption','')}*\n\n" if a else ""
+    if p.get("board"): hero = {"src": p["board"]["light"], "alt": p["board"]["alt"], "caption": p["board"].get("caption", "")}
     how = "\n".join(f"{i}. **{s['title']}.** {s['body']}" for i, s in enumerate(p.get("how", []), 1))
     who = "\n".join(f"- **{a['who']}:** {a['why']}" for a in p.get("audience", []))
     cmds = "\n\n".join(f"### `{c['cmd']}`\n{c['what']}\n\n```\n{c['output']}\n```" for c in p.get("commands", []))

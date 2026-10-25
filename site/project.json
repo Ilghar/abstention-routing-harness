@@ -117,12 +117,13 @@
    "body": "Every held-back item becomes a row in a prioritised worklist with the reason in plain words (new: review_queue)."
   }
  ],
- "hero": {
-  "src": "../assets/hero.svg",
-  "alt": "Cream index cards sorted into a wooden rack; a torn card waits apart in a rose felt tray.",
-  "caption": "Items the harness will not route on its own wait for a person. Editorial illustration; the native diagram is authoritative.",
-  "width": 1280,
-  "height": 720
+ "board": {
+  "light": "../assets/board-light.svg",
+  "dark": "../assets/board-dark.svg",
+  "width": 2400,
+  "height": 1500,
+  "alt": "Project board: a code-drawn muqarnas plan with one cell marked blue as the chosen void, a white folded-paper star model, and a text column explaining answer, route or abstain.",
+  "caption": "Project board, ilghar.studio. Light and dark versions follow the page theme."
  },
  "figures": [
   {

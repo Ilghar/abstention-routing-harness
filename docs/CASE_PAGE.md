@@ -2,9 +2,9 @@
 
 **A small, strict referee that decides which review desk an incoming item belongs to, and knows when to say “I don’t know, a person should look at this.”**
 
-![Cream index cards sorted into a wooden rack; a torn card waits apart in a rose felt tray.](../assets/hero.svg)
+![Project board: a code-drawn muqarnas plan with one cell marked blue as the chosen void, a white folded-paper star model, and a text column explaining answer, route or abstain.](../assets/board-light.svg)
 
-*Items the harness will not route on its own wait for a person. Editorial illustration; the native diagram is authoritative.*
+*Project board, ilghar.studio. Light and dark versions follow the page theme.*
 
 ## The question
 > How can a routing system abstain reliably on mixed, malformed, conflicting or out-of-domain requests without mistaking model confidence for authority?
