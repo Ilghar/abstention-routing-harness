@@ -122,7 +122,7 @@
   "dark": "../assets/board-dark.svg",
   "width": 2400,
   "height": 1500,
-  "alt": "Project board: a code-drawn muqarnas plan with one cell marked blue as the chosen void, a white folded-paper star model, and a text column explaining answer, route or abstain.",
+  "alt": "Project board: a code-drawn muqarnas plan with one rose cell as the chosen void, a code-drawn star pattern with one rose tile, and a text column explaining answer, route or abstain.",
   "caption": "Project board, ilghar.studio. Light and dark versions follow the page theme."
  },
  "figures": [
