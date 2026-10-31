@@ -10,7 +10,7 @@ Diagram: `docs/architecture.mmd`. Decision record: `docs/adr/0001-scope-and-boun
 | `identity.py` | sha256 over canonical JSON `[text, model_id, revision, rubric]` | none |
 | `adapters.py` | Read **recorded/mock** proposals from JSON only; no import of model packages | file read |
 | `metrics.py` | Coverage, selective accuracy, false acceptance, confusion, disagreement | none |
-| `cli.py` | `python -m abstention_routing_harness run FIXTURE --out DIR` | writes DIR |
+| `cli.py` | `python3 -m abstention_routing_harness run FIXTURE --out DIR` | writes DIR |
 
 ## Decision gates (first failing gate wins → `route: human`)
 1. text not str / empty / >2000 → `TEXT_INVALID`

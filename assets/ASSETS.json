@@ -8,7 +8,7 @@
    "source_png_sha256": "b0220bdb6814ea756dbffe6f2669af9d57cae72843d68a48026df0ebcf12da7d",
    "width": 2400,
    "height": 1500,
-   "embedded": "JPEG q85 in SVG wrapper"
+   "embedded": "lossless PNG (source_png_sha256) in SVG wrapper"
   },
   {
    "path": "assets/board-dark.svg",
@@ -16,7 +16,7 @@
    "source_png_sha256": "ff2096ed0bec55eb10dff19f074e510a204b68b0a8ada054456f0c440ac6c6c7",
    "width": 2400,
    "height": 1500,
-   "embedded": "JPEG q85 in SVG wrapper"
+   "embedded": "lossless PNG (source_png_sha256) in SVG wrapper"
   }
  ],
  "usage": "<picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/board-dark.svg\"><img src=\"assets/board-light.svg\"></picture>",

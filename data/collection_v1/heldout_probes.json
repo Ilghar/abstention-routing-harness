@@ -1,5 +1,5 @@
 {
- "note": "Held-out probes written by Grok Bot on 2026-10-23 after the keyword rule existed, from TEST_PLAN categories (vocabulary shift, mixed, homograph traps, injection). The author knew the rule, so this is NOT a blind held-out set; a user/Expert-written set is still needed. Labels are the author's and unreviewed.",
+ "note": "Held-out probes written by ilghar.studio on 2026-10-23 after the keyword rule existed, from TEST_PLAN categories (vocabulary shift, mixed, homograph traps, injection). The author knew the rule, so this is NOT a blind held-out set; a user/Expert-written set is still needed. Labels are the author's and unreviewed.",
  "version": "1.0.0",
  "cases": [
   {

@@ -70,7 +70,7 @@ Run the 34-case adversarial suite (invisible text, surrogates, NaN budgets, over
 {"adversarial_passed": "34/34", "test_errors": {"over_abstention": 6, "false_acceptance": 5}}
 ```
 
-### `python -m abstention_routing_harness.review_queue out/decisions.json --cases fixtures/synthetic_cases_m03.json --out out/queue.md`
+### `python3 -m abstention_routing_harness.review_queue out/decisions.json --cases fixtures/synthetic_cases_m03.json --out out/queue.md`
 Turn decisions into a prioritised human worklist (Markdown + JSON) with a plain-language reason for every held-back item.
 
 ```
@@ -82,7 +82,7 @@ Turn decisions into a prioritised human worklist (Markdown + JSON) with a plain-
 | 1 | B09 | `INPUT_NOT_PERMITTED` | The text asks to change permissions, authority or actions; that is never routed automatically. | Archive this conversation |
 ```
 
-### `python -m abstention_routing_harness.report --out reports/mock fixtures/mock_confidence_proposals_m08.json`
+### `python3 -m abstention_routing_harness.report --out reports/mock fixtures/mock_confidence_proposals_m08.json`
 Score cases with the cost/risk policy (expected cost of each route vs the cost of handing to a person), sweep the support threshold, and write a confusion report (expected vs decided: spreadsheet / conversation / person) as JSON and reports/…/index.html. MOCK: the confidences in this fixture are hand-written to demonstrate the mechanism; the numbers are not a result, and the calibration is in-sample.
 
 ```

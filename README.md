@@ -22,6 +22,7 @@ This harness turns the lesson into rules you can test. A suggestion is only acce
 
 ## Install and run (offline, Python ≥ 3.11, no dependencies)
 ```sh
+python3 -m venv .venv && . .venv/bin/activate   # isolated environment (Windows: .venv\Scripts\activate)
 python3 -m pip install --no-index .          # console script: abstention-routing-harness
 PYTHONPATH=src python3 -m unittest discover -s tests -v
 sh examples/run.sh                           # reinstall in a temp venv and compare outputs with examples/expected.sha256
@@ -92,7 +93,7 @@ Run the 34-case adversarial suite (invisible text, surrogates, NaN budgets, over
 {"adversarial_passed": "34/34", "test_errors": {"over_abstention": 6, "false_acceptance": 5}}
 ```
 
-### `python -m abstention_routing_harness.review_queue out/decisions.json --cases fixtures/synthetic_cases_m03.json --out out/queue.md`
+### `python3 -m abstention_routing_harness.review_queue out/decisions.json --cases fixtures/synthetic_cases_m03.json --out out/queue.md`
 New. Turn decisions into a prioritised human worklist (Markdown + JSON) with a plain-language reason for every held-back item.
 
 ```
@@ -165,8 +166,8 @@ Private work in progress. License: not yet chosen.
 - `abstention-routing-harness collection . --out out/c`: Validate the versioned case collection against schemas/case.schema.json and write a hashed manifest.
 - `abstention-routing-harness baselines . --out out/b`: Compare three baselines on dev and test: always abstain, always pick the majority desk, and the keyword rule. Values are [coverage, selective accuracy, false acceptance].
 - `abstention-routing-harness failure . --out out/f`: Run the 34-case adversarial suite (invisible text, surrogates, NaN budgets, oversized proposals) and classify held-out errors.
-- `python -m abstention_routing_harness.review_queue out/decisions.json --cases fixtures/synthetic_cases_m03.json --out out/queue.md`: Turn decisions into a prioritised human worklist (Markdown + JSON) with a plain-language reason for every held-back item.
-- `python -m abstention_routing_harness.report --out reports/mock fixtures/mock_confidence_proposals_m08.json`: Score cases with the cost/risk policy (expected cost of each route vs the cost of handing to a person), sweep the support threshold, and write a confusion report (expected vs decided: spreadsheet / conversation / person) as JSON and reports/…/index.html. MOCK: the confidences in this fixture are hand-written to demonstrate the mechanism; the numbers are not a result, and the calibration is in-sample.
+- `python3 -m abstention_routing_harness.review_queue out/decisions.json --cases fixtures/synthetic_cases_m03.json --out out/queue.md`: Turn decisions into a prioritised human worklist (Markdown + JSON) with a plain-language reason for every held-back item.
+- `python3 -m abstention_routing_harness.report --out reports/mock fixtures/mock_confidence_proposals_m08.json`: Score cases with the cost/risk policy (expected cost of each route vs the cost of handing to a person), sweep the support threshold, and write a confusion report (expected vs decided: spreadsheet / conversation / person) as JSON and reports/…/index.html. MOCK: the confidences in this fixture are hand-written to demonstrate the mechanism; the numbers are not a result, and the calibration is in-sample.
 
 Full output for every command: `docs/CASE_PAGE.md`.
 <!-- commands:end -->
