@@ -84,7 +84,7 @@
   },
   {
    "who": "Evaluators and reviewers",
-   "why": "The reason codes and identity hashes let you compare and audit runs line by line."
+   "why": "Runs can be compared line by line (see above)."
   },
   {
    "who": "Archivists and operations teams",

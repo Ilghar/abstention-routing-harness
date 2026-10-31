@@ -19,7 +19,7 @@ This harness turns the lesson into rules you can test. A suggestion is only acce
 
 ## Who it is for
 - **People building triage or routing on top of language models:** A ready-made set of gates, reason codes and metrics for measuring how often the system admits work it should have refused.
-- **Evaluators and reviewers:** The reason codes and identity hashes let you compare and audit runs line by line.
+- **Evaluators and reviewers:** Runs can be compared line by line (see above).
 - **Archivists and operations teams:** A prioritized human review queue that explains why each item was held back, instead of a silent “unknown”.
 
 ## Install and run (offline, Python ≥ 3.11, no dependencies)
