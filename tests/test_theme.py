@@ -21,9 +21,17 @@ class Theme(unittest.TestCase):
                 self.assertNotRegex(css, r"(?<![-\w])color:var\(--%s\)" % tok, f"{pg.name}: --{tok} used as text colour")
     def test_palette_is_exactly_the_studio_palette(self):
         studio = {"#f3f1f6", "#fffcfe", "#4a3a5c", "#7a688c", "#a394ae", "#c97a98", "#fffafc", "#e4dde8",
-                  "#4a434c", "#5a535c", "#f4eef3", "#cbbdce", "#9a8a9c", "#e8a8bc", "#2c262f", "#4a424c"}
+                  "#4a434c", "#5a535c", "#f4eef3", "#cbbdce", "#e8a8bc", "#a394ae"}
         used = {v for m in theme.TOKENS.values() for v in m.values()} | set(theme.FIGURE_BG.values())
         self.assertEqual(used - studio, set())
+    def test_retired_dark_values_are_gone(self):
+        # ilghar.studio src/styles.css (PR #1, round 3): dark subtle #cbbdce, accent-fg #4a434c, line #a394ae.
+        # Light accent-fg #fffafc is the value that stylesheet uses, so it is allowed.
+        retired = re.compile(r"#(9a8a9c|2c262f|4a424c)\b", re.I)
+        self.assertEqual(retired.findall(repr(theme.TOKENS) + repr(theme.FIGURE_BG)), [])
+        for f in ("reports/index.html", "reports/mock/index.html", "site/index.html", "site/DESIGN_TOKENS.json"):
+            self.assertEqual(retired.findall((ROOT / f).read_text(encoding="utf-8")), [], f)
+        self.assertEqual(theme.TOKENS["light"]["accent-fg"], "#fffafc")
     def test_contrast_formula_reference_values(self):
         self.assertAlmostEqual(theme.contrast("#000000", "#ffffff"), 21.0, places=2)
         self.assertAlmostEqual(theme.contrast("#777777", "#ffffff"), 4.48, places=2)

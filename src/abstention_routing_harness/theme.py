@@ -14,8 +14,8 @@ an explicit choice is stored in localStorage["ilg-theme"] and applied as data-th
 TOKENS = {
     "light": {"canvas": "#f3f1f6", "surface": "#fffcfe", "ink": "#4a3a5c", "muted": "#7a688c", "subtle": "#a394ae",
               "accent": "#c97a98", "accent-fg": "#fffafc", "line": "#e4dde8", "ring": "#c97a98"},
-    "dark": {"canvas": "#4a434c", "surface": "#5a535c", "ink": "#f4eef3", "muted": "#cbbdce", "subtle": "#9a8a9c",
-             "accent": "#e8a8bc", "accent-fg": "#2c262f", "line": "#4a424c", "ring": "#e8a8bc"},
+    "dark": {"canvas": "#4a434c", "surface": "#5a535c", "ink": "#f4eef3", "muted": "#cbbdce", "subtle": "#cbbdce",
+             "accent": "#e8a8bc", "accent-fg": "#4a434c", "line": "#a394ae", "ring": "#e8a8bc"},
 }
 # Figures sit on a light plate in both themes (studio --surface / light --canvas) so art drawn on paper stays legible.
 FIGURE_BG = {"light": "#fffcfe", "dark": "#f3f1f6"}
