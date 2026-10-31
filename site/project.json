@@ -65,7 +65,7 @@
   }
  ],
  "limitations": [
-  "All items are synthetic; no model was run. Mock results are labelled as mocks.",
+  "All items are synthetic; no model was run. Mock results are labeled as mocks.",
   "Test probes were written by the same author after the rule existed, so they are not blind.",
   "Historical multilingual-reader fixtures are summaries, not re-runs, and measure a different task.",
   "Reviews so far are self-reviews; no independent reviewer yet.",
@@ -84,11 +84,11 @@
   },
   {
    "who": "Evaluators and reviewers",
-   "why": "Every decision carries a reason code and a stable identity hash, so runs can be compared and audited line by line."
+   "why": "The reason codes and identity hashes let you compare and audit runs line by line."
   },
   {
    "who": "Archivists and operations teams",
-   "why": "A prioritised human review queue that explains why each item was held back, instead of a silent “unknown”."
+   "why": "A prioritized human review queue that explains why each item was held back, instead of a silent “unknown”."
   }
  ],
  "how": [
@@ -114,7 +114,7 @@
   },
   {
    "title": "Human review queue",
-   "body": "Every held-back item becomes a row in a prioritised worklist with the reason in plain words."
+   "body": "Every held-back item becomes a row in a prioritized worklist with the reason in plain words."
   }
  ],
  "board": {
@@ -163,7 +163,7 @@
   },
   {
    "cmd": "python3 -m abstention_routing_harness.review_queue out/decisions.json --cases fixtures/synthetic_cases_m03.json --out out/queue.md",
-   "what": "Turn decisions into a prioritised human worklist (Markdown + JSON) with a plain-language reason for every held-back item.",
+   "what": "Turn decisions into a prioritized human worklist (Markdown + JSON) with a plain-language reason for every held-back item.",
    "output": "{\"queued\": 10, \"of\": 16, \"by_reason\": {\"BUDGET_EXCEEDED\": 1, \"BUDGET_INVALID\": 2, \"INPUT_NOT_PERMITTED\": 1, \"NO_PROPOSAL\": 1, \"PROPOSALS_CONFLICT\": 1, \"PROPOSAL_ABSTAINED\": 1, \"PROPOSAL_MALFORMED\": 1, \"SCOPE_UNVERIFIED\": 1, \"TEXT_INVALID\": 1}}\n\n| Priority | Case | Reason | Why it was held back | Excerpt |\n|---|---|---|---|---|\n| 1 | B08 | `SCOPE_UNVERIFIED` | Nobody independently confirmed what kind of item this is, so no proposal may be trusted. | Format the header row |\n| 1 | B09 | `INPUT_NOT_PERMITTED` | The text asks to change permissions, authority or actions; that is never routed automatically. | Archive this conversation |"
   },
   {

@@ -1,6 +1,6 @@
 # Abstention & Routing Harness
 
-**A small, strict referee that decides which review desk an incoming item belongs to, and knows when to say “I don’t know, a person should look at this.”**
+**Decides which review desk an item goes to, and sends it to a person when it can’t be sure.**
 
 ![Project board: a code-drawn muqarnas plan with one rose cell as the chosen void, a code-drawn star pattern with one rose tile, and a text column explaining answer, route or abstain.](assets/board-light.svg)
 
@@ -9,16 +9,18 @@
 ## The question
 > How can a routing system abstain reliably on mixed, malformed, conflicting or out-of-domain requests without mistaking model confidence for authority?
 
+Every decision carries a reason code and a stable identity hash, so runs can be compared and audited line by line.
+
 Picture an archive of mixed material: spreadsheets, chat threads, notes in English and German. Every item has to reach the right review desk. A language model can suggest a desk instantly, and it sounds just as sure when it is wrong.
 
-The original study behind this project made that concrete. A local multilingual reader proposed queues on a twenty-item historical fixture and failed 12 of 20 (by my notes from that study, not re-run here), including one “false winner”: it confidently picked a desk for an item that belonged to neither. Confidence was being mistaken for authority.
+The original study behind this project made that concrete. A local multilingual reader proposed queues on a twenty-item historical fixture and failed 12 of 20 (by my notes from that study, not re-run here), including one “false winner”: it confidently picked a desk for an item that belonged to neither.
 
 This harness turns the lesson into rules you can test. A suggestion is only accepted when the item’s type was confirmed independently, the text is readable and harmless, the budget is valid, and every reader agrees. Everything else goes to a person, with a reason written in plain language. The harness never moves a document; it only advises.
 
 ## Who it is for
 - **People building triage or routing on top of language models:** A ready-made set of gates, reason codes and metrics for measuring how often the system admits work it should have refused.
-- **Evaluators and reviewers:** Every decision carries a reason code and a stable identity hash, so runs can be compared and audited line by line.
-- **Archivists and operations teams:** A prioritised human review queue that explains why each item was held back, instead of a silent “unknown”.
+- **Evaluators and reviewers:** The reason codes and identity hashes let you compare and audit runs line by line.
+- **Archivists and operations teams:** A prioritized human review queue that explains why each item was held back, instead of a silent “unknown”.
 
 ## Install and run (offline, Python ≥ 3.11, no dependencies)
 ```sh
@@ -49,13 +51,13 @@ Static fallback: `docs/architecture.svg`. Deeper notes: `docs/ARCHITECTURE.md`, 
 3. **Recorded proposals.** Proposals from one or more readers arrive as JSON (recorded, mocked or from the local keyword rule). No network call and no model loading happen inside the harness.
 4. **Abstain or advise.** Malformed, missing, self-abstaining or conflicting proposals are held back. Only clean agreement becomes an advisory route; documents are never moved.
 5. **Metrics with denominators.** Coverage, selective accuracy, false acceptance and per-class confusion, always as counts over a stated n with Wilson intervals, never a bare percentage.
-6. **Human review queue.** Every held-back item becomes a row in a prioritised worklist with the reason in plain words.
+6. **Human review queue.** Every held-back item becomes a row in a prioritized worklist with the reason in plain words.
 
 Stages (see `docs/architecture.mmd`, authoritative, and `docs/architecture.svg`): Input record + independent scope label → Pure validation and advisory policy → Recorded or mocked model proposal adapter → Abstention + disagreement decision → Per-class confusion/coverage/error report → Human review queue
 
 ![One card held still on a rose pad while two threads pull it toward different slots.](assets/disagreement.svg)
 
-*When readers disagree, the item stays put. Disagreement is treated as evidence, not averaged away.*
+*When readers disagree, the item goes to a person. The harness never averages their answers.*
 
 ## Commands, with real output
 ### `abstention-routing-harness run fixtures/synthetic_cases_m03.json --out out/`
@@ -94,7 +96,7 @@ Run the 34-case adversarial suite (invisible text, surrogates, NaN budgets, over
 ```
 
 ### `python3 -m abstention_routing_harness.review_queue out/decisions.json --cases fixtures/synthetic_cases_m03.json --out out/queue.md`
-New. Turn decisions into a prioritised human worklist (Markdown + JSON) with a plain-language reason for every held-back item.
+New. Turn decisions into a prioritized human worklist (Markdown + JSON) with a plain-language reason for every held-back item.
 
 ```
 {"queued": 10, "of": 16, "by_reason": {"BUDGET_EXCEEDED": 1, "BUDGET_INVALID": 2, "INPUT_NOT_PERMITTED": 1, "NO_PROPOSAL": 1, "PROPOSALS_CONFLICT": 1, "PROPOSAL_ABSTAINED": 1, "PROPOSAL_MALFORMED": 1, "SCOPE_UNVERIFIED": 1, "TEXT_INVALID": 1}}
@@ -127,7 +129,7 @@ Writes `reports/mock/index.html`, `confusion.json` and `calibration.json`. The c
 **Status:** Measured rule baselines and adversarial robustness on synthetic cases; no model results. Private work in progress.
 
 ## Limitations
-- All items are synthetic; no model was run. Mock results are labelled as mocks.
+- All items are synthetic; no model was run. Mock results are labeled as mocks.
 - Test probes were written by the same author after the rule existed, so they are not blind.
 - Historical multilingual-reader fixtures are summaries, not re-runs, and measure a different task.
 - Reviews so far are self-reviews; no independent reviewer yet.
@@ -158,7 +160,7 @@ Private work in progress. License: not yet chosen.
 - **Recorded proposals.** Proposals from one or more readers arrive as JSON (recorded, mocked or from the local keyword rule). No network call and no model loading happen inside the harness.
 - **Abstain or advise.** Malformed, missing, self-abstaining or conflicting proposals are held back. Only clean agreement becomes an advisory route; documents are never moved.
 - **Metrics with denominators.** Coverage, selective accuracy, false acceptance and per-class confusion, always as counts over a stated n with Wilson intervals, never a bare percentage.
-- **Human review queue.** Every held-back item becomes a row in a prioritised worklist with the reason in plain words.
+- **Human review queue.** Every held-back item becomes a row in a prioritized worklist with the reason in plain words.
 
 ## Command index
 - `abstention-routing-harness run fixtures/synthetic_cases_m03.json --out out/`: Apply the policy to 16 hand-written cases with mock proposals. Writes decisions.json and report.json. Mock data, not a model result.
@@ -166,7 +168,7 @@ Private work in progress. License: not yet chosen.
 - `abstention-routing-harness collection . --out out/c`: Validate the versioned case collection against schemas/case.schema.json and write a hashed manifest.
 - `abstention-routing-harness baselines . --out out/b`: Compare three baselines on dev and test: always abstain, always pick the majority desk, and the keyword rule. Values are [coverage, selective accuracy, false acceptance].
 - `abstention-routing-harness failure . --out out/f`: Run the 34-case adversarial suite (invisible text, surrogates, NaN budgets, oversized proposals) and classify held-out errors.
-- `python3 -m abstention_routing_harness.review_queue out/decisions.json --cases fixtures/synthetic_cases_m03.json --out out/queue.md`: Turn decisions into a prioritised human worklist (Markdown + JSON) with a plain-language reason for every held-back item.
+- `python3 -m abstention_routing_harness.review_queue out/decisions.json --cases fixtures/synthetic_cases_m03.json --out out/queue.md`: Turn decisions into a prioritized human worklist (Markdown + JSON) with a plain-language reason for every held-back item.
 - `python3 -m abstention_routing_harness.report --out reports/mock fixtures/mock_confidence_proposals_m08.json`: Score cases with the cost/risk policy (expected cost of each route vs the cost of handing to a person), sweep the support threshold, and write a confusion report (expected vs decided: spreadsheet / conversation / person) as JSON and reports/…/index.html. MOCK: the confidences in this fixture are hand-written to demonstrate the mechanism; the numbers are not a result, and the calibration is in-sample.
 
 Full output for every command: `docs/CASE_PAGE.md`.

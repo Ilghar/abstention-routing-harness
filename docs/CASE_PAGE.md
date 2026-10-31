@@ -17,8 +17,8 @@ This harness turns the lesson into rules you can test. A suggestion is only acce
 
 ## Who it is for
 - **People building triage or routing on top of language models:** A ready-made set of gates, reason codes and metrics for measuring how often the system admits work it should have refused.
-- **Evaluators and reviewers:** Every decision carries a reason code and a stable identity hash, so runs can be compared and audited line by line.
-- **Archivists and operations teams:** A prioritised human review queue that explains why each item was held back, instead of a silent “unknown”.
+- **Evaluators and reviewers:** The reason codes and identity hashes let you compare and audit runs line by line.
+- **Archivists and operations teams:** A prioritized human review queue that explains why each item was held back, instead of a silent “unknown”.
 
 ## How it works
 1. **Record + independent scope label.** Each case carries its text and a scope label confirmed by someone other than the model (for example, “this really is a spreadsheet”). Without it, nothing is admitted.
@@ -26,7 +26,7 @@ This harness turns the lesson into rules you can test. A suggestion is only acce
 3. **Recorded proposals.** Proposals from one or more readers arrive as JSON (recorded, mocked or from the local keyword rule). No network call and no model loading happen inside the harness.
 4. **Abstain or advise.** Malformed, missing, self-abstaining or conflicting proposals are held back. Only clean agreement becomes an advisory route; documents are never moved.
 5. **Metrics with denominators.** Coverage, selective accuracy, false acceptance and per-class confusion, always as counts over a stated n with Wilson intervals, never a bare percentage.
-6. **Human review queue.** Every held-back item becomes a row in a prioritised worklist with the reason in plain words.
+6. **Human review queue.** Every held-back item becomes a row in a prioritized worklist with the reason in plain words.
 
 Stages (see `docs/architecture.mmd`, authoritative, and `docs/architecture.svg`): Input record + independent scope label → Pure validation and advisory policy → Recorded or mocked model proposal adapter → Abstention + disagreement decision → Per-class confusion/coverage/error report → Human review queue
 
@@ -71,7 +71,7 @@ Run the 34-case adversarial suite (invisible text, surrogates, NaN budgets, over
 ```
 
 ### `python3 -m abstention_routing_harness.review_queue out/decisions.json --cases fixtures/synthetic_cases_m03.json --out out/queue.md`
-Turn decisions into a prioritised human worklist (Markdown + JSON) with a plain-language reason for every held-back item.
+Turn decisions into a prioritized human worklist (Markdown + JSON) with a plain-language reason for every held-back item.
 
 ```
 {"queued": 10, "of": 16, "by_reason": {"BUDGET_EXCEEDED": 1, "BUDGET_INVALID": 2, "INPUT_NOT_PERMITTED": 1, "NO_PROPOSAL": 1, "PROPOSALS_CONFLICT": 1, "PROPOSAL_ABSTAINED": 1, "PROPOSAL_MALFORMED": 1, "SCOPE_UNVERIFIED": 1, "TEXT_INVALID": 1}}
@@ -102,7 +102,7 @@ Score cases with the cost/risk policy (expected cost of each route vs the cost o
 **Status:** Measured rule baselines and adversarial robustness on synthetic cases; no model results. Private work in progress.
 
 ## Limitations
-- All items are synthetic; no model was run. Mock results are labelled as mocks.
+- All items are synthetic; no model was run. Mock results are labeled as mocks.
 - Test probes were written by the same author after the rule existed, so they are not blind.
 - Historical multilingual-reader fixtures are summaries, not re-runs, and measure a different task.
 - Reviews so far are self-reviews; no independent reviewer yet.

@@ -1,11 +1,11 @@
 {
  "credit": "ilghar.studio",
- "status": "boards re-exported 2026-10-31 in the studio palette (text plum #4a3a5c / ink #f4eef3, accent #c97a98 / #e8a8bc, no blue)",
+ "status": "boards re-exported 2026-10-31 in the studio palette: title first letter pink #fcb4c4 semibold, rest of the title plum #473448 (light) / ink-light #d4d2d2 (dark); other text plum #4a3a5c / ink #f4eef3; accent #c97a98 / #e8a8bc; no blue",
  "boards": [
   {
    "path": "assets/board-light.svg",
    "theme": "light",
-   "source_png_sha256": "37f6ab97f416bb44c00cae4e252a7045639e3bbf39ae3fcc1e164a27effdd404",
+   "source_png_sha256": "0d9947e8b2141444f5b26e76f19051c6ef45daec5b52eb0b7b4691837456d011",
    "width": 2400,
    "height": 1500,
    "embedded": "lossless PNG (source_png_sha256) in SVG wrapper"
@@ -13,7 +13,7 @@
   {
    "path": "assets/board-dark.svg",
    "theme": "dark",
-   "source_png_sha256": "c9b967d3088fafee23f15fef7507b94d51f6d0d357b407e7837824e830a95e60",
+   "source_png_sha256": "16914aad932ad46791a58ba4c2132585ad49d2db3b2b53346d44ee1318f9a745",
    "width": 2400,
    "height": 1500,
    "embedded": "lossless PNG (source_png_sha256) in SVG wrapper"
