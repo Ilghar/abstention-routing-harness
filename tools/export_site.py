@@ -38,6 +38,7 @@ body{margin:0}.ilg-case *{box-sizing:border-box}
 .ilg-case ::selection{background:color-mix(in oklab,var(--accent) 38%,transparent)}
 @media (prefers-reduced-motion:reduce){.ilg-case *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 .ilg-case .board{margin:2rem 0;display:grid;grid-template-columns:subgrid}.ilg-case .board>*{grid-column:1/-1}@media (min-width:60rem){.ilg-case .board>figcaption{grid-column:3/11}}.ilg-case .board picture,.ilg-case .board>img{display:block;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:clamp(.5rem,1.2vw,1rem)}.ilg-case .board img{width:100%;height:auto;display:block;border-radius:4px}.ilg-case .board .b-light,.ilg-case .board .b-dark{border-radius:8px}
+.ilg-case img,.ilg-case svg,.ilg-case picture{max-width:100%;height:auto}.ilg-case figure,.ilg-case picture,.ilg-case .board,.ilg-case .board>*{box-sizing:border-box;max-width:100%;min-width:0}
 .ilg-case .board .b-light,.ilg-case .board .b-dark{display:none}
 .ilg-case[data-theme=light] .board .b-auto,.ilg-case[data-theme=dark] .board .b-auto{display:none}
 .ilg-case[data-theme=light] .board .b-light,.ilg-case[data-theme=dark] .board .b-dark{display:block}"""
