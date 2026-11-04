@@ -17,7 +17,7 @@ font-family:"Jost","Avenir Next","Avenir","Helvetica Neue",Helvetica,Arial,"Vazi
 body{margin:0}.ilg-case *{box-sizing:border-box}
 .ilg-case main{max-width:72rem;margin:0 auto;padding:clamp(1.5rem,4vw,4rem) clamp(1rem,4vw,3rem);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem}
 .ilg-case main>*{grid-column:1/-1}.ilg-case .col{grid-column:1/-1}@media (min-width:60rem){.ilg-case .col{grid-column:3/11}}
-.ilg-case h1,.ilg-case h2,.ilg-case h3{font-family:"Nunito Sans","Jost","Avenir Next",sans-serif;font-weight:700;text-wrap:balance;letter-spacing:-.01em;margin:0}
+.ilg-case h1,.ilg-case h2,.ilg-case h3{font-family:"Jost","Avenir Next",sans-serif;font-weight:500;text-wrap:balance;letter-spacing:-.01em;margin:0}
 .ilg-case h1{font-family:"Jost","Avenir Next",sans-serif;font-weight:400;text-transform:lowercase;letter-spacing:-.015em;font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.02;margin:.5rem 0 1rem}
 .ilg-case h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--ink);margin:4rem 0 1rem}.ilg-case h2::before{content:"";display:block;width:2.5rem;height:2px;background:var(--accent);margin-bottom:.7rem}
 .ilg-case h3{font-size:1.15rem;margin:0 0 .35rem}.ilg-case p{text-wrap:pretty;margin:.5rem 0}
