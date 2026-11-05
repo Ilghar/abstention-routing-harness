@@ -1,26 +1,26 @@
 {
  "credit": "ilghar.studio",
- "status": "round 5 boards approved by owner 2026-10-25",
+ "status": "P01 board Proto re-render passed DESIGNER\u2014BOSS 2026-11-05",
  "boards": [
   {
    "path": "assets/board-light.svg",
    "theme": "light",
-   "source_png_sha256": "b0220bdb6814ea756dbffe6f2669af9d57cae72843d68a48026df0ebcf12da7d",
-   "width": 2400,
-   "height": 1500,
-   "embedded": "JPEG q85 in SVG wrapper"
+   "source_png_sha256": "7782229bb3999dfa4a3754c027fd537f3c918f7063965e55347110bff13b7db8",
+   "width": 1200,
+   "height": 750,
+   "embedded": "vector SVG (Proto re-render 2026-11-05)"
   },
   {
    "path": "assets/board-dark.svg",
    "theme": "dark",
-   "source_png_sha256": "ff2096ed0bec55eb10dff19f074e510a204b68b0a8ada054456f0c440ac6c6c7",
-   "width": 2400,
-   "height": 1500,
-   "embedded": "JPEG q85 in SVG wrapper"
+   "source_png_sha256": "0ab20e1c72d6c0a2b14ef9aeeebb65737743f7677c66639da21cb0b9b1daccc1",
+   "width": 1200,
+   "height": 750,
+   "embedded": "vector SVG (Proto re-render 2026-11-05)"
   }
  ],
  "usage": "<picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"assets/board-dark.svg\"><img src=\"assets/board-light.svg\"></picture>",
- "format_note": "Raster boards are embedded inside SVG wrappers so they can be committed as text.",
+ "format_note": "Vector SVG boards (paths only); PNGs are 1200px preview renders.",
  "construction": "code-rendered construction drawing",
  "photos": "Model/study photograph generated for this board.",
  "superseded": "earlier illustration_v* and rejected hero options (not committed)"
