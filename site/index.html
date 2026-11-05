@@ -15,10 +15,10 @@
 font-family:"Jost","Avenir Next","Avenir","Helvetica Neue",Helvetica,Arial,"Vazirmatn","Noto Naskh Arabic",sans-serif;font-weight:400;
 -webkit-font-smoothing:antialiased;line-height:1.6;font-size:1.0625rem}
 body{margin:0}.ilg-case *{box-sizing:border-box}
-.ilg-case main{max-width:72rem;margin:0 auto;padding:clamp(1.5rem,4vw,4rem) clamp(1rem,4vw,3rem);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem}
+.ilg-case main{max-width:960px;margin:0 auto;padding:clamp(1.5rem,4vw,4rem) clamp(1rem,4vw,3rem);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:1.5rem}
 .ilg-case main>*{grid-column:1/-1}.ilg-case .col{grid-column:1/-1}@media (min-width:60rem){.ilg-case .col{grid-column:3/11}}
 .ilg-case h1,.ilg-case h2,.ilg-case h3{font-family:"Jost","Avenir Next",sans-serif;font-weight:500;text-wrap:balance;letter-spacing:-.01em;margin:0}
-.ilg-case h1{font-family:"Jost","Avenir Next",sans-serif;font-weight:400;text-transform:lowercase;letter-spacing:-.015em;font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.02;margin:.5rem 0 1rem}
+.ilg-case h1{font-family:"Jost","Avenir Next",sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.14em;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.15;color:var(--label);margin:.5rem 0 1rem}.initial{color:var(--accent-dot)}
 .ilg-case h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--ink);margin:4rem 0 1rem}.ilg-case h2::before{content:"";display:block;width:2.5rem;height:2px;background:var(--accent);margin-bottom:.7rem}
 .ilg-case h3{font-size:1.15rem;margin:0 0 .35rem}.ilg-case p{text-wrap:pretty;margin:.5rem 0}
 .ilg-case .kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
@@ -45,7 +45,7 @@ body{margin:0}.ilg-case *{box-sizing:border-box}
 .ilg-case[data-theme=light] .board .b-light,.ilg-case[data-theme=dark] .board .b-dark{display:block}</style></head><body><div class="ilg-case"><button type="button" class="ilg-theme-toggle" aria-pressed="false" hidden>Dark mode</button><main>
 <header class="col"><p class="kicker">ilghar.studio · case study</p><h1><span class="initial">A</span>bstention &amp; Routing Harness</h1><p class="pitch">A small, strict referee that decides which review desk an incoming item belongs to, and knows when to say “I don’t know, a person should look at this.”</p>
 <p><span class="badge">In progress</span></p><p class="caveat">Measured rule baselines and adversarial robustness on synthetic cases; no model results</p></header>
-<figure class="board"><picture class="b-auto"><source media="(prefers-color-scheme: dark)" srcset="../assets/board-dark.svg"><img src="../assets/board-light.svg" alt="Project board: a code-drawn muqarnas plan with one cell marked blue as the chosen void, a white folded-paper star model, and a text column explaining answer, route or abstain." width="2400" height="1500"></picture><img class="b-light" src="../assets/board-light.svg" alt="" width="2400" height="1500" loading="lazy"><img class="b-dark" src="../assets/board-dark.svg" alt="" width="2400" height="1500" loading="lazy"><figcaption>Project board, ilghar.studio. Light and dark versions follow the page theme.</figcaption></figure>
+<figure class="board"><picture class="b-auto"><source media="(prefers-color-scheme: dark)" srcset="../assets/board-dark.svg"><img src="../assets/board-light.svg" alt="Project board: a code-drawn muqarnas plan with one rose cell as the chosen void, a white folded-paper star model, and a text column explaining answer, route or abstain." width="2400" height="1500"></picture><img class="b-light" src="../assets/board-light.svg" alt="" width="2400" height="1500" loading="lazy"><img class="b-dark" src="../assets/board-dark.svg" alt="" width="2400" height="1500" loading="lazy"><figcaption>Project board, ilghar.studio. Light and dark versions follow the page theme.</figcaption></figure>
 <section class="col ilg-app"><h2>Live demo</h2>
 <p class="pitch">Answers when a wrong answer costs less than asking. Otherwise, it sends the item to a person.</p>
 <p><a class="ilg-cta" href="demo/">Open the P01 abstention demo</a></p>
