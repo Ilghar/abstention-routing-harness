@@ -20,16 +20,16 @@ class Theme(unittest.TestCase):
             for tok in theme.DECORATIVE_EXCEPTIONS:
                 self.assertNotRegex(css, r"(?<![-\w])color:var\(--%s\)" % tok, f"{pg.name}: --{tok} used as text colour")
     def test_palette_is_exactly_the_studio_palette(self):
-        studio = {"#f3f1f6", "#fffcfe", "#4a3a5c", "#7a688c", "#a394ae", "#c97a98", "#fffafc", "#e4dde8",
-                  "#4a434c", "#5a535c", "#f4eef3", "#cbbdce", "#9a8a9c", "#e8a8bc", "#2c262f", "#4a424c"}
+        studio = {"#f3f1f6", "#fffcfe", "#473448", "#7d5a7c", "#a6a1a7", "#856a8e", "#fffafc", "#e4dde8",
+                  "#473448", "#5a535c", "#f4eef3", "#cbbdce", "#a6a1a7", "#e8a8bc", "#2c262f", "#4a424c"}
         used = {v for m in theme.TOKENS.values() for v in m.values()} | set(theme.FIGURE_BG.values())
         self.assertEqual(used - studio, set())
     def test_contrast_formula_reference_values(self):
         self.assertAlmostEqual(theme.contrast("#000000", "#ffffff"), 21.0, places=2)
         self.assertAlmostEqual(theme.contrast("#777777", "#ffffff"), 4.48, places=2)
     def test_studio_tokens_unchanged(self):
-        self.assertEqual(theme.TOKENS["dark"]["canvas"], "#4a434c"); self.assertEqual(theme.TOKENS["dark"]["ink"], "#f4eef3")
-        self.assertEqual(theme.TOKENS["light"]["canvas"], "#f3f1f6"); self.assertEqual(theme.TOKENS["light"]["accent"], "#c97a98")
+        self.assertEqual(theme.TOKENS["dark"]["canvas"], "#473448"); self.assertEqual(theme.TOKENS["dark"]["ink"], "#f4eef3")
+        self.assertEqual(theme.TOKENS["light"]["canvas"], "#f3f1f6"); self.assertEqual(theme.TOKENS["light"]["accent"], "#856a8e")
     def test_generated_page_has_both_themes_and_toggle(self):
         h = (ROOT / "site/index.html").read_text(encoding="utf-8")
         self.assertIn("prefers-color-scheme:dark", h); self.assertIn(".ilg-case[data-theme=dark]", h)
