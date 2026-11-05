@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="../tokens.css">
+<style>
+@font-face{font-family:Jost;font-style:normal;font-weight:300;font-display:swap;src:url("../fonts/jost-latin-300-normal.woff2") format("woff2")}
+@font-face{font-family:Jost;font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/jost-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:Jost;font-style:normal;font-weight:500;font-display:swap;src:url("../fonts/jost-latin-500-normal.woff2") format("woff2")}
+img,svg,canvas,iframe{max-width:100%;height:auto}
+</style>
+<title>When should a router step back? | abstention and routing harness | ilghar.studio</title>
+<style>
+/* One family: Brandon Text (licence pending, not bundled). Jost kept as last fallback only. */
+
+:root{--name:#856a8e;--em:#856a8e;--label:#775a76;--hairc:#7d5a7c;--sub:#5a515c;--sepc:#7d5a7c;--onplum:#f9fafb;--grid:#a6a1a7;color-scheme:light}
+:root{--paper:#f9fafb;--ink:#5a515c;--plum:#473448;--mauve:#856a8e;--mauve2:#7d5a7c;--grey:#948e95;--grey2:#a6a1a7;--pink:#fcb4c4;
+--font:Jost;--hair:.32pt solid var(--hairc)}
+html[data-theme=dark]{--paper:#2a272d;--ink:#d4d2d2;--plum:#fcb4c4;--mauve:#948e95;--mauve2:#fcb4c4;--sub:#a6a1a7;--sepc:#948e95;--onplum:#2a272d;--grid:#948e95;--pink:#fcb4c4;--name:#fcb4c4;--em:#a6a1a7;--label:#a6a1a7;--hairc:#948e95;color-scheme:dark}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.55 Jost}
+main{max-width:72rem;margin:0 auto;padding:2rem 1.25rem 2.5rem}
+h1,h2,h3{margin:0;font-weight:500;color:var(--plum)}
+.hdr{align-items:center;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin:0 0 1rem;display:flex;flex-wrap:wrap;gap:.2rem 0}
+.hdr .sep,.sep{color:var(--sepc);padding:0 .7em}
+h1{font-size:clamp(1.8rem,4vw,2.9rem);line-height:1.1;font-weight:400}
+.lede{max-width:46rem;margin:.8rem 0 1rem}
+.title{font-size:14px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--mauve2);margin:0 0 .7rem}
+.rule{height:2px;border:0;margin:1.6rem 0;background:radial-gradient(circle closest-side,var(--mauve) 92%,transparent 100%) 0 50%/6px 2px repeat-x}
+.dots{list-style:none;padding:0;margin:0}
+.dots li{position:relative;padding-left:1.1rem;margin:.25rem 0}
+.dots li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:0;background:#856a8e}
+.warn{font-size:14px;color:var(--ink);border-top:var(--hair);border-bottom:var(--hair);padding:.6rem 0;margin:0 0 1.6rem}
+.warn li{margin:.1rem 0}
+.grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:2.5rem;align-items:start}
+.panel{border-top:var(--hair);padding-top:1rem}
+.btns{display:flex;flex-wrap:wrap;gap:.35rem}
+button{font:500 13px Jost;letter-spacing:.06em;color:var(--ink);background:transparent;border:var(--hair);border-radius:0;padding:.35rem .55rem;cursor:pointer;min-height:44px;min-width:44px}
+button[aria-pressed=true]{background:var(--plum);color:var(--onplum);border-color:var(--plum)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--plum);outline-offset:2px}
+.steps{list-style:none;padding:0;margin:.8rem 0 0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:1.6rem 1fr;gap:.5rem;padding:.6rem 0;border-top:var(--hair)}
+.steps li::before{content:counter(s);color:var(--plum);font-weight:500}
+.steps h3{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--mauve2);font-weight:500}
+.steps p{margin:.2rem 0 0}
+.quote{font-size:1.3rem;color:var(--plum);line-height:1.3}
+.prop{display:flex;justify-content:space-between;gap:1rem;font-variant-numeric:tabular-nums}
+.bar{height:3px;background:repeating-linear-gradient(90deg,var(--grid) 0 2px,transparent 2px 5px);margin:.2rem 0 .4rem}
+.bar i{display:block;height:100%;background:var(--plum)}
+.fa{color:var(--plum);font-weight:600}
+code{font:500 12px/1 Jost;color:var(--plum);letter-spacing:.02em}
+label.big{display:flex;justify-content:space-between;align-items:baseline}
+output.t{font-size:2rem;color:var(--plum);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--plum);margin:.4rem 0 0}
+.scale{display:flex;justify-content:space-between;font-size:12px;color:var(--sub)}
+.small{font-size:13px;color:var(--sub)}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin:.9rem 0}
+.kpi{border-top:var(--hair);padding-top:.35rem}
+.kpi b{display:block;font-size:1.5rem;font-weight:400;color:var(--plum);font-variant-numeric:tabular-nums}
+.kpi span{font-size:12px;color:var(--sub)}
+svg text{font-family:var(--font);fill:var(--sub);font-size:12px}
+.queue{display:grid;grid-template-columns:1fr;gap:1rem}
+.group{border-top:var(--hair);padding-top:.6rem}
+.group .n{font-size:1.6rem;color:var(--plum);float:right;line-height:1}
+.group p{margin:.3rem 0 0;font-size:13px;color:var(--sub)}
+footer{color:var(--sub);margin-top:2rem;padding-top:.8rem;border-top:var(--hair);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem}
+@media (max-width:820px){.grid{grid-template-columns:1fr;gap:1.6rem}main{padding-top:1.4rem}.rule{margin:1.2rem 0}.lede{font-size:15px}}
+
+/* Hāèl type scale (HAEL_SYSTEM §2, §6): hierarchy by caps, tracking, colour; no bold headings */
+h1,h2,h3{font-weight:400}
+h1{font-size:31px;line-height:1.3;text-transform:uppercase;letter-spacing:.2em;color:var(--name)}
+.hdr{font-size:14px;letter-spacing:.12em}
+.title{font-size:23px;font-weight:400;letter-spacing:.12em;color:var(--mauve2);margin:0 0 .8rem}
+.steps h3{font-size:19px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--mauve2)}
+.steps li::before{font-weight:400}
+b,strong,.key{font-weight:500;color:var(--plum)}
+em,.em{font-style:italic;color:var(--em)}
+.small,.scale,.kpi span,footer,.cap{font-size:13px;font-weight:300;color:var(--sub)}
+.lab{font-weight:500;color:var(--label)}
+.callout{margin:.9rem 0 0;padding:.6rem 0;border-top:var(--hair);border-bottom:var(--hair)}
+.callout p{margin:0;font-style:italic;color:var(--em)}
+.group h3{font-size:19px;letter-spacing:.12em;text-transform:uppercase;color:var(--mauve2);margin:0}
+.group code{display:block;margin-top:.15rem}
+.side>*+*{margin-top:1.8rem}
+.legend{display:flex;gap:1.4rem;flex-wrap:wrap;margin:.2rem 0 .4rem}
+.legend span{display:inline-flex;align-items:center;gap:.45rem}
+.legend i{display:inline-block;width:24px;height:0;border-top:1.5px solid var(--hairc)}
+.legend i.w{border-top:1.5px dashed var(--plum)}
+@media (max-width:820px){h1{font-size:24px;letter-spacing:.14em}.title{font-size:20px}}
+/* v7 / v3.4: site column, glass + soft-shadow controls, drop caps */
+:root{--dc:#856a8e;--glass:rgba(249,250,251,.55);--glass-edge:rgba(255,255,255,.75);--sh-d:rgba(71,52,72,.16);--sh-l:rgba(255,255,255,.9);--well:rgba(71,52,72,.10)}
+[data-theme=dark]{--dc:#856a8e;--glass:rgba(48,45,52,.55);--glass-edge:rgba(255,255,255,.10);--sh-d:rgba(0,0,0,.38);--sh-l:rgba(255,255,255,.06);--well:rgba(0,0,0,.28)}
+main{max-width:448px;padding-left:16px;padding-right:16px}
+@media (min-width:768px){main{max-width:576px;padding-left:32px;padding-right:32px}}
+@media (min-width:1024px){main{max-width:672px}}
+.intro,.app,.counts,.grid{grid-template-columns:minmax(0,1fr)!important}
+.views{grid-template-columns:minmax(0,1fr)!important}
+@media (min-width:768px){.views{grid-template-columns:1fr 1fr!important;gap:16px}.counts{grid-template-columns:1fr 1fr!important}.counts>:last-child{grid-column:1/-1}}
+.dc{color:var(--dc)}
+:root:not([data-theme=dark]) h1,:root:not([data-theme=dark]) h1 .fa{color:#473448!important}
+:root:not([data-theme=dark]) h1 .dc{color:#856a8e;font-weight:600}
+:root:not([data-theme=dark]) :is(h2,h3,.sec,.label) .dc{color:#775a76}
+/* controls */
+button,.glass{background:var(--glass)!important;-webkit-backdrop-filter:blur(12px) saturate(1.1);backdrop-filter:blur(12px) saturate(1.1);border:1px solid var(--glass-edge)!important;border-radius:0;box-shadow:-3px -3px 8px var(--sh-l),4px 4px 10px var(--sh-d),inset 0 1px 0 var(--glass-edge);color:var(--ink);transition:box-shadow .16s}
+button:hover{box-shadow:-2px -2px 6px var(--sh-l),3px 3px 7px var(--sh-d),inset 0 1px 0 var(--glass-edge)}
+button:active,button[aria-pressed=true]{box-shadow:inset 3px 3px 7px var(--sh-d),inset -3px -3px 7px var(--sh-l)!important}
+#pick button[aria-pressed=true]{color:var(--plum,var(--accent))!important;background:var(--glass)!important}
+input[type=range]{-webkit-appearance:none;appearance:none;background:transparent;height:28px;accent-color:var(--dc)}
+input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:0;background:var(--well)!important;box-shadow:inset 2px 2px 4px var(--sh-d),inset -2px -2px 4px var(--sh-l)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-7px;border-radius:0;background:var(--glass)!important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--glass-edge)!important;box-shadow:-2px -2px 5px var(--sh-l),3px 3px 7px var(--sh-d),inset 0 0 0 5px var(--dc)}
+input[type=range]::-moz-range-track{height:8px;border-radius:0;background:var(--well);box-shadow:inset 2px 2px 4px var(--sh-d)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:0;background:var(--glass);border:1px solid var(--glass-edge);box-shadow:3px 3px 7px var(--sh-d),inset 0 0 0 5px var(--dc)}
+:focus-visible{outline:2px solid var(--dc)!important;outline-offset:3px}
+/* rev 9 (Hāèl, 4 Nov): every frame rounded, after v7.css (12 px) */
+figure,svg,img,canvas,.callout{border-radius:0}.bar,.bar i{border-radius:0}
+</style>
+<style>
+/* fill parent 16:10 frame when embedded on the case page */
+html,body{height:100%;margin:0}
+main{max-width:none!important;width:100%!important;min-height:100%;padding:16px 24px!important;box-sizing:border-box}
+@media (min-width:768px){main{max-width:none!important;padding-left:24px!important;padding-right:24px!important}}
+@media (min-width:1024px){main{max-width:none!important}}
+</style>
+</head>
+<body>
+<main>
+<p class="hdr"><span>Abstention and routing harness</span><span class="sep" aria-hidden="true">|</span><span>Interactive walk-through</span><span class="sep" aria-hidden="true">|</span><span>ilghar.studio</span><button id="theme" type="button" aria-pressed="false" style="margin-left:auto">dark</button></p>
+<h1>When should a router step back?</h1>
+<p class="lede">Twelve requests come in. Readers suggest a desk and say how sure they are. The harness either answers or hands the request to a person, and writes down why. Start with the case it gets wrong.</p>
+<ul class="dots warn" role="note">
+  <li><span class="lab">Mock data</span> – confidences written by hand, from no model.</li>
+  <li><span class="lab">In-sample</span> – threshold tuned on these same 12 cases, not held out.</li>
+  <li><span class="lab">Advisory</span> – no document is moved.</li>
+</ul>
+
+<div class="grid">
+<section aria-labelledby="h-case">
+  <h2 class="title" id="h-case">Follow one request</h2>
+  <div class="btns" role="group" aria-label="choose a case" id="pick"></div>
+  <div id="callout" aria-live="polite"></div>
+  <ol class="steps" id="steps" aria-live="polite"></ol>
+</section>
+<div class="side"><section class="panel" aria-labelledby="h-th">
+  <h2 class="title" id="h-th">Set the threshold</h2>
+  <label class="big" for="t">Minimum support <output class="t" id="tv" for="t">0.50</output></label>
+  <input id="t" type="range" min="0" max="20" step="1" value="10" aria-describedby="t-help" aria-valuetext="0.50">
+  <div class="scale" aria-hidden="true"><span>0 · trust any agreement</span><span>1 · send all to a person</span></div>
+  <div class="kpis" aria-live="polite" id="kpis"></div>
+  <p id="t-help" class="small">Support is the confidence-weighted share of readers naming a desk. Below the threshold, the request goes to a person. A second gate also holds it back if the expected cost of a wrong answer reaches 0.3, the cost of asking a person. Opens at 0.50: three answered, six held back for low support, three for cost, and M11 still slips through.</p>
+</section>
+<section class="panel" aria-labelledby="h-q">
+  <h2 class="title" id="h-q">Human review queue</h2>
+  <p class="small" id="qsum"></p>
+  <div class="queue" id="queue"></div>
+</section></div>
+</div>
+
+<hr class="rule">
+<section aria-labelledby="h-curve">
+  <h2 class="title" id="h-curve">Every threshold <span class="sep" aria-hidden="true">|</span> mock data, 12 hand-written cases</h2>
+  <div class="legend cap" aria-hidden="true"><span><i></i>answered</span><span><i class="w"></i>answered wrongly</span></div>
+  <div id="chart"></div>
+  <p class="small" id="calib"></p>
+</section>
+
+<footer><span>ilghar.studio</span><span>Logic ported from <code>costpolicy.py</code>, <code>policy.py</code>, <code>metrics.py</code>; cases from <code>fixtures/mock_confidence_proposals_m08.json</code> (commit 62eb8ff).</span></footer>
+</main>
+<script src="data.js"></script>
+<script src="engine.js"></script>
+<script>
+(function(){
+var C=FIXTURE.cases,E=Engine,sel="M11",$=function(i){return document.getElementById(i)};
+var WHY={SUPPORT_BELOW_THRESHOLD:"Support for the best desk is under the threshold you set.",
+ RISK_ABOVE_ABSTAIN_COST:"Answering would cost at least as much as asking a person. The expected cost of a wrong answer is 0.3 or more.",
+ CONFIDENCE_INVALID:"One reader’s confidence wasn’t a number between 0 and 1."};
+var LABEL={SUPPORT_BELOW_THRESHOLD:"Readers too unsure",RISK_ABOVE_ABSTAIN_COST:"Too costly to guess",CONFIDENCE_INVALID:"Confidence unreadable"}; /* NEW COPY: for Copy Humanizer review */
+var DESK={spreadsheet:"spreadsheet desk",conversation:"conversation desk",human:"a person"};
+var f2=function(x){return x.toFixed(2)};
+var V=function(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()};var cal=E.calibrate(C);
+var pts=E.GRID.map(function(t){return {t:t,m:E.evaluate(C,C.map(function(c){return E.decideCost(c,t)}))}});
+function chart(t){
+  var W=Math.max(320,Math.min(1100,$("chart").clientWidth||640)),H=230,L=40,B=40,T=14,R=16,x=function(v){return L+v*(W-L-R)},y=function(n){return H-B-n/4*(H-B-T)},wr=function(p){return p.m.coverage.admitted-p.m.selective_accuracy.correct};
+  var s='<svg viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-labelledby="ct"><title id="ct">Two stepped lines over the 21 thresholds from 0 to 1: requests answered, and requests answered wrongly, out of 12. The current threshold is marked.</title>';
+  [0,1,2,3,4].forEach(function(n){s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(n)+'" y2="'+y(n)+'" stroke="'+V("--grid")+'" stroke-width=".5" stroke-dasharray="1 3"/><text x="'+(L-8)+'" y="'+(y(n)+4)+'" text-anchor="end">'+n+'</text>'});
+  [0,.25,.5,.75,1].forEach(function(v){s+='<text x="'+x(v)+'" y="'+(H-B+16)+'" text-anchor="middle">'+f2(v)+'</text>'});
+  s+='<text x="'+((L+W-R)/2)+'" y="'+(H-4)+'" text-anchor="middle">minimum support (threshold)</text><text x="'+L+'" y="10">requests, of 12 (axis cut at 4)</text>';
+  var d="";pts.forEach(function(p,i){var px=x(p.t),py=y(p.m.coverage.admitted);d+=(i?"H"+px+"V"+py:"M"+px+" "+py)});
+  s+='<path d="'+d+'" fill="none" stroke="'+V("--mauve")+'" stroke-width="1.5"/>';
+  var d2="";pts.forEach(function(p,i){var px=x(p.t),py=y(wr(p));d2+=(i?"H"+px+"V"+py:"M"+px+" "+py)});
+  s+='<path d="'+d2+'" fill="none" stroke="'+V("--plum")+'" stroke-width="1.5" stroke-dasharray="5 3"/>';
+  pts.forEach(function(p){s+='<circle cx="'+x(p.t)+'" cy="'+y(wr(p))+'" r="2.5" fill="'+V("--plum")+'"/>'});
+  pts.forEach(function(p){s+='<circle cx="'+x(p.t)+'" cy="'+y(p.m.coverage.admitted)+'" r="2.5" fill="'+V("--mauve")+'"/>'});
+  var c=pts.find(function(p){return p.t===t});
+  s+='<circle cx="'+x(t)+'" cy="'+y(c.m.coverage.admitted)+'" r="7" fill="none" stroke="'+V("--plum")+'" stroke-width="1.5"/><text x="'+Math.min(x(t)+10,W-170)+'" y="'+(y(c.m.coverage.admitted)-12)+'" style="fill:var(--plum)">'+f2(t)+': '+c.m.coverage.admitted+' answered, '+wr(c)+' wrongly</text>';
+  $("chart").innerHTML=s+"</svg>";
+}
+function render(){
+  var i=+$("t").value,t=E.GRID[i];$("tv").textContent=f2(t);$("t").setAttribute("aria-valuetext",f2(t));
+  var ds=C.map(function(c){return E.decideCost(c,t)}),m=E.evaluate(C,ds);
+  $("kpis").innerHTML='<div class="kpi"><b>'+m.coverage.admitted+'/12</b><span>answered</span></div>'+
+   '<div class="kpi"><b>'+m.selective_accuracy.correct+'/'+m.selective_accuracy.denominator+'</b><span>answered correctly</span></div>'+
+   '<div class="kpi"><b>'+m.false_acceptance.count+'/'+m.false_acceptance.denominator+'</b><span>should-be-human, answered</span></div>';
+  chart(t);
+  $("calib").textContent="Both lines are mostly flat because there are only 12 cases. From 0.00 to 0.85 the same three requests are answered and one of them is wrong; at 0.90 the harness drops a correct answer (M02) and keeps the wrong one (M11). The wrong answer only goes away when nothing is answered. Lowest total cost on these cases is at "+f2(cal.best_min_support)+" (cost "+cal.best_total_cost+"), where every request goes to a person. That is an in-sample fit and a warning about this fixture, not a recommended setting.";
+  $("pick").innerHTML=C.map(function(c,k){return '<button type="button" aria-pressed="'+(c.id===sel)+'" data-id="'+c.id+'" aria-label="'+c.id+', '+(ds[k].abstained?"held for a person":"answered")+'">'+c.id+'</button>'}).join("");
+  var c=C.find(function(x){return x.id===sel}),d=ds[C.indexOf(c)];
+  var props=c.proposals.map(function(p){return '<div class="prop"><span>'+p.model_id+' says <b>'+p.route+'</b></span><span>'+f2(p.confidence)+'</span></div><div class="bar" aria-hidden="true"><i style="width:'+p.confidence*100+'%"></i></div>'}).join("");
+  var sup=d.support?'Spreadsheet '+f2(d.support.spreadsheet)+', conversation '+f2(d.support.conversation)+'. Best desk: '+d.best+', expected cost '+f2(d.expected_cost)+'.':'Not computed: the request stopped at an earlier check.';
+  var ok=d.route===c.expected_route,fa=!ok&&!d.abstained&&c.expected_route==="human";
+  $("steps").innerHTML='<li><div><h3>The request</h3><p class="quote">“'+c.text+'”</p></div></li>'+
+   '<li><div><h3>What the readers propose</h3>'+props+'</div></li>'+
+   '<li><div><h3>Support against '+f2(t)+'</h3><p>'+sup+'</p></div></li>'+
+   '<li><div><h3>Decision</h3><p>'+(d.abstained?"Held back for a person. ":"Routed to the "+DESK[d.route]+". ")+'<code>'+d.reason_code+'</code></p>'+
+   '<p>The fixture expects '+DESK[c.expected_route]+'. '+(ok?"Matches.":"Does not match.")+'</p>'+
+   '</div></li>';
+  $("callout").innerHTML=fa?'<div class="callout" role="note"><span class="lab">False acceptance</span> – <span class="em">no desk should take “'+c.text+'”, yet one confident reader is enough to answer it at every threshold up to 0.90. Confidence alone can’t tell it apart from a real desk request.</span></div>':'';
+  var q=ds.filter(function(d){return d.abstained}),g={};
+  q.forEach(function(d){(g[d.reason_code]=g[d.reason_code]||[]).push(d.case_id)});
+  $("qsum").textContent=q.length+" of 12 requests wait for a person at "+f2(t)+", grouped by reason.";
+  $("queue").innerHTML=Object.keys(g).map(function(k){var ex=C.find(function(x){return x.id===g[k][0]});return '<article class="group"><span class="n">'+g[k].length+'</span><h3 data-new-copy>'+LABEL[k]+'</h3><code>'+k+'</code><p>'+WHY[k]+'</p><p>Example: '+ex.id+' “'+ex.text+'”. Also: '+(g[k].slice(1).join(", ")||"none")+'.</p></article>'}).join("")||'<p class="small">No one is waiting. Every request was answered.</p>';
+}
+$("t").addEventListener("input",render);addEventListener("resize",render);
+$("pick").addEventListener("click",function(e){var b=e.target.closest("button");if(b){sel=b.dataset.id;render();var n=document.querySelector('#pick button[data-id="'+sel+'"]');n&&n.focus()}});
+function theme(t){document.documentElement.dataset.theme=t;$("theme").textContent=t==="dark"?"light":"dark";$("theme").setAttribute("aria-pressed",t==="dark");render();}
+$("theme").onclick=function(){theme(document.documentElement.dataset.theme==="dark"?"light":"dark")};
+var q=new URLSearchParams(location.search);theme(q.get("theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"));
+})();
+</script>
+<script>/* drop cap: first character of each title in the accent colour (works for Latin and Persian text nodes) */
+(function(){function cap(el){var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,{acceptNode:function(n){return /\S/.test(n.data)?1:3}});var n=w.nextNode();if(!n||n.parentNode.classList.contains("dc"))return;var i=n.data.search(/\S/),s=document.createElement("span");s.className="dc";var c=n.data[i],ar=/[\u0600-\u06FF]/.test(c)&&/[\u0600-\u06FF]/.test(n.data[i+1]||""),z="\u200d";s.textContent=ar?c+z:c;var r=n.splitText(i);r.data=(ar?z:"")+r.data.slice(1);n.parentNode.insertBefore(s,r);}
+function run(){document.querySelectorAll("h1>span,h1:not(:has(span)),h2,h3,.title").forEach(cap)}
+run();new MutationObserver(function(m){m.forEach(function(x){x.addedNodes.forEach(function(e){if(e.nodeType==1)e.querySelectorAll&&e.querySelectorAll("h3").forEach(cap)})})}).observe(document.body,{childList:true,subtree:true});})();
+</script>
+</body>
+</html>

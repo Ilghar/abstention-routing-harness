@@ -2,7 +2,7 @@
 
 **A small, strict referee that decides which review desk an incoming item belongs to, and knows when to say “I don’t know, a person should look at this.”**
 
-![Project board: a code-drawn muqarnas plan with one cell marked mauve as the chosen void, a white folded-paper star model, and a text column explaining answer, route or abstain.](../assets/board-light.svg)
+![Project board: a code-drawn muqarnas plan with one mauve cell as the chosen void, a white folded-paper star model, and a text column explaining answer, route or abstain.](../assets/board-light.svg)
 
 *Project board, ilghar.studio. Light and dark versions follow the page theme.*
 
