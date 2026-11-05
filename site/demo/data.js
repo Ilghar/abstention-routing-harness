@@ -1,0 +1,287 @@
+// copied verbatim from Ilghar/abstention-routing-harness@62eb8ff fixtures/mock_confidence_proposals_m08.json
+var FIXTURE = {
+ "note": "MOCK FIXTURE. Proposals and confidences are hand-written by the author to exercise the cost/risk policy and calibration. They come from no model or reader. Any number computed on this file demonstrates the mechanism only and is NOT a result.",
+ "mock": true,
+ "cases": [
+  {
+   "id": "M01",
+   "text": "Add a column for the invoice totals",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "mock_confidence",
+   "expected_route": "spreadsheet",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-reader-a",
+     "revision": "none",
+     "route": "spreadsheet",
+     "confidence": 0.95
+    },
+    {
+     "source": "mock",
+     "model_id": "mock-reader-a",
+     "revision": "none",
+     "route": "spreadsheet",
+     "confidence": 0.9
+    }
+   ]
+  },
+  {
+   "id": "M02",
+   "text": "Reply to Anna about Friday's meeting",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "mock_confidence",
+   "expected_route": "conversation",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-reader-a",
+     "revision": "none",
+     "route": "conversation",
+     "confidence": 0.9
+    },
+    {
+     "source": "mock",
+     "model_id": "mock-reader-a",
+     "revision": "none",
+     "route": "conversation",
+     "confidence": 0.85
+    }
+   ]
+  },
+  {
+   "id": "M03",
+   "text": "Sort the rows by date",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "mock_confidence",
+   "expected_route": "spreadsheet",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-reader-a",
+     "revision": "none",
+     "route": "spreadsheet",
+     "confidence": 0.9
+    },
+    {
+     "source": "mock",
+     "model_id": "mock-reader-b",
+     "revision": "none",
+     "route": "conversation",
+     "confidence": 0.2
+    }
+   ]
+  },
+  {
+   "id": "M04",
+   "text": "Summarise what Jonas said in the thread",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "mock_confidence",
+   "expected_route": "conversation",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-reader-a",
+     "revision": "none",
+     "route": "conversation",
+     "confidence": 0.8
+    },
+    {
+     "source": "mock",
+     "model_id": "mock-reader-b",
+     "revision": "none",
+     "route": "spreadsheet",
+     "confidence": 0.3
+    }
+   ]
+  },
+  {
+   "id": "M05",
+   "text": "Copy the chat messages into the sheet",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "mock_confidence",
+   "expected_route": "human",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-reader-a",
+     "revision": "none",
+     "route": "spreadsheet",
+     "confidence": 0.6
+    },
+    {
+     "source": "mock",
+     "model_id": "mock-reader-b",
+     "revision": "none",
+     "route": "conversation",
+     "confidence": 0.55
+    }
+   ]
+  },
+  {
+   "id": "M06",
+   "text": "Fasse die Tabelle zusammen",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "mock_confidence",
+   "expected_route": "spreadsheet",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-reader-a",
+     "revision": "none",
+     "route": "spreadsheet",
+     "confidence": 0.7
+    },
+    {
+     "source": "mock",
+     "model_id": "mock-reader-a",
+     "revision": "none",
+     "route": "spreadsheet",
+     "confidence": 0.65
+    }
+   ]
+  },
+  {
+   "id": "M07",
+   "text": "What will the weather be tomorrow?",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "mock_confidence",
+   "expected_route": "human",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-reader-a",
+     "revision": "none",
+     "route": "conversation",
+     "confidence": 0.4
+    }
+   ]
+  },
+  {
+   "id": "M08",
+   "text": "Antworte Lena wegen der Rechnung",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "mock_confidence",
+   "expected_route": "conversation",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-reader-a",
+     "revision": "none",
+     "route": "conversation",
+     "confidence": 0.75
+    },
+    {
+     "source": "mock",
+     "model_id": "mock-reader-b",
+     "revision": "none",
+     "route": "spreadsheet",
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "M09",
+   "text": "Merge the two tabs and email the result",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "mock_confidence",
+   "expected_route": "human",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-reader-a",
+     "revision": "none",
+     "route": "spreadsheet",
+     "confidence": 0.5
+    },
+    {
+     "source": "mock",
+     "model_id": "mock-reader-b",
+     "revision": "none",
+     "route": "conversation",
+     "confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "M10",
+   "text": "Freeze the header row",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "mock_confidence",
+   "expected_route": "spreadsheet",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-reader-a",
+     "revision": "none",
+     "route": "spreadsheet",
+     "confidence": 0.55
+    }
+   ]
+  },
+  {
+   "id": "M11",
+   "text": "Book a train to Hamburg",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "mock_confidence",
+   "expected_route": "human",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-reader-a",
+     "revision": "none",
+     "route": "conversation",
+     "confidence": 0.9
+    }
+   ]
+  },
+  {
+   "id": "M12",
+   "text": "Rename the thread to Budget 2027",
+   "scope_verified": true,
+   "fixture_kind": "synthetic",
+   "case_class": "mock_confidence",
+   "expected_route": "conversation",
+   "requests_used": 0,
+   "proposals": [
+    {
+     "source": "mock",
+     "model_id": "mock-reader-a",
+     "revision": "none",
+     "route": "conversation",
+     "confidence": 0.6
+    },
+    {
+     "source": "mock",
+     "model_id": "mock-reader-a",
+     "revision": "none",
+     "route": "conversation",
+     "confidence": 0.5
+    }
+   ]
+  }
+ ]
+};
+if (typeof module!=='undefined') module.exports=FIXTURE;
