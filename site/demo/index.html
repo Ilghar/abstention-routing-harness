@@ -116,6 +116,13 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:0;backg
 /* rev 9 (Hāèl, 4 Nov): every frame rounded, after v7.css (12 px) */
 figure,svg,img,canvas,.callout{border-radius:0}.bar,.bar i{border-radius:0}
 </style>
+<style>
+/* fill parent 16:10 frame when embedded on the case page */
+html,body{height:100%;margin:0}
+main{max-width:none!important;width:100%!important;min-height:100%;padding:16px 24px!important;box-sizing:border-box}
+@media (min-width:768px){main{max-width:none!important;padding-left:24px!important;padding-right:24px!important}}
+@media (min-width:1024px){main{max-width:none!important}}
+</style>
 </head>
 <body>
 <main>
