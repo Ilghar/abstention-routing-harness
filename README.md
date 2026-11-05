@@ -3,7 +3,7 @@
   <a href="https://ilghar.github.io/abstention-routing-harness/">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="docs/hero/hero-dark.svg">
-      <img src="docs/hero/hero-light.svg" alt="P01, Abstention Routing Harness: answer, defer or abstain, routed by confidence. ilghar.studio." width="100%">
+      <img src="docs/hero/hero-light.svg" alt="P01, Abstention Routing Harness: answers when a wrong answer costs less than asking, and otherwise sends the item to a person. ilghar.studio." width="100%">
     </picture>
   </a>
 </p>
