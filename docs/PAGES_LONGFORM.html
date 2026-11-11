@@ -42,7 +42,49 @@ body{margin:0}.ilg-case *{box-sizing:border-box}
 .ilg-case .board{margin:2rem 0;display:grid;grid-template-columns:subgrid}.ilg-case .board>*{grid-column:1/-1}@media (min-width:60rem){.ilg-case .board>figcaption{grid-column:3/11}}.ilg-case .board picture,.ilg-case .board>img{display:block;background:var(--surface);border:1px solid var(--line);border-radius:0;padding:clamp(.5rem,1.2vw,1rem)}.ilg-case .board img{width:100%;height:auto;display:block;border-radius:0}.ilg-case .board .b-light,.ilg-case .board .b-dark{border-radius:0}
 .ilg-case .board .b-light,.ilg-case .board .b-dark{display:none}
 .ilg-case[data-theme=light] .board .b-auto,.ilg-case[data-theme=dark] .board .b-auto{display:none}
-.ilg-case[data-theme=light] .board .b-light,.ilg-case[data-theme=dark] .board .b-dark{display:block}</style></head><body><div class="ilg-case"><button type="button" class="ilg-theme-toggle" aria-pressed="false" hidden>Dark mode</button><main>
+.ilg-case[data-theme=light] .board .b-light,.ilg-case[data-theme=dark] .board .b-dark{display:block}
+/* Allowlisted photos: pixels left unaltered, 12px frame, dark surroundings in dark mode */
+figure:has(>img[src*="disagreement.svg"]),
+figure:has(>img[src*="fact-vs-taste.svg"]),
+figure.hero:has(>img[src*="sabat-pavilion.jpg"]){
+  margin:0 0 28px;
+  padding:12px;
+  overflow:hidden;
+  border-radius:12px;
+  border:.32pt solid var(--line, #856a8e);
+  background:var(--canvas, #f9fafb);
+  box-shadow:none;
+}
+figure:has(>img[src*="disagreement.svg"]) img,
+figure:has(>img[src*="fact-vs-taste.svg"]) img,
+figure.hero:has(>img[src*="sabat-pavilion.jpg"]) img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:0;
+  box-shadow:none;
+  background:transparent;
+  filter:none;
+}
+[data-theme=dark] figure:has(>img[src*="disagreement.svg"]),
+[data-theme=dark] figure:has(>img[src*="fact-vs-taste.svg"]),
+[data-theme=dark] figure.hero:has(>img[src*="sabat-pavilion.jpg"]),
+.ilg-case[data-theme=dark] figure:has(>img[src*="disagreement.svg"]),
+.ilg-case[data-theme=dark] figure:has(>img[src*="fact-vs-taste.svg"]){
+  background:#2a272d;
+  border-color:var(--line, #a6a1a7);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme=light]) figure:has(>img[src*="disagreement.svg"]),
+  :root:not([data-theme=light]) figure:has(>img[src*="fact-vs-taste.svg"]),
+  :root:not([data-theme=light]) figure.hero:has(>img[src*="sabat-pavilion.jpg"]),
+  .ilg-case:not([data-theme=light]) figure:has(>img[src*="disagreement.svg"]),
+  .ilg-case:not([data-theme=light]) figure:has(>img[src*="fact-vs-taste.svg"]){
+    background:#2a272d;
+    border-color:var(--line, #a6a1a7);
+  }
+}
+</style></head><body><div class="ilg-case"><button type="button" class="ilg-theme-toggle" aria-pressed="false" hidden>Dark mode</button><main>
 <header class="col"><p class="kicker">ilghar.studio · case study</p><h1><span class="initial">A</span>bstention &amp; Routing Harness</h1><p class="pitch">A small, strict referee that decides which review desk an incoming item belongs to, and knows when to say “I don’t know, a person should look at this.”</p>
 <p><span class="badge">In progress</span></p><p class="caveat">Measured rule baselines and adversarial robustness on synthetic cases; no model results</p></header>
 <figure class="board"><picture class="b-auto"><source media="(prefers-color-scheme: dark)" srcset="../assets/board-dark.svg"><img src="../assets/board-light.svg" alt="Project board: a code-drawn muqarnas plan with one mauve cell as the chosen void, a white folded-paper star model, and a text column explaining answer, route or abstain." width="2400" height="1500"></picture><img class="b-light" src="../assets/board-light.svg" alt="" width="2400" height="1500" loading="lazy"><img class="b-dark" src="../assets/board-dark.svg" alt="" width="2400" height="1500" loading="lazy"><figcaption>Project board, ilghar.studio. Light and dark versions follow the page theme.</figcaption></figure>
