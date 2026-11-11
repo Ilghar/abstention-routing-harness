@@ -125,6 +125,8 @@ html[data-theme=dark] h1 .dc,[data-theme=dark] h1 .dc{color:#fcb4c4}
 #theme:hover{box-shadow:-2px -2px 6px var(--sh-l),3px 3px 7px var(--sh-d),inset 0 1px 0 var(--glass-edge)}
 #theme:active,#theme[aria-pressed=true]{box-shadow:inset 3px 3px 7px var(--sh-d),inset -3px -3px 7px var(--sh-l)}
 html[data-theme=dark] #theme,[data-theme=dark] #theme{color:#d4d2d2}
+.hdr #theme{margin-left:auto}
+html.is-embed .hdr{display:none}
 /* rev 9 (Hāèl, 4 Nov): every frame rounded, after v7.css (12 px) */
 figure,svg,img,canvas,.callout{border-radius:0}.bar,.bar i{border-radius:0}
 </style>
@@ -138,7 +140,7 @@ main{max-width:none!important;width:100%!important;min-height:100%;padding:16px 
 </head>
 <body>
 <main>
-<p class="hdr"><span>Abstention and routing harness</span><span class="sep" aria-hidden="true">|</span><span>Interactive walk-through</span><span class="sep" aria-hidden="true">|</span><span>ilghar.studio</span><button id="theme" type="button" aria-pressed="false" style="margin-left:auto">dark</button></p>
+<p class="hdr"><span>Abstention and routing harness</span><span class="sep" aria-hidden="true">|</span><span>Interactive walk-through</span><span class="sep" aria-hidden="true">|</span><span>ilghar.studio</span><button id="theme" type="button" aria-pressed="false">dark</button></p>
 <h1>When should a router step back?</h1>
 <p class="lede">Twelve requests come in. Readers suggest a desk and say how sure they are. The harness either answers or hands the request to a person, and writes down why. Start with the case it gets wrong.</p>
 <ul class="dots warn" role="note">
@@ -235,9 +237,17 @@ function render(){
 }
 $("t").addEventListener("input",render);addEventListener("resize",render);
 $("pick").addEventListener("click",function(e){var b=e.target.closest("button");if(b){sel=b.dataset.id;render();var n=document.querySelector('#pick button[data-id="'+sel+'"]');n&&n.focus()}});
-function theme(t){document.documentElement.dataset.theme=t;$("theme").textContent=t==="dark"?"light":"dark";$("theme").setAttribute("aria-pressed",t==="dark");render();}
+function theme(t){if(t!=="dark"&&t!=="light")return;document.documentElement.dataset.theme=t;var tb=$("theme");if(tb){tb.textContent=t==="dark"?"light":"dark";tb.setAttribute("aria-pressed",t==="dark")}render();}
 $("theme").onclick=function(){theme(document.documentElement.dataset.theme==="dark"?"light":"dark")};
-var q=new URLSearchParams(location.search);theme(q.get("theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"));
+var q=new URLSearchParams(location.search);
+var embedded=(window.self!==window.top)||q.has("embed");
+if(embedded)document.documentElement.classList.add("is-embed");
+theme(q.get("theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"));
+if(embedded){
+  var origin=location.origin||"*";
+  window.addEventListener("message",function(e){if(origin!=="*"&&e.origin!==origin)return;if(e.data&&e.data.type==="ilg-theme")theme(e.data.theme)});
+  try{window.parent.postMessage({type:"ilg-theme-request"},origin)}catch(e){}
+}
 })();
 </script>
 <script>/* drop cap: first character of each title in the accent colour (works for Latin and Persian text nodes) */
