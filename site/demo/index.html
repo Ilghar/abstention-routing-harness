@@ -90,8 +90,8 @@ em,.em{font-style:italic;color:var(--em)}
 .legend i.w{border-top:1.5px dashed var(--plum)}
 @media (max-width:820px){h1{font-size:24px;letter-spacing:.14em}.title{font-size:20px}}
 /* v7 / v3.4: site column, glass + soft-shadow controls, drop caps */
-:root{--dc:#856a8e;--glass:rgba(249,250,251,.55);--glass-edge:rgba(255,255,255,.75);--sh-d:rgba(71,52,72,.16);--sh-l:rgba(255,255,255,.9);--well:rgba(71,52,72,.10)}
-[data-theme=dark]{--dc:#856a8e;--glass:rgba(48,45,52,.55);--glass-edge:rgba(255,255,255,.10);--sh-d:rgba(0,0,0,.38);--sh-l:rgba(255,255,255,.06);--well:rgba(0,0,0,.28)}
+:root{--dc:#fcb4c4;--glass:rgba(249,250,251,.55);--glass-edge:rgba(255,255,255,.75);--sh-d:rgba(71,52,72,.16);--sh-l:rgba(255,255,255,.9);--well:rgba(71,52,72,.10)}
+[data-theme=dark]{--dc:#fcb4c4;--name:#856a8e;--glass:rgba(48,45,52,.55);--glass-edge:rgba(255,255,255,.10);--sh-d:rgba(0,0,0,.38);--sh-l:rgba(255,255,255,.06);--well:rgba(0,0,0,.28)}
 main{max-width:448px;padding-left:16px;padding-right:16px}
 @media (min-width:768px){main{max-width:576px;padding-left:32px;padding-right:32px}}
 @media (min-width:1024px){main{max-width:672px}}
@@ -100,7 +100,7 @@ main{max-width:448px;padding-left:16px;padding-right:16px}
 @media (min-width:768px){.views{grid-template-columns:1fr 1fr!important;gap:16px}.counts{grid-template-columns:1fr 1fr!important}.counts>:last-child{grid-column:1/-1}}
 .dc{color:var(--dc)}
 :root:not([data-theme=dark]) h1,:root:not([data-theme=dark]) h1 .fa{color:#473448!important}
-:root:not([data-theme=dark]) h1 .dc{color:#856a8e;font-weight:600}
+:root:not([data-theme=dark]) h1 .dc{color:#fcb4c4;font-weight:400}
 :root:not([data-theme=dark]) :is(h2,h3,.sec,.label) .dc{color:#775a76}
 /* controls */
 button,.glass{background:var(--glass)!important;-webkit-backdrop-filter:blur(12px) saturate(1.1);backdrop-filter:blur(12px) saturate(1.1);border:1px solid var(--glass-edge)!important;border-radius:0;box-shadow:-3px -3px 8px var(--sh-l),4px 4px 10px var(--sh-d),inset 0 1px 0 var(--glass-edge);color:var(--ink);transition:box-shadow .16s}
@@ -113,6 +113,15 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 input[type=range]::-moz-range-track{height:8px;border-radius:0;background:var(--well);box-shadow:inset 2px 2px 4px var(--sh-d)}
 input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:0;background:var(--glass);border:1px solid var(--glass-edge);box-shadow:3px 3px 7px var(--sh-d),inset 0 0 0 5px var(--dc)}
 :focus-visible{outline:2px solid var(--dc)!important;outline-offset:3px}
+
+/* Title: pink first letter only; rest plum in light, #856a8e in dark. */
+html[data-theme=dark] h1,html[data-theme=dark] h1 .fa,[data-theme=dark] h1,[data-theme=dark] h1 .fa{color:#856a8e}
+html[data-theme=dark] h1 .dc,[data-theme=dark] h1 .dc{color:#fcb4c4}
+/* Dark theme toggle: tokens.css glass button, #d4d2d2 label. Other buttons unchanged. */
+#theme{font:inherit;color:var(--ink);background:var(--glass);-webkit-backdrop-filter:blur(12px) saturate(1.1);backdrop-filter:blur(12px) saturate(1.1);border:1px solid var(--glass-edge);border-radius:12px;padding:6px 12px;box-shadow:-3px -3px 8px var(--sh-l),4px 4px 10px var(--sh-d),inset 0 1px 0 var(--glass-edge);transition:box-shadow .16s}
+#theme:hover{box-shadow:-2px -2px 6px var(--sh-l),3px 3px 7px var(--sh-d),inset 0 1px 0 var(--glass-edge)}
+#theme:active,#theme[aria-pressed=true]{box-shadow:inset 3px 3px 7px var(--sh-d),inset -3px -3px 7px var(--sh-l)}
+html[data-theme=dark] #theme,[data-theme=dark] #theme{color:#d4d2d2}
 /* rev 9 (Hāèl, 4 Nov): every frame rounded, after v7.css (12 px) */
 figure,svg,img,canvas,.callout{border-radius:0}.bar,.bar i{border-radius:0}
 </style>
