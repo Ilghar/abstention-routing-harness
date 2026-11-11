@@ -6,9 +6,7 @@
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="pages-shell.css">
 <style>
-@font-face{font-family:Jost;font-style:normal;font-weight:300;font-display:swap;src:url("fonts/jost-latin-300-normal.woff2") format("woff2")}
 @font-face{font-family:Jost;font-style:normal;font-weight:400;font-display:swap;src:url("fonts/jost-latin-400-normal.woff2") format("woff2")}
-@font-face{font-family:Jost;font-style:normal;font-weight:500;font-display:swap;src:url("fonts/jost-latin-500-normal.woff2") format("woff2")}
 iframe.frame-fill{width:100%;height:100%;border:0;display:block;min-height:0}
 .frame.r1610{position:relative}
 .frame.r1610 iframe{position:absolute;inset:0;width:100%;height:100%}
@@ -31,7 +29,7 @@ iframe.frame-fill{width:100%;height:100%;border:0;display:block;min-height:0}
 
   <!-- Proto hero (final) -->
         <figure class="span12">
-    <picture class="hero-art">
+    <picture class="hero-art theme-src" data-light="hero/hero-light.svg" data-dark="hero/hero-dark.svg">
         <source media="(prefers-color-scheme: dark)" srcset="hero/hero-dark.svg">
         <img src="hero/hero-light.svg" width="1280" height="480" alt="P01, Abstention Routing Harness: a harness schematic with one input and three outlets, beside a tree that splits each item into answer, route to a person, or abstain.">
       </picture>
@@ -42,7 +40,7 @@ iframe.frame-fill{width:100%;height:100%;border:0;display:block;min-height:0}
     <h2>Live function</h2>
     <figure>
       <div class="frame live">
-        <iframe title="P01 abstention demo" src="demo/" loading="lazy"></iframe>
+        <iframe title="P01 abstention demo" src="demo/?embed=1" loading="lazy"></iframe>
       </div>
       <figcaption>P01 live demo</figcaption>
     </figure>
@@ -61,7 +59,7 @@ iframe.frame-fill{width:100%;height:100%;border:0;display:block;min-height:0}
     <h2>Project material</h2>
     <figure>
       <div class="frame r1610">
-        <picture>
+        <picture class="theme-src" data-light="assets/board-light.svg" data-dark="assets/board-dark.svg">
           <source media="(prefers-color-scheme: dark)" srcset="assets/board-dark.svg">
           <img src="assets/board-light.svg" alt="P01 board: harness schematic with one input and three outlets beside a routing tree that splits each item into answer, route to a person, or abstain." width="2400" height="1500">
         </picture>
@@ -84,7 +82,7 @@ iframe.frame-fill{width:100%;height:100%;border:0;display:block;min-height:0}
 </main>
 </div>
 <script>
-(function(){var r=document.documentElement;var b=document.querySelector(".theme-toggle");if(!b)return;var k="ilg-theme";var m=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)");var s=null;try{s=localStorage.getItem(k)}catch(e){}function dark(){var t=r.getAttribute("data-theme");return t?t==="dark":!!(m&&m.matches)}function sync(){var d=dark();b.setAttribute("aria-pressed",String(d));b.textContent=d?"Light mode":"Dark mode";var root=document.querySelector(".ilg-case");if(d){root.setAttribute("data-theme","dark");r.setAttribute("data-theme","dark")}else{root.setAttribute("data-theme","light");r.setAttribute("data-theme","light")}}if(s==="dark"||s==="light"){r.setAttribute("data-theme",s);document.querySelector(".ilg-case").setAttribute("data-theme",s)}sync();if(m&&m.addEventListener)m.addEventListener("change",sync);b.addEventListener("click",function(){var n=dark()?"light":"dark";r.setAttribute("data-theme",n);document.querySelector(".ilg-case").setAttribute("data-theme",n);try{localStorage.setItem(k,n)}catch(e){}sync()})})();
+(function(){var r=document.documentElement;var b=document.querySelector(".theme-toggle");if(!b)return;var k="ilg-theme";var m=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)");var s=null;try{s=localStorage.getItem(k)}catch(e){}var origin=location.origin||"*";function dark(){var t=r.getAttribute("data-theme");return t?t==="dark":!!(m&&m.matches)}function swapPics(d){document.querySelectorAll("picture.theme-src").forEach(function(p){var img=p.querySelector("img");var src=p.querySelector("source");var light=p.getAttribute("data-light");var darks=p.getAttribute("data-dark");if(src)src.media=d?"all":"not all";if(img&&light&&darks)img.src=d?darks:light})}function tellFrames(){var theme=dark()?"dark":"light";document.querySelectorAll("iframe").forEach(function(f){try{if(f.contentWindow)f.contentWindow.postMessage({type:"ilg-theme",theme:theme},origin)}catch(e){}})}function sync(){var d=dark();b.setAttribute("aria-pressed",String(d));b.textContent=d?"Light mode":"Dark mode";var root=document.querySelector(".ilg-case");if(d){root.setAttribute("data-theme","dark");r.setAttribute("data-theme","dark")}else{root.setAttribute("data-theme","light");r.setAttribute("data-theme","light")}swapPics(d);tellFrames()}if(s==="dark"||s==="light"){r.setAttribute("data-theme",s);document.querySelector(".ilg-case").setAttribute("data-theme",s)}sync();document.querySelectorAll("iframe").forEach(function(f){f.addEventListener("load",tellFrames)});window.addEventListener("message",function(e){if(origin!=="*"&&e.origin!==origin)return;if(e.data&&e.data.type==="ilg-theme-request")tellFrames()});if(m&&m.addEventListener)m.addEventListener("change",sync);b.addEventListener("click",function(){var n=dark()?"light":"dark";r.setAttribute("data-theme",n);document.querySelector(".ilg-case").setAttribute("data-theme",n);try{localStorage.setItem(k,n)}catch(e){}sync()});})();
 </script>
 </body>
 </html>
