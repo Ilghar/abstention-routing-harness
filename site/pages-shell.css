@@ -49,7 +49,7 @@ header.site{display:flex;align-items:center;justify-content:space-between;gap:12
   font-size:24px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--name);margin:0;
 }
 @media (min-width:768px){.hero .name,.hero h1{font-size:31px;letter-spacing:.2em}}
-.hero .first,.hero .initial{color:var(--pink)}
+.hero .first,.hero .initial{color:var(--dc)}
 .hero .title{display:block;margin-top:8px;font-weight:400;font-size:18px;letter-spacing:.12em;text-transform:uppercase;color:var(--sec)}
 .hero .sub{font-size:16px;font-weight:400;color:var(--fg);margin:12px 0 0;max-width:64ch}
 .hero .sub span+span::before{content:" | ";color:var(--line)}

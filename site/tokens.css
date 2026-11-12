@@ -3,11 +3,11 @@
 :root{
   --paper:#f9fafb; --ink:#5a515c; --plum:#473448;
   --mauve-em:#856a8e; --mauve-line:#7d5a7c; --mauve-label:#775a76;
-  --grey:#948e95; --grey-soft:#a6a1a7; --pink:#fcb4c4; --card:#2a272d; --on-dark:#d4d2d2;
+  --grey:#948e95; --grey-soft:#a6a1a7; --pink:#fcb4c4; --pink-mark-light:#b78597; --pink-mark-dark:#fcb4c4; --pink-fill-dark:#745a7a; --card:#2a272d; --on-dark:#d4d2d2;
   /* roles (light) */
   --canvas:var(--paper); --surface:var(--paper); --fg:var(--ink); --name:var(--plum);
   --sec:var(--mauve-line); --label:var(--mauve-label); --line:var(--mauve-em); --muted:var(--mauve-line);
-  --dc:var(--pink); --ring:var(--pink);
+  --dc:var(--pink-mark-light); --ring:var(--pink-mark-light);
   /* glass + soft shadow (palette-derived alphas only) */
   --glass:rgba(249,250,251,.55); --glass-edge:rgba(255,255,255,.75);
   --sh-d:rgba(71,52,72,.16); --sh-l:rgba(255,255,255,.9); --well:rgba(71,52,72,.10);
@@ -21,12 +21,12 @@
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
   --canvas:var(--card); --surface:var(--card); --fg:var(--on-dark); --name:var(--mauve-em);
-  --sec:var(--grey-soft); --label:var(--grey-soft); --line:var(--grey-soft); --muted:var(--grey-soft);
+  --sec:var(--grey-soft); --label:var(--grey-soft); --line:var(--grey-soft); --muted:var(--grey-soft); --dc:var(--pink-mark-dark); --ring:var(--pink-mark-dark);
   --glass:rgba(48,45,52,.55); --glass-edge:rgba(255,255,255,.10);
   --sh-d:rgba(0,0,0,.38); --sh-l:rgba(255,255,255,.06); --well:rgba(0,0,0,.28); color-scheme:dark}}
 [data-theme=dark]{
   --canvas:var(--card); --surface:var(--card); --fg:var(--on-dark); --name:var(--mauve-em);
-  --sec:var(--grey-soft); --label:var(--grey-soft); --line:var(--grey-soft); --muted:var(--grey-soft);
+  --sec:var(--grey-soft); --label:var(--grey-soft); --line:var(--grey-soft); --muted:var(--grey-soft); --dc:var(--pink-mark-dark); --ring:var(--pink-mark-dark);
   --glass:rgba(48,45,52,.55); --glass-edge:rgba(255,255,255,.10);
   --sh-d:rgba(0,0,0,.38); --sh-l:rgba(255,255,255,.06); --well:rgba(0,0,0,.28); color-scheme:dark}
 
