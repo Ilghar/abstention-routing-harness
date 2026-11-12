@@ -2,7 +2,7 @@
   <a href="https://ilghar.github.io/abstention-routing-harness/">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="docs/hero/hero-dark.webp">
-      <img src="docs/hero/hero-light.webp" width="100%" alt="The live Pages project hero: P01 abstention routing harness, and a tree that splits each item into answer, route to a person, or abstain.">
+      <img src="docs/hero/hero-light.webp" width="100%" alt="The live routing harness running case M03, “Sort the rows by date”: two readers disagree, support sits below the 0.50 threshold, and the request is held back for a person.">
     </picture>
   </a>
 </p>
