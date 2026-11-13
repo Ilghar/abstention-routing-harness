@@ -10,12 +10,12 @@ with overflow:hidden rounds them).
 Soft control shadows from tokens.css are allowed. Frames themselves must
 not have a drop shadow.
 
-Approved pink tokens (#fcb4c4, #b78597, #da94af, #745a7a and the --pink / --pink-mark-* /
+Approved pink tokens (#fcb4c4, #b78597, #da94af, #7d6a8c and the --pink / --pink-mark-* /
 --pink-fill-dark variables) may be used anywhere. They are palette colours, not tints.
 FAIL: off-palette pinks, and pink with opacity/alpha, color-mix, or rgba tints.
 Pink text must reach 4.5:1 against its background when the script can resolve both
 hexes; large text and marks (24px / 18pt, .first, .dc, h1) must reach 3:1.
-Hāèl's 12 Nov 2026 (15:31) values: first letters and pink marks #b78597 (about 2.9:1 on paper, large or decorative, not AA). Small text under ~18px, and first letters on Signature-animation glass #b8adb1, use mauve #856a8e. Glass accents #da94af. Dark Sign / Live fill #745a7a. Dark marks stay #fcb4c4. Do not put #b78597 on #b8adb1 (about 1.4:1).
+Hāèl's 12 Nov 2026 (15:31) values: first letters and pink marks #b78597 (about 2.9:1 on paper, large or decorative, not AA). Small text under ~18px, and first letters on Signature-animation glass #b8adb1, use mauve #856a8e. Glass accents #da94af. Dark Sign / Live fill #7d6a8c. Dark marks stay #fcb4c4. Do not put #b78597 on #b8adb1 (about 1.4:1).
 A heading (h1-h6) whose whole text is an approved pink FAILs; only the first letter may be pink.
 Walnut #5b4032 is in the palette. The blue rule and the photo allowlist are unchanged.
 
@@ -62,16 +62,16 @@ SKIP_DIRS = {".git", "node_modules", "dist", "vendor", "__pycache__", ".venv", "
 
 FALLBACK_HEX = {
     "#f9fafb", "#5a515c", "#473448", "#856a8e", "#7d5a7c", "#775a76",
-    "#948e95", "#a6a1a7", "#fcb4c4", "#b78597", "#da94af", "#745a7a", "#5b4032",
+    "#948e95", "#a6a1a7", "#fcb4c4", "#b78597", "#da94af", "#7d6a8c", "#5b4032",
     "#2a272d", "#d4d2d2",
 }
 
-APPROVED_PINKS = {"#fcb4c4", "#b78597", "#da94af", "#745a7a"}
+APPROVED_PINKS = {"#fcb4c4", "#b78597", "#da94af", "#7d6a8c"}
 APPROVED_PINK_RGB = {
     "#fcb4c4": (0xFC, 0xB4, 0xC4),
     "#b78597": (0xB7, 0x85, 0x97),
     "#da94af": (0xDA, 0x94, 0xAF),
-    "#745a7a": (0x74, 0x5A, 0x7A),
+    "#7d6a8c": (0x7D, 0x6A, 0x8C),
 }
 APPROVED_PINK_VARS = {
     "pink", "pink-mark-light", "pink-mark-dark", "pink-fill-dark", "pink-glass", "glass-accent", "dc", "ring",
@@ -451,12 +451,12 @@ def is_approved_pink_hex(hx: str) -> bool:
 
 
 def _pink_alpha_in(ctx: str) -> bool:
-    if re.search(r"#(?:fcb4c4|b78597|da94af|745a7a|aa527d)[0-9a-fA-F]{2}\b", ctx, re.I):
+    if re.search(r"#(?:fcb4c4|b78597|da94af|7d6a8c|aa527d)[0-9a-fA-F]{2}\b", ctx, re.I):
         return True
-    if re.search(r"color-mix\([^)]*#(?:fcb4c4|b78597|da94af|745a7a|aa527d)", ctx, re.I):
+    if re.search(r"color-mix\([^)]*#(?:fcb4c4|b78597|da94af|7d6a8c|aa527d)", ctx, re.I):
         return True
     if re.search(
-        r"rgba?\(\s*(252\s*,\s*180\s*,\s*196|183\s*,\s*133\s*,\s*151|218\s*,\s*148\s*,\s*175|116\s*,\s*90\s*,\s*122|170\s*,\s*82\s*,\s*125)\s*,",
+        r"rgba?\(\s*(252\s*,\s*180\s*,\s*196|183\s*,\s*133\s*,\s*151|218\s*,\s*148\s*,\s*175|125\s*,\s*106\s*,\s*140|116\s*,\s*90\s*,\s*122|170\s*,\s*82\s*,\s*125)\s*,",
         ctx,
         re.I,
     ):
@@ -475,7 +475,7 @@ def check_pink(text: str, rel: str) -> list[str]:
         return issues
 
     token_pat = (
-        r"#fcb4c4|#b78597|#da94af|#745a7a|"
+        r"#fcb4c4|#b78597|#da94af|#7d6a8c|"
         r"var\(\s*--(?:pink|pink-mark-light|pink-mark-dark|pink-fill-dark)\s*\)"
     )
     for m in re.finditer(token_pat, text, re.I):
@@ -1083,7 +1083,7 @@ def run_broken_samples() -> list[str]:
     body = "p.copy { color: #fcb4c4; } /* body text on paper, 1.61:1 */\n"
     bg = ".panel { background: #fcb4c4; } /* approved fill */\n"
     border = "button.cta { border-color: #fcb4c4; }\n"
-    fill_pending = "button.sign { background: #745a7a; }\n"
+    dark_fill = "button.sign { background: #7d6a8c; }\n"
     tint = ".x { color: #ffb3c3; } /* pink tint */\n"
     tint2 = ".x { color: #ffbfd0; }\n"
     alpha = ".x { color: #fcb4c480; }\n"
@@ -1108,7 +1108,7 @@ def run_broken_samples() -> list[str]:
     hit("body", body, True, lambda s: check_pink_contrast(s) or pink_or_hex(s))
     hit("background", bg, False, pink_or_hex)
     hit("border-ui", border, False, pink_or_hex)
-    hit("fill-745a7a", fill_pending, False, pink_or_hex)
+    hit("fill-7d6a8c", dark_fill, False, pink_or_hex)
     hit("tint", tint, True, check_source_hex)
     hit("tint-ffbfd0", tint2, True, check_source_hex)
     hit("alpha", alpha, True, check_source_hex)
